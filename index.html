@@ -281,15 +281,17 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
       <div class="lane closer">
         <div class="lane-lbl"><div class="dot"></div><div class="name">Closer</div></div>
         <div class="track">
+          <div class="node c1"><span class="node-ico">💬</span><div class="node-t">Groupe WhatsApp créé</div><div class="node-d">Groupe existant avant le premier call avec le client</div></div>
+          <div class="arr">→</div>
           <div class="node c1"><span class="node-ico">📞</span><div class="node-t">Call de vente</div><div class="node-d">Présente l'offre, répond aux objections, ferme la vente</div></div>
           <div class="arr">→</div>
           <div class="node c1"><span class="node-ico">💳</span><div class="node-t">Envoie le lien pendant le call</div><div class="node-d">WhatsApp ou SMS, le client paie en direct</div><span class="node-btn amber" onclick="openModal('page-paiement.html','💳 Page de paiement 1×')">Voir la page →</span></div>
           <div class="arr">→</div>
           <div class="bub amber"><span class="bub-lbl">Message envoyé</span><div class="msg or">Voilà le lien 👇 Je t'attends pendant que tu paies 🙌</div></div>
           <div class="arr">→</div>
-          <div class="node c1"><span class="node-ico">✅</span><div class="node-t">Confirme réception email</div><div class="node-d">Mail reçu ? Formulaire visible ?</div></div>
+          <div class="node c1"><span class="node-ico">✅</span><div class="node-t">Confirme réception email</div><div class="node-d">Mail reçu ? Lien d'inscription visible ?</div></div>
           <div class="arr">→</div>
-          <div class="bub amber"><span class="bub-lbl">WhatsApp</span><div class="msg or">Tu as reçu l'email ? Vérifie les spams 👀</div><div class="msg in">Oui, j'ai le formulaire 👍</div><div class="msg or">Parfait, remplis-le dès que tu peux. Le coach prend en charge sous 72h 💪</div></div>
+          <div class="node c1"><span class="node-ico">➕</span><div class="node-t">Ajoute le coach dans le groupe</div><div class="node-d">Une fois le paiement confirmé</div></div>
         </div>
       </div>
       <div class="lane client">
@@ -297,13 +299,11 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
         <div class="track">
           <div class="node c2"><span class="node-ico">💰</span><div class="node-t">Il paie</div><div class="node-d">Stripe ou PayPal via systeme.io</div></div>
           <div class="arr">→</div>
-          <div class="node c2"><span class="node-ico">📧</span><div class="node-t">Reçoit l'email auto</div><div class="node-d">Récap commande et formulaire de renseignement</div></div>
+          <div class="node c2"><span class="node-ico">📧</span><div class="node-t">Reçoit l'email auto</div><div class="node-d">Récap commande et lien d'inscription à l'application</div></div>
           <div class="arr">→</div>
-          <div class="detail"><div class="detail-t">📝 Formulaire à remplir</div><ul class="detail-list"><li>Infos personnelles et téléphone</li><li>Objectifs et niveau d'entraînement</li><li>Problèmes de santé et blessures</li><li>Préférences alimentaires</li><li>Matériel disponible (cases)</li><li>Photos : face, profil, dos</li></ul></div>
+          <div class="node c2"><span class="node-ico">📲</span><div class="node-t">S'inscrit sur l'application</div><div class="node-d">Via le lien reçu dans l'email (en premier)</div></div>
           <div class="arr">→</div>
-          <div class="node c2"><span class="node-ico">📲</span><div class="node-t">S'inscrit sur l'application</div><div class="node-d">Via le lien reçu dans l'email</div></div>
-          <div class="arr">→</div>
-          <div class="node c2"><span class="node-ico">📝</span><div class="node-t">Remplit le questionnaire</div><div class="node-d">Directement dans l'app : objectifs, habitudes, niveau</div></div>
+          <div class="node c2"><span class="node-ico">📝</span><div class="node-t">Remplit le questionnaire</div><div class="node-d">Dans l'app : objectifs, santé, matériel, photos, alimentation</div></div>
           <div class="arr">→</div>
           <div class="node c2"><span class="node-ico">💬</span><div class="node-t">Le dit dans le groupe WhatsApp</div><div class="node-d">Annonce que son inscription est confirmée</div></div>
           <div class="arr">→</div>
@@ -313,12 +313,12 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
       <div class="lane coach">
         <div class="lane-lbl"><div class="dot"></div><div class="name">Coach</div></div>
         <div class="track">
-          <div class="sp2"></div><div class="sp2"></div><div style="width:6px;flex-shrink:0"></div>
-          <div class="node c3"><span class="node-ico">📋</span><div class="node-t">Reçoit le formulaire</div><div class="node-d">Toutes les infos pour personnaliser le programme</div></div>
+          <div class="sp2"></div><div style="width:6px;flex-shrink:0"></div>
+          <div class="node c3"><span class="node-ico">➕</span><div class="node-t">Est ajouté dans le groupe</div><div class="node-d">Après confirmation du paiement par le closer</div></div>
           <div class="arr">→</div>
-          <div class="node c3"><span class="node-ico">➕</span><div class="node-t">Ajoute sur WhatsApp</div><div class="node-d">Message de bienvenue et explique les étapes</div></div>
+          <div class="bub purple"><span class="bub-lbl">Message de bienvenue</span><div class="msg sys">Bienvenue (prénom) 💪 Inscris-toi sur l'app via le lien reçu par mail, puis remplis le questionnaire. Le programme complet (sport + diète) te sera envoyé sous 72h 🔥</div></div>
           <div class="arr">→</div>
-          <div class="bub purple"><span class="bub-lbl">Message WhatsApp</span><div class="msg sys">Bienvenue (prénom) 💪 Ton questionnaire est dans l'app. Remplis-le dès que tu peux, le coach revient vers toi avec ton programme sous 72h 🔥</div></div>
+          <div class="node c3"><span class="node-ico">📋</span><div class="node-t">Reçoit le questionnaire rempli</div><div class="node-d">Notification app — toutes les infos pour créer le programme</div></div>
         </div>
       </div>
     </div>
@@ -328,7 +328,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
     <div class="phase-head">
       <div class="phase-num">2</div>
       <span class="phase-title">Création du programme</span>
-      <span class="phase-sub">Max 72h ouvrables · Envoi le vendredi · Démarrage le lundi</span>
+      <span class="phase-sub">Programme complet sport + diète sous 72h · Envoi le vendredi · Démarrage le lundi</span>
     </div>
     <div class="phase-body">
       <div class="lane client">
@@ -378,7 +378,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
       <div class="lane coach">
         <div class="lane-lbl"><div class="dot"></div><div class="name">Coach</div></div>
         <div class="track">
-          <div class="node c3"><span class="node-ico">💬</span><div class="node-t">Support WhatsApp</div><div class="node-d">Répond aux questions et corrige les exercices</div><span class="pill purple">0 message en attente le vendredi soir</span></div>
+          <div class="node c3"><span class="node-ico">💬</span><div class="node-t">Support WhatsApp</div><div class="node-d">Réponse sous 24h (Lun à Ven uniquement). Pas de réponse le week-end.</div><span class="pill purple">0 message en attente le vendredi soir</span></div>
           <div class="arr">→</div>
           <div class="node c3"><span class="node-ico">📈</span><div class="node-t">Analyse le bilan le lundi</div><div class="node-d">Reçu le samedi, traitement et retour client le lundi</div></div>
           <div class="arr">→</div>
@@ -400,13 +400,13 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
       <div class="lane coach">
         <div class="lane-lbl"><div class="dot"></div><div class="name">Coach</div></div>
         <div class="track">
-          <div class="node c3"><span class="node-ico">1️⃣</span><div class="node-t">Pas de bilan reçu</div><div class="node-d">Message ou mail le jour même pour demander la raison</div></div>
+          <div class="node c3"><span class="node-ico">1️⃣</span><div class="node-t">Bilan non reçu le samedi</div><div class="node-d">Message ou mail le jour même (samedi) pour demander la raison</div><span class="pill purple">Délai J+0</span></div>
           <div class="arr">→</div>
-          <div class="node c3"><span class="node-ico">2️⃣</span><div class="node-t">Pas de réponse sous 48h</div><div class="node-d">Relance par message ou mail</div></div>
+          <div class="node c3"><span class="node-ico">2️⃣</span><div class="node-t">Pas de réponse sous 48h</div><div class="node-d">Relance par message ou mail le lundi (2 jours après)</div><span class="pill purple">Délai J+2</span></div>
           <div class="arr">→</div>
-          <div class="node c3"><span class="node-ico">3️⃣</span><div class="node-t">Bilan suivant manqué</div><div class="node-d">Contacter le jour même pour prendre des nouvelles</div></div>
+          <div class="node c3"><span class="node-ico">3️⃣</span><div class="node-t">Bilan suivant aussi manqué</div><div class="node-d">Contact le jour même (J+15) — prendre des nouvelles, comprendre la situation</div><span class="pill purple">Délai J+15</span></div>
           <div class="arr">→</div>
-          <div class="node c3"><span class="node-ico">4️⃣</span><div class="node-t">Toujours aucune réponse</div><div class="node-d">Arrêter les messages et les mails</div></div>
+          <div class="node c3"><span class="node-ico">4️⃣</span><div class="node-t">Toujours aucune réponse sous 24h</div><div class="node-d">Arrêter tous les messages et les mails définitivement</div><span class="pill red">Délai J+16</span></div>
           <div class="arr">→</div>
           <div class="bub purple"><span class="bub-lbl">Si le client refait surface</span><div class="msg sys">Le coaching reprend normalement jusqu'à son terme. Les jours et semaines sans réponse restent perdus pour le client.</div></div>
         </div>
