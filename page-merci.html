@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienvenue dans l'accompagnement — GC Coaching</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* HEADER */
+    .header {
+      background: #0d0d0d;
+      border-bottom: 1px solid #1e1e1e;
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.06); }
+    }
+
+    /* HERO */
+    .hero {
+      padding: 52px 24px 44px;
+      text-align: center;
+      animation: fadeInUp 0.6s ease both;
+    }
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      background: rgba(61,191,184,.1);
+      border: 2px solid #3DBFB8;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    .success-icon svg { width: 32px; height: 32px; }
+
+    .badge {
+      display: inline-block;
+      border: 1px solid #3DBFB8;
+      color: #3DBFB8;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 3px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: clamp(26px, 5vw, 42px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .hero h1 span { color: #3DBFB8; }
+    .hero p {
+      font-size: 15px;
+      color: #666;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    /* ÉTAPES */
+    .steps-section {
+      margin-bottom: 32px;
+      animation: fadeInUp 0.6s ease 0.15s both;
+    }
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #3DBFB8;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .step {
+      background: #111;
+      border: 1px solid #1e1e1e;
+      border-radius: 12px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: border-color 0.2s;
+    }
+    .step:hover { border-color: rgba(61,191,184,.4); }
+    .step-num {
+      width: 36px;
+      height: 36px;
+      background: rgba(61,191,184,.1);
+      border: 1.5px solid #3DBFB8;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      color: #3DBFB8;
+      flex-shrink: 0;
+    }
+    .step-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .step-desc {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.55;
+    }
+
+    /* RÉCAPITULATIF */
+    .includes {
+      background: #111;
+      border: 1px solid #1e1e1e;
+      border-radius: 12px;
+      padding: 22px 24px;
+      animation: fadeInUp 0.6s ease 0.3s both;
+    }
+    .includes-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #3DBFB8;
+      margin-bottom: 16px;
+    }
+    .includes-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    @media (max-width: 480px) {
+      .includes-list { grid-template-columns: 1fr; }
+    }
+    .includes-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12.5px;
+      color: #aaa;
+      line-height: 1.4;
+    }
+    .check {
+      width: 18px;
+      height: 18px;
+      background: rgba(61,191,184,.1);
+      border: 1.5px solid #3DBFB8;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .check svg { width: 8px; height: 8px; }
+
+    /* FOOTER */
+    .footer {
+      background: #0d0d0d;
+      border-top: 1px solid #1e1e1e;
+      padding: 24px;
+      text-align: center;
+    }
+    .footer p {
+      font-size: 12px;
+      color: #444;
+      line-height: 1.6;
+    }
+    .footer a { color: #3DBFB8; text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <img src="https://www.gregchipponicoaching.fr/img_s2/154296/logo/logo-greg-v2.svg" alt="Greg Chipponi Coaching" style="height:34px;width:auto;object-fit:contain;">
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="success-icon">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 16L12.5 22.5L26 9" stroke="#3DBFB8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="badge">Paiement confirmé</div>
+    <h1>Bienvenue dans<br>l'<span>accompagnement</span></h1>
+    <p>Ton paiement a bien été reçu. Voici les prochaines étapes pour démarrer dès maintenant.</p>
+  </section>
+
+  <div class="container">
+
+    <!-- ÉTAPES -->
+    <div class="steps-section">
+      <p class="section-label">Prochaines étapes</p>
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="step-title">Vérifie ta boîte mail</div>
+            <div class="step-desc">Tu vas recevoir un email de confirmation avec le récapitulatif de ta commande et toutes les informations de démarrage.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="step-title">Inscris-toi sur l'application</div>
+            <div class="step-desc">Un lien d'inscription pour l'application de suivi te sera envoyé par mail. C'est là que tu retrouveras ton programme, tes entraînements et ta progression.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="step-title">Dis-le dans le groupe WhatsApp</div>
+            <div class="step-desc">Tu as déjà accès au groupe WhatsApp — annonce que ton inscription est confirmée pour que Greg en soit informé et prépare ton programme.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <div class="step-title">Greg te contacte sous 24h</div>
+            <div class="step-desc">Greg va te recontacter dans les 24h pour lancer ton accompagnement personnalisé et répondre à tes premières questions.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RÉCAPITULATIF -->
+    <div class="includes">
+      <p class="includes-title">Ce qui est inclus dans ton accompagnement</p>
+      <ul class="includes-list">
+        <li>
+          <div class="check"><svg viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="#3DBFB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Plan nutrition personnalisé
+        </li>
+        <li>
+          <div class="check"><svg viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="#3DBFB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Plan d'entraînement adapté
+        </li>
+        <li>
+          <div class="check"><svg viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="#3DBFB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Application de suivi
+        </li>
+        <li>
+          <div class="check"><svg viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="#3DBFB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          WhatsApp 5j/7 (8h30–17h30)
+        </li>
+        <li>
+          <div class="check"><svg viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="#3DBFB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Bilan tous les 15 jours
+        </li>
+        <li>
+          <div class="check"><svg viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="#3DBFB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Correction de mouvement
+        </li>
+        <li>
+          <div class="check"><svg viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="#3DBFB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Vidéos explicatives
+        </li>
+        <li>
+          <div class="check"><svg viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="#3DBFB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          1 700 recettes variées
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© GC Coaching · <a href="https://www.gregchipponicoaching.fr">gregchipponicoaching.fr</a> · <a href="page-cgv.html">Conditions Générales de Vente</a></p>
+  </footer>
+
+</body>
+</html>

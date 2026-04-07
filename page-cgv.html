@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conditions Générales de Vente — GC Coaching</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #121212;
+      --bg-card: #1A1A1A;
+      --border: #2A2A2A;
+      --teal: #3DBFB8;
+      --teal-dim: rgba(61,191,184,0.1);
+      --white: #FFFFFF;
+      --muted: #A0A0A0;
+      --dim: #606060;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: #0E0E0E;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo {
+      font-weight: 900;
+      font-size: 20px;
+      color: var(--white);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .logo span { color: var(--teal); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #1A1A1A 0%, #121212 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      border: 1px solid var(--teal);
+      color: var(--teal);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(24px, 5vw, 36px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ── CONTENU ── */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    .toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      margin-bottom: 40px;
+    }
+    .toc-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 16px;
+    }
+    .toc-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 16px;
+    }
+    @media (max-width: 520px) {
+      .toc-list { grid-template-columns: 1fr; }
+    }
+    .toc-list a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 12px;
+      line-height: 1.4;
+      transition: color 0.2s;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .toc-list a::before { content: '→'; color: var(--teal); flex-shrink: 0; font-size: 11px; margin-top: 1px; }
+    .toc-list a:hover { color: var(--white); }
+
+    /* ── ARTICLES ── */
+    .article {
+      border-bottom: 1px solid var(--border);
+      padding: 32px 0;
+    }
+    .article:last-child { border-bottom: none; }
+
+    .article-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .article-title::before {
+      content: '';
+      display: block;
+      width: 3px;
+      height: 16px;
+      background: var(--teal);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .article h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 20px 0 10px;
+    }
+    .article h4 {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 16px 0 8px;
+    }
+    .article p {
+      font-size: 14px;
+      color: #C0C0C0;
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    .article p:last-child { margin-bottom: 0; }
+    .article ul {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0;
+    }
+    .article ul li {
+      font-size: 14px;
+      color: #C0C0C0;
+      line-height: 1.7;
+      padding: 6px 0 6px 20px;
+      position: relative;
+    }
+    .article ul li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-weight: 700;
+    }
+    .article strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #0E0E0E;
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+    }
+    .footer p {
+      font-size: 12px;
+      color: var(--dim);
+      line-height: 1.6;
+    }
+    .footer a {
+      color: var(--teal);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="https://www.gregchipponicoaching.fr" class="logo">GC <span>COACHING</span></a>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="badge">Documents légaux</div>
+    <h1>Conditions Générales<br>de Vente</h1>
+    <p>Conditions applicables à l'ensemble des prestations proposées par GC Coaching.</p>
+  </section>
+
+  <!-- CONTENU -->
+  <div class="container">
+
+    <!-- TABLE DES MATIÈRES -->
+    <div class="toc">
+      <p class="toc-title">Table des matières</p>
+      <ul class="toc-list">
+        <li><a href="#art1">1. Mentions légales</a></li>
+        <li><a href="#art2">2. Définitions</a></li>
+        <li><a href="#art3">3. Champ d'application</a></li>
+        <li><a href="#art4">4. Objet du site</a></li>
+        <li><a href="#art5">5. Étapes de la commande</a></li>
+        <li><a href="#art6">6. Prix et paiement</a></li>
+        <li><a href="#art7">7. Réclamation et rétractation</a></li>
+        <li><a href="#art8">8. Espace personnel</a></li>
+        <li><a href="#art9">9. Livraison</a></li>
+        <li><a href="#art10">10. Informatique et libertés</a></li>
+        <li><a href="#art11">11. Cookies</a></li>
+        <li><a href="#art12">12. Responsabilité</a></li>
+        <li><a href="#art13">13. Propriété intellectuelle</a></li>
+        <li><a href="#art14">14. Dispositions générales</a></li>
+        <li><a href="#art15">15. Médiation</a></li>
+      </ul>
+    </div>
+
+    <!-- ARTICLE 1 -->
+    <div class="article" id="art1">
+      <div class="article-title">Article 1 — Mentions légales</div>
+      <h3>1.1. Éditeur</h3>
+      <p>Le site est édité par Greg Chiopponi, exerçant en qualité de coach sportif et nutritionnel. Pour toute demande, vous pouvez contacter l'éditeur via le formulaire de contact disponible sur le site <a href="https://www.gregchipponicoaching.fr" style="color:var(--teal)">gregchipponicoaching.fr</a>.</p>
+      <h3>1.2. Hébergeur</h3>
+      <p>Le Site est hébergé par CmonSite, édité par la société Lord of Web, dont le siège social est situé : 16 rue de Rome, 13480 Cabriès.</p>
+    </div>
+
+    <!-- ARTICLE 2 -->
+    <div class="article" id="art2">
+      <div class="article-title">Article 2 — Définitions</div>
+      <ul>
+        <li><strong>Client :</strong> toute personne physique ou morale, de droit privé ou public, inscrite sur le Site.</li>
+        <li><strong>Devis :</strong> conditions particulières des Prestations indiquant le prix et les délais d'exécution.</li>
+        <li><strong>Internaute :</strong> toute personne accédant au Site.</li>
+        <li><strong>Prestation :</strong> service réalisé par le site, notamment l'accompagnement coaching personnalisé.</li>
+        <li><strong>Produit :</strong> bien vendu sur le Site.</li>
+        <li><strong>Site :</strong> site internet accessible à l'URL gregchipponicoaching.fr, ainsi que les sous-sites et variantes.</li>
+      </ul>
+    </div>
+
+    <!-- ARTICLE 3 -->
+    <div class="article" id="art3">
+      <div class="article-title">Article 3 — Champ d'application</div>
+      <p>Le Site est librement et gratuitement accessible à tout Internaute. La navigation suppose l'acceptation des présentes conditions générales. La connexion emporte acceptation pleine et entière. L'inscription requiert de cocher : <em>« J'ai lu et j'accepte les conditions générales de services. »</em></p>
+      <p>L'acceptation par case à cocher a la même valeur qu'une signature manuscrite. Les Internautes reconnaissent la valeur probante des systèmes d'enregistrement automatiques et renoncent à les contester en cas de litige.</p>
+      <p>Ces conditions s'appliquent exclusivement, à l'exclusion de toute autre condition.</p>
+    </div>
+
+    <!-- ARTICLE 4 -->
+    <div class="article" id="art4">
+      <div class="article-title">Article 4 — Objet du site</div>
+      <p>Le Site a pour objet la vente de Produits et la réalisation de Prestations de coaching sportif et nutritionnel personnalisé.</p>
+    </div>
+
+    <!-- ARTICLE 5 -->
+    <div class="article" id="art5">
+      <div class="article-title">Article 5 — Étapes de la commande</div>
+      <h3>5.1. Commande de Produits</h3>
+      <h4>5.1.1. Commande</h4>
+      <p>Les Internautes peuvent sélectionner un ou plusieurs Produits et les ajouter à leur panier. La disponibilité des Produits est indiquée sur le Site.</p>
+      <h4>5.1.2. Validation de la commande</h4>
+      <p>En consultant leur panier, les Internautes peuvent vérifier le nombre et la nature des Produits sélectionnés ainsi que leur prix unitaire et global. Ils peuvent supprimer des produits ou valider leur commande.</p>
+      <h4>5.1.3. Paiement par le Client</h4>
+      <p>Après connexion ou inscription, le Client vérifie les informations de livraison et de facturation, puis effectue le paiement via l'interface sécurisée.</p>
+      <h4>5.1.4. Confirmation de la commande</h4>
+      <p>Dès réception effective du paiement, le site s'engage à en accuser réception au Client par voie électronique dans un délai maximum de 24 heures. Dans ce même délai, un email de confirmation récapitulant la commande est envoyé.</p>
+      <h3>5.2. Commande de Prestations</h3>
+      <p>Le Client peut commander une Prestation en contactant directement le site aux coordonnées indiquées à l'article 1. Un devis est alors transmis au Client par email.</p>
+    </div>
+
+    <!-- ARTICLE 6 -->
+    <div class="article" id="art6">
+      <div class="article-title">Article 6 — Prix et paiement</div>
+      <h3>6.1. Prix</h3>
+      <p>Les prix applicables sont ceux affichés sur le Site au jour de la commande. Ces prix peuvent être modifiés à tout moment. Les prix indiqués sur le Site sont exprimés en euros, toutes taxes comprises, hors frais de livraison.</p>
+      <h3>6.2. Modalités de paiement</h3>
+      <p>Le Client peut régler par chèque, virement, carte bancaire, Paypal, Stripe ou Alma. Les paiements par carte bancaire sont réalisés via des transactions sécurisées. Le site n'a pas accès aux données de paiement du Client.</p>
+      <h3>6.3. Facturation</h3>
+      <p>Le site enverra ou mettra à disposition du Client une facture par voie électronique après chaque paiement. Le Client accepte expressément recevoir les factures sous forme électronique.</p>
+      <h3>6.4. Défaut de paiement</h3>
+      <p>Les dates de paiement convenues ne peuvent être reportées sous aucun prétexte, y compris en cas de litige. Tout montant impayé à l'échéance entraîne automatiquement l'application de pénalités de retard calculées à 3 fois le taux d'intérêt légal.</p>
+      <h3>6.5. Réserve de propriété</h3>
+      <p>Les Produits vendus restent la propriété du site jusqu'au complet paiement du prix.</p>
+    </div>
+
+    <!-- ARTICLE 7 -->
+    <div class="article" id="art7">
+      <div class="article-title">Article 7 — Réclamation, rétractation et garantie</div>
+      <h3>7.1. Service clientèle</h3>
+      <p>Le service clientèle est accessible par email et par courrier postal à l'adresse indiquée à l'article 1.</p>
+      <h3>7.2. Droit de rétractation</h3>
+      <h4>7.2.1. Conditions d'exercice</h4>
+      <p>Conformément à la législation sur les ventes à distance, le Client dispose d'un délai de quatorze jours francs pour exercer son droit de rétractation sans justification ni pénalités, à l'exception des frais de retour éventuels.</p>
+      <p>Le délai court à compter du jour de la conclusion du contrat à distance pour les prestations, ou de la réception des biens par le Client.</p>
+      <h4>7.2.2. Effets du droit de rétractation</h4>
+      <p>En cas d'exercice du droit de rétractation, le professionnel rembourse le Client de la totalité des sommes versées, au plus tard dans les quatorze jours suivant la date à laquelle ce droit a été exercé.</p>
+      <h4>7.2.3. Exclusions</h4>
+      <p>Le droit de rétractation ne s'applique pas notamment aux contrats :</p>
+      <ul>
+        <li>de fourniture de services pleinement exécutés avant la fin du délai de rétractation, dont l'exécution a commencé après accord préalable exprès du Client ;</li>
+        <li>de biens confectionnés selon les spécifications du consommateur ou nettement personnalisés ;</li>
+        <li>de contenu numérique non fourni sur un support matériel dont l'exécution a commencé après accord préalable exprès du Client.</li>
+      </ul>
+      <h3>7.3. Résolution du contrat</h3>
+      <p>Le Client consommateur peut résilier le contrat par lettre recommandée avec accusé de réception en cas de dépassement de la date de livraison de plus de sept jours. Il est alors remboursé des sommes engagées.</p>
+    </div>
+
+    <!-- ARTICLE 8 -->
+    <div class="article" id="art8">
+      <div class="article-title">Article 8 — Espace personnel</div>
+      <h3>8.1. Création de l'espace personnel</h3>
+      <p>La création d'un espace personnel est indispensable pour toute commande sur le Site. Le Client choisit un mot de passe garantissant la confidentialité des informations de son espace personnel et s'engage à ne pas le transmettre à des tiers.</p>
+      <h3>8.2. Contenu de l'espace personnel</h3>
+      <p>L'espace personnel permet au Client de consulter et suivre toutes ses commandes effectuées sur le Site.</p>
+      <h3>8.3. Suppression de l'espace personnel</h3>
+      <p>Le site se réserve le droit de supprimer tout compte Client contrevenant aux présentes conditions générales, notamment lorsque le Client fournit des informations inexactes ou frauduleuses.</p>
+    </div>
+
+    <!-- ARTICLE 9 -->
+    <div class="article" id="art9">
+      <div class="article-title">Article 9 — Livraison</div>
+      <p>Pour les prestations numériques, l'accès est accordé immédiatement après confirmation du paiement, par email et via l'espace personnel du Client. Les frais de livraison applicables sont indiqués au Client avant tout règlement.</p>
+    </div>
+
+    <!-- ARTICLE 10 -->
+    <div class="article" id="art10">
+      <div class="article-title">Article 10 — Informatique et libertés</div>
+      <p>La fourniture d'informations personnelles sur le Site est facultative pour la navigation. En revanche, l'inscription requiert la collecte de certaines informations personnelles. Ces données font l'objet d'un traitement informatisé et sont exclusivement réservées au site.</p>
+      <p>Conformément à la loi Informatique et Libertés du 6 janvier 1978, les Internautes disposent d'un droit d'opposition, d'interrogation, d'accès et de rectification des données les concernant. Ils peuvent exercer ce droit par email ou par courrier postal.</p>
+    </div>
+
+    <!-- ARTICLE 11 -->
+    <div class="article" id="art11">
+      <div class="article-title">Article 11 — Cookies</div>
+      <p>Pour permettre une navigation optimale, le site peut implanter un cookie sur l'ordinateur de l'Internaute. Ces cookies mémorisent les informations de navigation et les données saisies lors de la visite.</p>
+      <p>Les Internautes peuvent bloquer, modifier la durée de conservation ou supprimer ces cookies via l'interface de leur navigateur. La désactivation systématique des cookies peut empêcher l'utilisation de certains services.</p>
+    </div>
+
+    <!-- ARTICLE 12 -->
+    <div class="article" id="art12">
+      <div class="article-title">Article 12 — Responsabilité</div>
+      <h3>12.1. Nature des obligations</h3>
+      <p>Le site s'engage à apporter les soins et la diligence nécessaires à la fourniture de Produits/Prestations de qualité conformes aux spécifications des présentes Conditions Générales.</p>
+      <h3>12.2. Force majeure</h3>
+      <p>Le site ne saurait être tenu pour responsable en cas de force majeure ou de faute du Client, notamment : incendie, épidémie, catastrophe naturelle, panne des prestataires d'accès, piratage informatique ou toute circonstance raisonnablement hors du contrôle du site.</p>
+      <h3>12.3. Limitation de responsabilité</h3>
+      <p>La responsabilité du site est limitée aux préjudices directs, personnels et certains subis par le Client. Le site ne saurait être responsable des dommages indirects tels que perte de données, préjudice commercial ou perte de profit. En tout état de cause, les dommages-intérêts à la charge du site ne peuvent excéder le montant du prix de la Prestation commandée.</p>
+    </div>
+
+    <!-- ARTICLE 13 -->
+    <div class="article" id="art13">
+      <div class="article-title">Article 13 — Propriété intellectuelle</div>
+      <p>Les contenus du Site (textes, images, schémas, structure, base de données, logiciels…), propriété du site, sont protégés par le droit d'auteur et par la loi sur les bases de données. Toute représentation, reproduction ou transformation, intégrale ou partielle, réalisée sans l'accord du site constitue une contrefaçon susceptible de donner lieu à des poursuites judiciaires.</p>
+    </div>
+
+    <!-- ARTICLE 14 -->
+    <div class="article" id="art14">
+      <div class="article-title">Article 14 — Dispositions générales</div>
+      <h3>14.1. Droit applicable</h3>
+      <p>Les présentes conditions générales sont soumises à l'application du droit français.</p>
+      <h3>14.2. Modifications</h3>
+      <p>Les présentes conditions générales peuvent être modifiées à tout moment par le site. Les conditions applicables au Client sont celles en vigueur le jour de sa commande.</p>
+      <h3>14.3. Règlement amiable des litiges</h3>
+      <p>À défaut de dispositions d'ordre public, tout litige découlant de l'exécution des présentes conditions générales devra, avant toute action judiciaire, être soumis à l'appréciation du site en vue d'un règlement amiable.</p>
+      <h3>14.4. Entièreté</h3>
+      <p>La nullité d'une clause n'entraînera pas la nullité des autres clauses des présentes conditions générales qui garderont leur plein effet et portée.</p>
+    </div>
+
+    <!-- ARTICLE 15 -->
+    <div class="article" id="art15">
+      <div class="article-title">Article 15 — Médiation</div>
+      <p>Le consommateur peut recourir, en cas de contestation, à une procédure de médiation conventionnelle ou tout autre mode alternatif de règlement des différends.</p>
+      <p>La liste des médiateurs référencés est accessible sur le site du gouvernement : <a href="https://www.economie.gouv.fr/mediation-conso/liste-des-mediateurs-references" style="color:var(--teal)">economie.gouv.fr</a>.</p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© GC Coaching — <a href="https://www.gregchipponicoaching.fr">gregchipponicoaching.fr</a></p>
+  </footer>
+
+</body>
+</html>
