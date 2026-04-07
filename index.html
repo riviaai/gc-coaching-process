@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GC Coaching — Process Complet</title>
+<title>GC Coaching — Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -12,17 +12,15 @@
   --bg:#eef0f4;--border:#e2e5ea;--border2:#cdd1da;
   --teal:#3DBFB8;--teal-d:rgba(61,191,184,.1);--teal-b:rgba(61,191,184,.3);
   --closer:#F59E0B;--closer-d:rgba(245,158,11,.08);--closer-b:rgba(245,158,11,.3);
-  --client:#3DBFB8;
   --coach:#7C3AED;--coach-d:rgba(124,58,237,.07);--coach-b:rgba(124,58,237,.28);
+  --green:#1e6b50;--green-d:rgba(30,107,80,.08);--green-b:rgba(30,107,80,.25);
   --text:#111;--muted:#666;--soft:#999;
 }
 html,body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;height:100%;overflow:hidden}
-
-/* LAYOUT */
 .app{display:flex;flex-direction:column;height:100vh;overflow:hidden}
 
 /* HEADER */
-.hd{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;border-bottom:1px solid #1e1e1e;background:#0a0a0a;flex-shrink:0;z-index:10}
+.hd{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;border-bottom:1px solid #1e1e1e;background:#0a0a0a;flex-shrink:0}
 .hd img{height:24px}
 .hd-mid h2{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#3DBFB8;text-align:center}
 .hd-mid p{font-size:9px;color:#555;margin-top:1px;letter-spacing:1px;text-transform:uppercase;text-align:center}
@@ -30,30 +28,43 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-syst
 .leg{display:flex;align-items:center;gap:5px;font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
 .leg-dot{width:7px;height:7px;border-radius:50%}
 
+/* TABS BAR */
+.tabs-bar{display:flex;align-items:center;gap:2px;padding:8px 20px 0;background:#0a0a0a;border-bottom:1px solid #1e1e1e;flex-shrink:0}
+.tab-btn{padding:8px 20px;font-size:11px;font-weight:700;border:none;border-radius:8px 8px 0 0;cursor:pointer;transition:.15s;letter-spacing:.5px;background:transparent;color:#555;position:relative;bottom:-1px;border:1px solid transparent;border-bottom:none}
+.tab-btn:hover{color:#aaa}
+.tab-btn.active{background:#eef0f4;color:var(--teal);border-color:#1e1e1e;border-bottom-color:#eef0f4}
+
 /* BOARD */
-.board{flex:1;overflow-x:auto;overflow-y:auto;padding:20px 24px 40px}
+.board{flex:1;overflow-x:auto;overflow-y:auto;padding:20px 24px 40px;display:none}
+.board.active{display:block}
+
+/* ═══════════════════════════════
+   TAB 1 — PROCESS
+═══════════════════════════════ */
 
 /* PHASE BLOCK */
-.phase-block{margin-bottom:10px;border-radius:16px;overflow:hidden;border:1.5px solid var(--phase-color, #e2e5ea);min-width:960px}
-.phase-block.p1{--phase-color:rgba(245,158,11,.35);--phase-bg:#fffdf5}
-.phase-block.p2{--phase-color:rgba(124,58,237,.3);--phase-bg:#f9f7ff}
-.phase-block.p3{--phase-color:rgba(61,191,184,.3);--phase-bg:#f4fffe}
-.phase-block.p4{--phase-color:rgba(239,68,68,.25);--phase-bg:#fff8f8}
-
-.phase-head{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--phase-color);background:var(--phase-bg)}
+.phase-block{margin-bottom:10px;border-radius:16px;overflow:hidden;min-width:960px}
+.phase-block.p1{border:1.5px solid rgba(245,158,11,.35)}
+.phase-block.p2{border:1.5px solid rgba(124,58,237,.3)}
+.phase-block.p3{border:1.5px solid rgba(61,191,184,.3)}
+.phase-block.p4{border:1.5px solid rgba(239,68,68,.25)}
+.phase-head{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid}
+.p1 .phase-head{background:#fffdf5;border-color:rgba(245,158,11,.35)}
+.p2 .phase-head{background:#f9f7ff;border-color:rgba(124,58,237,.3)}
+.p3 .phase-head{background:#f4fffe;border-color:rgba(61,191,184,.3)}
+.p4 .phase-head{background:#fff8f8;border-color:rgba(239,68,68,.25)}
 .phase-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;flex-shrink:0}
 .p1 .phase-num{background:rgba(245,158,11,.18);color:var(--closer);border:1.5px solid rgba(245,158,11,.4)}
 .p2 .phase-num{background:rgba(124,58,237,.12);color:var(--coach);border:1.5px solid rgba(124,58,237,.35)}
 .p3 .phase-num{background:rgba(61,191,184,.14);color:var(--teal);border:1.5px solid rgba(61,191,184,.35)}
 .p4 .phase-num{background:rgba(239,68,68,.12);color:#ef4444;border:1.5px solid rgba(239,68,68,.3)}
 .phase-title{font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
-.p1 .phase-title{color:var(--closer)}
-.p2 .phase-title{color:var(--coach)}
-.p3 .phase-title{color:var(--teal)}
-.p4 .phase-title{color:#ef4444}
-.phase-sub{font-size:9.5px;color:var(--soft);margin-left:2px;font-style:italic}
-
-.phase-body{display:flex;flex-direction:column;gap:6px;padding:10px 12px;background:var(--phase-bg)}
+.p1 .phase-title{color:var(--closer)} .p2 .phase-title{color:var(--coach)}
+.p3 .phase-title{color:var(--teal)}   .p4 .phase-title{color:#ef4444}
+.phase-sub{font-size:9.5px;color:var(--soft);margin-left:2px}
+.phase-body{display:flex;flex-direction:column;gap:6px;padding:10px 12px}
+.p1 .phase-body{background:#fffdf5} .p2 .phase-body{background:#f9f7ff}
+.p3 .phase-body{background:#f4fffe} .p4 .phase-body{background:#fff8f8}
 
 /* LANES */
 .lane{display:grid;grid-template-columns:56px 1fr;align-items:stretch}
@@ -61,25 +72,21 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-syst
 .lane-lbl .dot{width:8px;height:8px;border-radius:50%}
 .lane-lbl .name{font-size:7px;font-weight:800;letter-spacing:2px;text-transform:uppercase;writing-mode:vertical-rl;transform:rotate(180deg)}
 .lane.closer .dot{background:var(--closer)} .lane.closer .name{color:var(--closer)}
-.lane.client .dot{background:var(--client)} .lane.client .name{color:var(--client)}
+.lane.client .dot{background:var(--teal)}   .lane.client .name{color:var(--teal)}
 .lane.coach  .dot{background:var(--coach)}  .lane.coach  .name{color:var(--coach)}
-
 .track{display:flex;align-items:center;gap:6px;padding:8px 10px;border-radius:10px;border:1px solid transparent;flex-wrap:nowrap}
 .lane.closer .track{background:rgba(245,158,11,.06);border-color:rgba(245,158,11,.15)}
 .lane.client .track{background:rgba(61,191,184,.06);border-color:rgba(61,191,184,.15)}
 .lane.coach  .track{background:rgba(124,58,237,.05);border-color:rgba(124,58,237,.12)}
 
 /* NODE */
-.node{background:#fff;border-radius:9px;padding:9px 11px;flex-shrink:0;width:148px;border:1px solid var(--border);border-top:2.5px solid var(--border2);box-shadow:0 1px 3px rgba(0,0,0,.06);transition:box-shadow .15s,transform .15s;cursor:default}
+.node{background:#fff;border-radius:9px;padding:9px 11px;flex-shrink:0;width:148px;border:1px solid var(--border);border-top:2.5px solid var(--border2);box-shadow:0 1px 3px rgba(0,0,0,.06);transition:.15s;cursor:default}
 .node:hover{box-shadow:0 4px 12px rgba(0,0,0,.1);transform:translateY(-2px)}
-.node.c1{border-top-color:var(--closer)}
-.node.c2{border-top-color:var(--client)}
-.node.c3{border-top-color:var(--coach)}
+.node.c1{border-top-color:var(--closer)} .node.c2{border-top-color:var(--teal)} .node.c3{border-top-color:var(--coach)}
 .node-ico{font-size:17px;margin-bottom:3px;display:block}
 .node-t{font-size:10.5px;font-weight:800;color:var(--text);line-height:1.25;margin-bottom:2px}
 .node-d{font-size:9px;color:var(--muted);line-height:1.4}
-.node-btn{display:inline-flex;align-items:center;gap:3px;font-size:9px;font-weight:700;color:var(--teal);margin-top:6px;padding:3px 7px;border:1px solid var(--teal-b);border-radius:4px;background:var(--teal-d);cursor:pointer;text-decoration:none;transition:.15s}
-.node-btn:hover{background:rgba(61,191,184,.18)}
+.node-btn{display:inline-flex;align-items:center;gap:3px;font-size:9px;font-weight:700;color:var(--teal);margin-top:6px;padding:3px 7px;border:1px solid var(--teal-b);border-radius:4px;background:var(--teal-d);cursor:pointer;text-decoration:none}
 .node-btn.purple{color:var(--coach);border-color:var(--coach-b);background:var(--coach-d)}
 .node-btn.amber{color:var(--closer);border-color:var(--closer-b);background:var(--closer-d)}
 
@@ -111,26 +118,121 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-syst
 .pill.purple{background:var(--coach-d);color:var(--coach);border:1px solid var(--coach-b)}
 .pill.amber{background:var(--closer-d);color:var(--closer);border:1px solid var(--closer-b)}
 .pill.red{background:#fee2e2;color:#b91c1c;border:1px solid #fecaca}
-
-/* SPACER */
-.sp{flex:1;min-width:0}
 .sp2{flex-shrink:0;width:148px}
 
-/* DIVIDER */
 hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
-
-/* PAGE CARDS */
 .pg-section{min-width:960px}
 .pg-title{font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--soft);margin-bottom:10px}
 .pg-grid{display:flex;gap:7px;flex-wrap:wrap}
-.pc{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 14px;text-decoration:none;display:flex;align-items:center;gap:9px;transition:.15s;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.pc{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 14px;display:flex;align-items:center;gap:9px;transition:.15s;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.05)}
 .pc:hover{border-color:var(--teal-b);box-shadow:0 4px 14px rgba(61,191,184,.15);transform:translateY(-1px)}
 .pc-ico{width:32px;height:32px;border-radius:8px;background:var(--teal-d);border:1px solid var(--teal-b);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
 .pc-t{font-size:11px;font-weight:700;color:var(--text)}
 .pc-s{font-size:9.5px;color:var(--muted);margin-top:1px}
 .pc-badge{display:inline-block;font-size:8px;font-weight:800;padding:2px 7px;border-radius:20px;margin-top:4px;background:rgba(61,191,184,.1);color:var(--teal);border:1px solid rgba(61,191,184,.25)}
 
-/* ── MODAL ── */
+/* ═══════════════════════════════
+   TAB 2 — LIENS DE PAIEMENT
+═══════════════════════════════ */
+.liens-wrap{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+
+.context-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 20px}
+.context-card h3{font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+.context-list{list-style:none;display:flex;flex-direction:column;gap:5px}
+.context-list li{font-size:12px;color:var(--muted);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.context-list li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:5px}
+
+.offer-block{background:#fff;border-radius:14px;overflow:hidden;border:1.5px solid var(--border)}
+.offer-head{padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
+.offer-head.green{background:#1e6b50;} .offer-head.blue{background:#1e3a6b;} .offer-head.orange{background:#7c3a0a;}
+.offer-head h3{font-size:13px;font-weight:900;color:#fff}
+.offer-head span{font-size:11px;color:rgba(255,255,255,.65);font-weight:600}
+.offer-badge{font-size:9px;font-weight:800;padding:3px 10px;border-radius:20px;background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.3)}
+
+.pay-table{width:100%;border-collapse:collapse}
+.pay-table th{font-size:9.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--soft);padding:8px 16px;text-align:left;border-bottom:1px solid var(--border);background:#fafafa}
+.pay-table td{font-size:12px;color:var(--text);padding:9px 16px;border-bottom:1px solid var(--border)}
+.pay-table tr:last-child td{border-bottom:none}
+.pay-table tr:hover td{background:#f8f9fa}
+.pay-table .mod{font-weight:800;color:var(--text)}
+.pay-table .montant{font-weight:700;font-family:monospace;font-size:13px}
+.pay-table .fournisseur{color:var(--muted)}
+.pay-table .nom-lien{font-family:monospace;font-size:11px;background:var(--teal-d);color:var(--teal);padding:3px 8px;border-radius:5px;border:1px solid var(--teal-b);display:inline-block}
+.pay-table .nom-lien.small{font-size:9.5px}
+.pay-table tr.acompte-row td{background:#fafafa;font-style:italic}
+
+.notes-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 20px}
+.notes-card h3{font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--soft);margin-bottom:10px}
+.note-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;font-size:12px;color:var(--muted);line-height:1.5}
+.note-item:last-child{margin-bottom:0}
+.note-tag{font-size:9px;font-weight:800;padding:2px 8px;border-radius:4px;flex-shrink:0;margin-top:2px}
+.note-tag.stripe{background:#635bff22;color:#635bff;border:1px solid #635bff44}
+.note-tag.paypal{background:#003087;color:#fff;font-size:8px}
+.note-tag.klarna{background:#ffb3c799;color:#cc0066;border:1px solid #ffb3c7}
+.note-tag.alma{background:rgba(61,191,184,.1);color:var(--teal);border:1px solid var(--teal-b)}
+.note-tag.info{background:var(--bg);color:var(--soft);border:1px solid var(--border)}
+
+/* ═══════════════════════════════
+   TAB 3 — CIBLE & OFFRE
+═══════════════════════════════ */
+.cible-wrap{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+.cible-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:800px){.cible-grid{grid-template-columns:1fr}}
+
+.section-card{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.section-head{padding:12px 18px;border-bottom:1px solid var(--border)}
+.section-head.green{background:#1e6b50;}
+.section-head h3{font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
+.section-head.green h3{color:#fff}
+.section-head:not(.green) h3{color:var(--green)}
+.section-body{padding:16px 18px}
+
+.profile-list{list-style:none;display:flex;flex-direction:column;gap:7px}
+.profile-list li{font-size:12px;color:var(--muted);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.profile-list li::before{content:"";width:7px;height:7px;border-radius:50%;background:#1e6b50;flex-shrink:0;margin-top:5px}
+
+.pain-table{width:100%;border-collapse:collapse}
+.pain-table td{font-size:12px;padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+.pain-table tr:last-child td{border-bottom:none}
+.pain-table .pain-cat{font-weight:800;font-size:11px;white-space:nowrap;width:100px}
+.pain-table .pain-quote{color:var(--muted);font-style:italic}
+.pain-cat.physique{color:#ef4444} .pain-cat.mental{color:#7C3AED}
+.pain-cat.orga{color:var(--closer)} .pain-cat.energie{color:#f97316}
+.pain-cat.confiance{color:var(--teal)}
+
+.action-list{list-style:none;display:flex;flex-direction:column;gap:7px}
+.action-list li{font-size:12px;color:var(--muted);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.action-list li::before{content:"✓";color:#1e6b50;font-weight:900;flex-shrink:0}
+
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.result-item{background:#f0faf5;border:1px solid rgba(30,107,80,.15);border-radius:8px;padding:8px 10px;font-size:11px;color:#1e6b50;font-weight:600;line-height:1.4}
+
+.offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.offer-item{border:1px solid var(--border);border-radius:10px;padding:11px 13px}
+.offer-item-t{font-size:11px;font-weight:800;color:var(--text);margin-bottom:4px}
+.offer-item-d{font-size:11px;color:var(--muted);line-height:1.5}
+
+.tarif-table{width:100%;border-collapse:collapse}
+.tarif-table th{font-size:9.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--soft);padding:8px 14px;text-align:left;border-bottom:1px solid var(--border);background:#fafafa}
+.tarif-table td{font-size:13px;color:var(--text);padding:10px 14px;border-bottom:1px solid var(--border)}
+.tarif-table tr:last-child td{border-bottom:none}
+.tarif-table .highlight td{background:#f0faf5;font-weight:800;color:#1e6b50}
+.tarif-table .prix{font-family:monospace;font-weight:700}
+.tarif-table .jour{font-size:11px;color:var(--muted)}
+
+.notgreg-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.notgreg-item{background:#fff8f8;border:1px solid #fecaca;border-radius:9px;padding:10px 12px}
+.notgreg-t{font-size:11px;font-weight:800;color:#b91c1c;margin-bottom:3px}
+.notgreg-d{font-size:11px;color:var(--muted)}
+
+.alim-card{background:#fffcf5;border:1px solid rgba(245,158,11,.2);border-radius:10px;padding:14px 16px}
+.alim-t{font-size:10px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:var(--closer);margin-bottom:8px}
+.alim-d{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:8px}
+.alim-d:last-child{margin-bottom:0}
+.alim-d strong{color:var(--text)}
+.alim-tip{font-size:11px;font-style:italic;color:var(--closer);padding:8px 12px;background:rgba(245,158,11,.08);border-radius:7px;border-left:3px solid var(--closer);margin-top:8px}
+
+/* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s}
 .modal-overlay.open{opacity:1;pointer-events:all}
 .modal-box{background:#fff;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;width:min(1160px,94vw);height:min(820px,92vh);box-shadow:0 32px 80px rgba(0,0,0,.35);transform:scale(.95) translateY(12px);transition:transform .25s,opacity .25s;opacity:0}
@@ -149,8 +251,8 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
 <div class="hd">
   <img src="https://www.gregchipponicoaching.fr/img_s2/154296/logo/logo-greg-v2.svg" alt="GC">
   <div class="hd-mid">
-    <h2>Process Coaching Complet</h2>
-    <p>Onboarding · Suivi · Bilans · Renouvellement</p>
+    <h2>GC Coaching — Dashboard</h2>
+    <p>Process · Paiements · Cible</p>
   </div>
   <div class="legend">
     <div class="leg"><div class="leg-dot" style="background:#F59E0B"></div><span style="color:#aaa">Closer</span></div>
@@ -159,10 +261,16 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
   </div>
 </div>
 
-<!-- BOARD -->
-<div class="board">
+<!-- TABS BAR -->
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="showTab('process')">⚙️ Process</button>
+  <button class="tab-btn" onclick="showTab('liens')">💳 Liens de paiement</button>
+  <button class="tab-btn" onclick="showTab('cible')">🎯 Cible &amp; Offre</button>
+</div>
 
-  <!-- ═══ PHASE 1 ═══ -->
+<!-- ═══ TAB 1 : PROCESS ═══ -->
+<div class="board active" id="tab-process">
+
   <div class="phase-block p1">
     <div class="phase-head">
       <div class="phase-num">1</div>
@@ -170,122 +278,52 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
       <span class="phase-sub">Du call au formulaire rempli</span>
     </div>
     <div class="phase-body">
-
       <div class="lane closer">
         <div class="lane-lbl"><div class="dot"></div><div class="name">Closer</div></div>
         <div class="track">
-          <div class="node c1">
-            <span class="node-ico">📞</span>
-            <div class="node-t">Call de vente</div>
-            <div class="node-d">Présente l'offre, répond aux objections, ferme la vente</div>
-          </div>
+          <div class="node c1"><span class="node-ico">📞</span><div class="node-t">Call de vente</div><div class="node-d">Présente l'offre, répond aux objections, ferme la vente</div></div>
           <div class="arr">→</div>
-          <div class="node c1">
-            <span class="node-ico">💳</span>
-            <div class="node-t">Envoie le lien pendant le call</div>
-            <div class="node-d">WhatsApp ou SMS, le client paie en direct</div>
-            <span class="node-btn amber" onclick="openModal('page-paiement.html','💳 Page de paiement — 1×')">Voir la page →</span>
-          </div>
+          <div class="node c1"><span class="node-ico">💳</span><div class="node-t">Envoie le lien pendant le call</div><div class="node-d">WhatsApp ou SMS, le client paie en direct</div><span class="node-btn amber" onclick="openModal('page-paiement.html','💳 Page de paiement 1×')">Voir la page →</span></div>
           <div class="arr">→</div>
-          <div class="bub amber">
-            <span class="bub-lbl">Message envoyé</span>
-            <div class="msg or">Voilà le lien 👇 Je t'attends pendant que tu paies 🙌</div>
-          </div>
+          <div class="bub amber"><span class="bub-lbl">Message envoyé</span><div class="msg or">Voilà le lien 👇 Je t'attends pendant que tu paies 🙌</div></div>
           <div class="arr">→</div>
-          <div class="node c1">
-            <span class="node-ico">✅</span>
-            <div class="node-t">Confirme réception email</div>
-            <div class="node-d">Mail reçu ? Formulaire visible ?</div>
-          </div>
+          <div class="node c1"><span class="node-ico">✅</span><div class="node-t">Confirme réception email</div><div class="node-d">Mail reçu ? Formulaire visible ?</div></div>
           <div class="arr">→</div>
-          <div class="bub amber">
-            <span class="bub-lbl">WhatsApp</span>
-            <div class="msg or">Tu as reçu l'email ? Vérifie les spams 👀</div>
-            <div class="msg in">Oui, j'ai le formulaire 👍</div>
-            <div class="msg or">Parfait, remplis-le dès que tu peux. Le coach prend en charge sous 72h 💪</div>
-          </div>
+          <div class="bub amber"><span class="bub-lbl">WhatsApp</span><div class="msg or">Tu as reçu l'email ? Vérifie les spams 👀</div><div class="msg in">Oui, j'ai le formulaire 👍</div><div class="msg or">Parfait, remplis-le dès que tu peux. Le coach prend en charge sous 72h 💪</div></div>
         </div>
       </div>
-
       <div class="lane client">
         <div class="lane-lbl"><div class="dot"></div><div class="name">Client</div></div>
         <div class="track">
-          <div class="node c2">
-            <span class="node-ico">💰</span>
-            <div class="node-t">Il paie</div>
-            <div class="node-d">Stripe ou PayPal via systeme.io</div>
-          </div>
+          <div class="node c2"><span class="node-ico">💰</span><div class="node-t">Il paie</div><div class="node-d">Stripe ou PayPal via systeme.io</div></div>
           <div class="arr">→</div>
-          <div class="node c2">
-            <span class="node-ico">📧</span>
-            <div class="node-t">Reçoit l'email auto</div>
-            <div class="node-d">Récap commande + formulaire de renseignement</div>
-          </div>
+          <div class="node c2"><span class="node-ico">📧</span><div class="node-t">Reçoit l'email auto</div><div class="node-d">Récap commande et formulaire de renseignement</div></div>
           <div class="arr">→</div>
-          <div class="detail">
-            <div class="detail-t">📝 Formulaire à remplir</div>
-            <ul class="detail-list">
-              <li>Infos personnelles + téléphone</li>
-              <li>Objectifs &amp; niveau d'entraînement</li>
-              <li>Problèmes de santé / blessures</li>
-              <li>Préférences alimentaires</li>
-              <li>Matériel disponible (cases)</li>
-              <li>Photos : face / profil / dos</li>
-            </ul>
-          </div>
+          <div class="detail"><div class="detail-t">📝 Formulaire à remplir</div><ul class="detail-list"><li>Infos personnelles et téléphone</li><li>Objectifs et niveau d'entraînement</li><li>Problèmes de santé et blessures</li><li>Préférences alimentaires</li><li>Matériel disponible (cases)</li><li>Photos : face, profil, dos</li></ul></div>
           <div class="arr">→</div>
-          <div class="node c2">
-            <span class="node-ico">📲</span>
-            <div class="node-t">S'inscrit sur l'application</div>
-            <div class="node-d">Via le lien reçu dans l'email</div>
-          </div>
+          <div class="node c2"><span class="node-ico">📲</span><div class="node-t">S'inscrit sur l'application</div><div class="node-d">Via le lien reçu dans l'email</div></div>
           <div class="arr">→</div>
-          <div class="node c2">
-            <span class="node-ico">📝</span>
-            <div class="node-t">Remplit le questionnaire</div>
-            <div class="node-d">Directement dans l'app : objectifs, habitudes, niveau</div>
-          </div>
+          <div class="node c2"><span class="node-ico">📝</span><div class="node-t">Remplit le questionnaire</div><div class="node-d">Directement dans l'app : objectifs, habitudes, niveau</div></div>
           <div class="arr">→</div>
-          <div class="node c2">
-            <span class="node-ico">💬</span>
-            <div class="node-t">Le dit dans le groupe WhatsApp</div>
-            <div class="node-d">Annonce → déclenche la préparation du programme</div>
-          </div>
+          <div class="node c2"><span class="node-ico">💬</span><div class="node-t">Le dit dans le groupe WhatsApp</div><div class="node-d">Annonce que son inscription est confirmée</div></div>
           <div class="arr">→</div>
-          <div class="bub teal">
-            <span class="bub-lbl">Groupe WhatsApp</span>
-            <div class="msg in">Je suis inscrit sur l'app 🔥</div>
-          </div>
+          <div class="bub teal"><span class="bub-lbl">Groupe WhatsApp</span><div class="msg in">Je suis inscrit sur l'app 🔥</div></div>
         </div>
       </div>
-
       <div class="lane coach">
         <div class="lane-lbl"><div class="dot"></div><div class="name">Coach</div></div>
         <div class="track">
           <div class="sp2"></div><div class="sp2"></div><div style="width:6px;flex-shrink:0"></div>
-          <div class="node c3">
-            <span class="node-ico">📋</span>
-            <div class="node-t">Reçoit le formulaire</div>
-            <div class="node-d">Toutes les infos pour personnaliser le programme</div>
-          </div>
+          <div class="node c3"><span class="node-ico">📋</span><div class="node-t">Reçoit le formulaire</div><div class="node-d">Toutes les infos pour personnaliser le programme</div></div>
           <div class="arr">→</div>
-          <div class="node c3">
-            <span class="node-ico">➕</span>
-            <div class="node-t">Ajoute sur WhatsApp</div>
-            <div class="node-d">Message de bienvenue + explique les étapes</div>
-          </div>
+          <div class="node c3"><span class="node-ico">➕</span><div class="node-t">Ajoute sur WhatsApp</div><div class="node-d">Message de bienvenue et explique les étapes</div></div>
           <div class="arr">→</div>
-          <div class="bub purple">
-            <span class="bub-lbl">Message WhatsApp</span>
-            <div class="msg sys">Bienvenue (prénom) 💪 Ton questionnaire est dans l'app. Remplis-le dès que tu peux, le coach revient vers toi avec ton programme sous 72h 🔥</div>
-          </div>
+          <div class="bub purple"><span class="bub-lbl">Message WhatsApp</span><div class="msg sys">Bienvenue (prénom) 💪 Ton questionnaire est dans l'app. Remplis-le dès que tu peux, le coach revient vers toi avec ton programme sous 72h 🔥</div></div>
         </div>
       </div>
-
     </div>
   </div>
 
-  <!-- ═══ PHASE 2 ═══ -->
   <div class="phase-block p2">
     <div class="phase-head">
       <div class="phase-num">2</div>
@@ -293,141 +331,65 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
       <span class="phase-sub">Max 72h ouvrables · Envoi le vendredi · Démarrage le lundi</span>
     </div>
     <div class="phase-body">
-
       <div class="lane client">
         <div class="lane-lbl"><div class="dot"></div><div class="name">Client</div></div>
         <div class="track">
-          <div class="node c2">
-            <span class="node-ico">⏳</span>
-            <div class="node-t">En attente du programme</div>
-            <div class="node-d">Démarrage le lundi suivant l'envoi</div>
-          </div>
+          <div class="node c2"><span class="node-ico">⏳</span><div class="node-t">En attente du programme</div><div class="node-d">Démarrage le lundi suivant l'envoi</div></div>
           <div class="arr">→</div>
-          <div class="node c2">
-            <span class="node-ico">🎯</span>
-            <div class="node-t">Reçoit le programme (vendredi)</div>
-            <div class="node-d">Lit entièrement + regroupe toutes ses questions</div>
-          </div>
+          <div class="node c2"><span class="node-ico">🎯</span><div class="node-t">Reçoit le programme (vendredi)</div><div class="node-d">Lit entièrement et regroupe toutes ses questions</div></div>
           <div class="arr">→</div>
-          <div class="bub teal">
-            <span class="bub-lbl">Ce qui est inclus</span>
-            <div class="msg sys">🏋️ Programme d'entraînement</div>
-            <div class="msg sys">🥗 Plan alimentaire personnalisé</div>
-            <div class="msg sys">⭐ Accès premium FitYou</div>
-          </div>
+          <div class="bub teal"><span class="bub-lbl">Ce qui est inclus</span><div class="msg sys">🏋️ Programme d'entraînement</div><div class="msg sys">🥗 Plan alimentaire personnalisé</div><div class="msg sys">⭐ Accès premium FitYou</div></div>
           <div class="arr">→</div>
-          <div class="node c2">
-            <span class="node-ico">🚀</span>
-            <div class="node-t">Démarre le lundi</div>
-            <div class="node-d">Premier entraînement avec son programme complet</div>
-          </div>
+          <div class="node c2"><span class="node-ico">🚀</span><div class="node-t">Démarre le lundi</div><div class="node-d">Premier entraînement avec son programme complet</div></div>
         </div>
       </div>
-
       <div class="lane coach">
         <div class="lane-lbl"><div class="dot"></div><div class="name">Coach</div></div>
         <div class="track">
-          <div class="node c3">
-            <span class="node-ico">🏋️</span>
-            <div class="node-t">Crée le programme</div>
-            <div class="node-d">Adapté au matériel, au niveau et aux objectifs</div>
-            <span class="pill purple">Max 72h ouvrables</span>
-          </div>
+          <div class="node c3"><span class="node-ico">🏋️</span><div class="node-t">Crée le programme</div><div class="node-d">Adapté au matériel, au niveau et aux objectifs</div><span class="pill purple">Max 72h ouvrables</span></div>
           <div class="arr">→</div>
-          <div class="node c3">
-            <span class="node-ico">📤</span>
-            <div class="node-t">Envoie le vendredi</div>
-            <div class="node-d">Programme, nutrition et FitYou. Démarrage lundi</div>
-          </div>
+          <div class="node c3"><span class="node-ico">📤</span><div class="node-t">Envoie le vendredi</div><div class="node-d">Programme, nutrition et FitYou. Démarrage lundi</div></div>
           <div class="arr">→</div>
-          <div class="bub purple">
-            <span class="bub-lbl">Message WhatsApp</span>
-            <div class="msg sys">Ton programme est dispo dans l'app 🎯 Lis-le entièrement. Regroupe toutes tes questions en une seule fois avant de les poser 💪</div>
-          </div>
+          <div class="bub purple"><span class="bub-lbl">Message WhatsApp</span><div class="msg sys">Ton programme est dispo dans l'app 🎯 Lis-le entièrement. Regroupe toutes tes questions en une seule fois avant de les poser 💪</div></div>
         </div>
       </div>
-
     </div>
   </div>
 
-  <!-- ═══ PHASE 3 ═══ -->
   <div class="phase-block p3">
     <div class="phase-head">
       <div class="phase-num">3</div>
       <span class="phase-title">Suivi continu</span>
-      <span class="phase-sub">WhatsApp Lun-Ven 9h–17h · Bilan tous les 15 jours · Envoi samedi, retour lundi</span>
+      <span class="phase-sub">WhatsApp Lun-Ven 9h à 17h · Bilan tous les 15 jours · Envoi samedi, retour lundi</span>
     </div>
     <div class="phase-body">
-
       <div class="lane client">
         <div class="lane-lbl"><div class="dot"></div><div class="name">Client</div></div>
         <div class="track">
-          <div class="node c2">
-            <span class="node-ico">📲</span>
-            <div class="node-t">Questions WhatsApp</div>
-            <div class="node-d">Lun à Ven, 9h à 17h. Réponse max 24h ouvrables</div>
-            <span class="pill teal">Hors horaires = pas de réponse</span>
-          </div>
+          <div class="node c2"><span class="node-ico">📲</span><div class="node-t">Questions WhatsApp</div><div class="node-d">Lun à Ven, 9h à 17h. Réponse max 24h ouvrables</div><span class="pill teal">Hors horaires = pas de réponse</span></div>
           <div class="arr">→</div>
-          <div class="node c2">
-            <span class="node-ico">🎥</span>
-            <div class="node-t">Envoie vidéos d'exercices</div>
-            <div class="node-d">Le coach corrige les mouvements si nécessaire</div>
-          </div>
+          <div class="node c2"><span class="node-ico">🎥</span><div class="node-t">Envoie vidéos d'exercices</div><div class="node-d">Le coach corrige les mouvements si nécessaire</div></div>
           <div class="arr">→</div>
-          <div class="node c2">
-            <span class="node-ico">📊</span>
-            <div class="node-t">Bilan J+15, le samedi</div>
-            <div class="node-d">Envoie par email : Excel rempli + photos en PJ</div>
-            <span class="pill red">Retard = reporté au bilan suivant</span>
-          </div>
+          <div class="node c2"><span class="node-ico">📊</span><div class="node-t">Bilan J+15, le samedi</div><div class="node-d">Envoie par email : Excel rempli et photos en PJ</div><span class="pill red">Retard = reporté au bilan suivant</span></div>
           <div class="arr">→</div>
-          <div class="detail">
-            <div class="detail-t">📋 Contenu du bilan</div>
-            <ul class="detail-list">
-              <li>Poids + mensurations</li>
-              <li>Photos face / profil / dos (à jeun le matin)</li>
-              <li>Case "observations" obligatoire</li>
-              <li>Ressenti, difficultés, motivation, alimentation…</li>
-            </ul>
-          </div>
+          <div class="detail"><div class="detail-t">📋 Contenu du bilan</div><ul class="detail-list"><li>Poids et mensurations</li><li>Photos face, profil, dos (à jeun le matin)</li><li>Case "observations" obligatoire</li><li>Ressenti, difficultés, motivation, alimentation</li></ul></div>
         </div>
       </div>
-
       <div class="lane coach">
         <div class="lane-lbl"><div class="dot"></div><div class="name">Coach</div></div>
         <div class="track">
-          <div class="node c3">
-            <span class="node-ico">💬</span>
-            <div class="node-t">Support WhatsApp</div>
-            <div class="node-d">Répond aux questions + corrige les exercices</div>
-            <span class="pill purple">0 message en attente le vendredi soir</span>
-          </div>
+          <div class="node c3"><span class="node-ico">💬</span><div class="node-t">Support WhatsApp</div><div class="node-d">Répond aux questions et corrige les exercices</div><span class="pill purple">0 message en attente le vendredi soir</span></div>
           <div class="arr">→</div>
-          <div class="node c3">
-            <span class="node-ico">📈</span>
-            <div class="node-t">Analyse le bilan le lundi</div>
-            <div class="node-d">Reçu le samedi → traitement et retour client le lundi</div>
-          </div>
+          <div class="node c3"><span class="node-ico">📈</span><div class="node-t">Analyse le bilan le lundi</div><div class="node-d">Reçu le samedi, traitement et retour client le lundi</div></div>
           <div class="arr">→</div>
-          <div class="node c3">
-            <span class="node-ico">🔧</span>
-            <div class="node-t">Ajustements</div>
-            <div class="node-d">Nutrition à tout moment. Programme en fin de phase (4 à 8 semaines)</div>
-          </div>
+          <div class="node c3"><span class="node-ico">🔧</span><div class="node-t">Ajustements</div><div class="node-d">Nutrition à tout moment. Programme en fin de phase (4 à 8 semaines)</div></div>
           <div class="arr">→</div>
-          <div class="node c3">
-            <span class="node-ico">🔄</span>
-            <div class="node-t">Fin → Renouvellement</div>
-            <div class="node-d">Dernier bilan + analyse complète + proposition de continuer</div>
-          </div>
+          <div class="node c3"><span class="node-ico">🔄</span><div class="node-t">Fin et Renouvellement</div><div class="node-d">Dernier bilan, analyse complète et proposition de continuer</div></div>
         </div>
       </div>
-
     </div>
   </div>
 
-  <!-- ═══ PHASE 4 ═══ -->
   <div class="phase-block p4">
     <div class="phase-head">
       <div class="phase-num">!</div>
@@ -435,65 +397,252 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
       <span class="phase-sub">Procédure si absence de bilan ou de réponse</span>
     </div>
     <div class="phase-body">
-
       <div class="lane coach">
         <div class="lane-lbl"><div class="dot"></div><div class="name">Coach</div></div>
         <div class="track">
-          <div class="node c3">
-            <span class="node-ico">1️⃣</span>
-            <div class="node-t">Pas de bilan reçu</div>
-            <div class="node-d">Message ou mail le jour même pour demander la raison</div>
-          </div>
+          <div class="node c3"><span class="node-ico">1️⃣</span><div class="node-t">Pas de bilan reçu</div><div class="node-d">Message ou mail le jour même pour demander la raison</div></div>
           <div class="arr">→</div>
-          <div class="node c3">
-            <span class="node-ico">2️⃣</span>
-            <div class="node-t">Pas de réponse sous 48h</div>
-            <div class="node-d">Relance par message ou mail</div>
-          </div>
+          <div class="node c3"><span class="node-ico">2️⃣</span><div class="node-t">Pas de réponse sous 48h</div><div class="node-d">Relance par message ou mail</div></div>
           <div class="arr">→</div>
-          <div class="node c3">
-            <span class="node-ico">3️⃣</span>
-            <div class="node-t">Bilan suivant manqué</div>
-            <div class="node-d">Contacter le jour même pour prendre des nouvelles</div>
-          </div>
+          <div class="node c3"><span class="node-ico">3️⃣</span><div class="node-t">Bilan suivant manqué</div><div class="node-d">Contacter le jour même pour prendre des nouvelles</div></div>
           <div class="arr">→</div>
-          <div class="node c3">
-            <span class="node-ico">4️⃣</span>
-            <div class="node-t">Toujours aucune réponse</div>
-            <div class="node-d">Arrêter les messages et les mails</div>
-          </div>
+          <div class="node c3"><span class="node-ico">4️⃣</span><div class="node-t">Toujours aucune réponse</div><div class="node-d">Arrêter les messages et les mails</div></div>
           <div class="arr">→</div>
-          <div class="bub purple">
-            <span class="bub-lbl">Si le client refait surface</span>
-            <div class="msg sys">Le coaching reprend normalement jusqu'à son terme. Les jours/semaines sans réponse restent perdus pour le client.</div>
+          <div class="bub purple"><span class="bub-lbl">Si le client refait surface</span><div class="msg sys">Le coaching reprend normalement jusqu'à son terme. Les jours et semaines sans réponse restent perdus pour le client.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <div class="pg-section">
+    <p class="pg-title">Pages de paiement — cliquez pour prévisualiser</p>
+    <div class="pg-grid">
+      <div class="pc" onclick="openModal('page-paiement.html','💳 Paiement 1×')">
+        <div class="pc-ico">💳</div><div><div class="pc-t">1 paiement</div><div class="pc-s">1 997 €</div><span class="pc-badge">Comptant</span></div>
+      </div>
+      <div class="pc" onclick="openModal('page-merci.html','🎉 Page merci')">
+        <div class="pc-ico">🎉</div><div><div class="pc-t">Page merci</div><div class="pc-s">Post-paiement</div></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab-process -->
+
+<!-- ═══ TAB 2 : LIENS DE PAIEMENT ═══ -->
+<div class="board" id="tab-liens">
+  <div class="liens-wrap">
+
+    <div class="context-card">
+      <h3>Contexte et contraintes</h3>
+      <ul class="context-list">
+        <li>Fournisseurs actifs : Stripe, PayPal Pro, Alma (vérifier Klarna uniquement offre 4 mois)</li>
+        <li>Les closers voient en temps réel si le paiement est confirmé (notification immédiate)</li>
+        <li>Chaque lien accessible depuis le dashboard closer sans accès au compte Greg</li>
+        <li>Montants affichés TTC. Commissions équipe calculées sur HT en interne</li>
+        <li>Acompte 250 EUR : lien séparé et lien de solde correspondant par offre</li>
+      </ul>
+    </div>
+
+    <!-- 4 MOIS -->
+    <div class="offer-block">
+      <div class="offer-head green">
+        <h3>Offre 4 mois — 1 497 EUR TTC</h3>
+        <span>1 247,50 EUR HT</span>
+      </div>
+      <table class="pay-table">
+        <thead><tr><th>Modalité</th><th>Montant / échéance</th><th>Fournisseur</th><th>Nom du lien</th></tr></thead>
+        <tbody>
+          <tr><td class="mod">1×</td><td class="montant">1 497,00 EUR</td><td class="fournisseur">Stripe / PayPal / Klarna</td><td><span class="nom-lien">greg_4m_1x</span></td></tr>
+          <tr><td class="mod">2×</td><td class="montant">748,50 × 2</td><td class="fournisseur">Stripe</td><td><span class="nom-lien">greg_4m_2x</span></td></tr>
+          <tr><td class="mod">3×</td><td class="montant">499,00 × 3</td><td class="fournisseur">Stripe / Klarna</td><td><span class="nom-lien">greg_4m_3x</span></td></tr>
+          <tr><td class="mod">4×</td><td class="montant">374,25 × 4</td><td class="fournisseur">Stripe / PayPal Pro</td><td><span class="nom-lien">greg_4m_4x</span></td></tr>
+          <tr class="acompte-row"><td class="mod">Acompte</td><td class="montant">250 + 1 247</td><td class="fournisseur">Stripe (2 liens)</td><td><span class="nom-lien small">greg_4m_acompte</span> <span class="nom-lien small">greg_4m_solde</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 6 MOIS -->
+    <div class="offer-block">
+      <div class="offer-head" style="background:#1e3a6b;">
+        <div style="display:flex;align-items:center;gap:10px"><h3>Offre 6 mois — 1 997 EUR TTC</h3><span class="offer-badge">Principale</span></div>
+        <span>1 664,17 EUR HT</span>
+      </div>
+      <table class="pay-table">
+        <thead><tr><th>Modalité</th><th>Montant / échéance</th><th>Fournisseur</th><th>Nom du lien</th></tr></thead>
+        <tbody>
+          <tr><td class="mod">1×</td><td class="montant">1 997,00 EUR</td><td class="fournisseur">Stripe / PayPal</td><td><span class="nom-lien">greg_6m_1x</span></td></tr>
+          <tr><td class="mod">2×</td><td class="montant">998,50 × 2</td><td class="fournisseur">Stripe / PayPal Pro</td><td><span class="nom-lien">greg_6m_2x</span></td></tr>
+          <tr><td class="mod">3×</td><td class="montant">665,67 × 3</td><td class="fournisseur">PayPal (Klarna dépasse 1 500)</td><td><span class="nom-lien">greg_6m_3x</span></td></tr>
+          <tr><td class="mod">4×</td><td class="montant">499,25 × 4</td><td class="fournisseur">Stripe / PayPal Pro</td><td><span class="nom-lien">greg_6m_4x</span></td></tr>
+          <tr class="acompte-row"><td class="mod">Acompte</td><td class="montant">250 + 1 747</td><td class="fournisseur">Stripe (2 liens)</td><td><span class="nom-lien small">greg_6m_acompte</span> <span class="nom-lien small">greg_6m_solde</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 12 MOIS -->
+    <div class="offer-block">
+      <div class="offer-head orange">
+        <h3>Offre 12 mois — 3 600 EUR TTC</h3>
+        <span>3 000,00 EUR HT</span>
+      </div>
+      <table class="pay-table">
+        <thead><tr><th>Modalité</th><th>Montant / échéance</th><th>Fournisseur</th><th>Nom du lien</th></tr></thead>
+        <tbody>
+          <tr><td class="mod">1×</td><td class="montant">3 600,00 EUR</td><td class="fournisseur">Stripe</td><td><span class="nom-lien">greg_12m_1x</span></td></tr>
+          <tr><td class="mod">2×</td><td class="montant">1 800,00 × 2</td><td class="fournisseur">Stripe</td><td><span class="nom-lien">greg_12m_2x</span></td></tr>
+          <tr><td class="mod">3×</td><td class="montant">1 200,00 × 3</td><td class="fournisseur">Stripe</td><td><span class="nom-lien">greg_12m_3x</span></td></tr>
+          <tr><td class="mod">4×</td><td class="montant">900,00 × 4</td><td class="fournisseur">Stripe</td><td><span class="nom-lien">greg_12m_4x</span></td></tr>
+          <tr class="acompte-row"><td class="mod">Acompte</td><td class="montant">250 + 3 350</td><td class="fournisseur">Stripe (2 liens)</td><td><span class="nom-lien small">greg_12m_acompte</span> <span class="nom-lien small">greg_12m_solde</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notes-card">
+      <h3>Notes techniques</h3>
+      <div class="note-item"><span class="note-tag stripe">Stripe</span>À éviter pour le fractionné. Tout litige est traité automatiquement en faveur du client.</div>
+      <div class="note-item"><span class="note-tag paypal">PayPal Pro</span>Plafond 2 000 EUR par transaction pour le paiement en plusieurs fois.</div>
+      <div class="note-item"><span class="note-tag klarna">Klarna</span>Plafond 1 500 EUR. Applicable uniquement sur l'offre 4 mois (1× et 3×).</div>
+      <div class="note-item"><span class="note-tag alma">Alma</span>Argent perçu en 1 fois même si le client paie en plusieurs fois. À privilégier si disponible.</div>
+      <div class="note-item"><span class="note-tag info">TVA</span>Tous les montants sur les liens affichés TTC (TVA 20% incluse). Montant HT = TTC / 1,20.</div>
+    </div>
+
+  </div>
+</div><!-- /tab-liens -->
+
+<!-- ═══ TAB 3 : CIBLE & OFFRE ═══ -->
+<div class="board" id="tab-cible">
+  <div class="cible-wrap">
+
+    <div class="cible-grid">
+
+      <!-- PROFIL -->
+      <div class="section-card">
+        <div class="section-head"><h3>Profil de la cible</h3></div>
+        <div class="section-body">
+          <ul class="profile-list">
+            <li>25 à 50 ans, salarié(e) ou cadre, situation financière correcte</li>
+            <li>Vie de famille avec enfants, cherche l'équilibre sport / quotidien / plaisir</li>
+            <li>S'identifie à Greg (naturel, accessible, pas de bodybuilding extrémiste) et souvent à Mélanie</li>
+            <li>A déjà essayé des coachs ou programmes en ligne sans résultat durable</li>
+            <li>Veut une transformation sur le long terme, pas un régime express</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CE QUI FAIT PASSER À L'ACTION -->
+      <div class="section-card">
+        <div class="section-head"><h3>Ce qui les fait passer à l'action</h3></div>
+        <div class="section-body">
+          <ul class="action-list">
+            <li>Se sentir accompagné(e) et encadré(e), pas seul(e) face à un programme générique</li>
+            <li>La personnalisation : "c'est fait pour ma situation, ma famille, mes goûts"</li>
+            <li>Le suivi WhatsApp régulier, les bilans, l'application</li>
+            <li>La crédibilité et l'image naturelle de Greg et Mélanie (pas de produits)</li>
+            <li>Investir dans sa santé = profiter plus longtemps de sa famille</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DOULEURS -->
+    <div class="section-card">
+      <div class="section-head"><h3>Douleurs profondes</h3></div>
+      <div class="section-body" style="padding:0">
+        <table class="pain-table" style="width:100%">
+          <tbody>
+            <tr><td class="pain-cat physique">Physique</td><td class="pain-quote">"Je ne me plais plus dans le miroir. J'ai des poignées d'amour, mon corps a changé."</td></tr>
+            <tr><td class="pain-cat mental">Mental</td><td class="pain-quote">"J'ai essayé plein de trucs, rien ne tient. Je ne sais plus qui écouter."</td></tr>
+            <tr><td class="pain-cat orga">Organisation</td><td class="pain-quote">"Je n'ai pas le temps, je dois gérer ma famille, mon boulot. Je ne sais pas m'organiser."</td></tr>
+            <tr><td class="pain-cat energie">Énergie</td><td class="pain-quote">"Je suis tout le temps fatigué(e), je n'ai plus d'énergie pour profiter de mes enfants."</td></tr>
+            <tr><td class="pain-cat confiance">Confiance</td><td class="pain-quote">"J'ai été arnaqué(e) par des coachs à promesses. J'ai peur de me faire avoir encore."</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- RÉSULTATS -->
+    <div class="section-card">
+      <div class="section-head"><h3>Résultats concrets obtenus</h3></div>
+      <div class="section-body">
+        <div class="results-grid">
+          <div class="result-item">Recomposition corporelle : perte de gras et gain de muscle</div>
+          <div class="result-item">Reprise de confiance en soi et dans son corps</div>
+          <div class="result-item">Meilleur sommeil, plus d'énergie au quotidien</div>
+          <div class="result-item">Capacité à profiter pleinement de sa famille</div>
+          <div class="result-item">Changement de mode de vie durable (alimentation, sport, organisation)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- L'OFFRE -->
+    <div class="section-card">
+      <div class="section-head green"><h3>L'offre — Ce que comprend le coaching</h3></div>
+      <div class="section-body">
+        <div class="offer-grid">
+          <div class="offer-item"><div class="offer-item-t">🏋️ Plan d'entraînement évolutif</div><div class="offer-item-d">Programme personnalisé sur Azéo premium. S'adapte à la progression chaque semaine.</div></div>
+          <div class="offer-item"><div class="offer-item-t">💬 Suivi WhatsApp 5j/7</div><div class="offer-item-d">De 8h30 à 17h30. Questions, ajustements, corrections de mouvements par vidéo.</div></div>
+          <div class="offer-item"><div class="offer-item-t">🥗 Plan nutritionnel évolutif</div><div class="offer-item-d">Selon les préférences et la vie de famille. Construit à partir du formulaire. Zéro privation.</div></div>
+          <div class="offer-item"><div class="offer-item-t">📊 Bilan tous les 15 jours</div><div class="offer-item-d">Poids, mensurations, photos (face / profil / dos). Permet d'ajuster en continu.</div></div>
+          <div class="offer-item"><div class="offer-item-t">⭐ Application Azéo premium</div><div class="offer-item-d">1 700 recettes, suivi des charges, courbes de progression, liste de courses automatique.</div></div>
+          <div class="offer-item"><div class="offer-item-t">🎥 Vidéos de formation</div><div class="offer-item-d">Tutos exercices avec consignes écrites et vidéo dans l'appli. Le client ne se retrouve jamais bloqué.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cible-grid">
+
+      <!-- TARIFS -->
+      <div class="section-card">
+        <div class="section-head green"><h3>Tarifs</h3></div>
+        <div class="section-body" style="padding:0">
+          <table class="tarif-table">
+            <thead><tr><th>Offre</th><th>Prix TTC</th><th>Prix HT</th><th>Revient à</th></tr></thead>
+            <tbody>
+              <tr><td>4 mois</td><td class="prix">1 497 EUR</td><td class="prix">1 247,50 EUR</td><td class="jour">12,48 EUR / jour</td></tr>
+              <tr class="highlight"><td>6 mois</td><td class="prix">1 997 EUR</td><td class="prix">1 664,17 EUR</td><td class="jour">11,09 EUR / jour</td></tr>
+              <tr><td>12 mois</td><td class="prix">3 600 EUR</td><td class="prix">3 000,00 EUR</td><td class="jour">10,00 EUR / jour</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CE QUE GREG N'EST PAS -->
+      <div class="section-card">
+        <div class="section-head" style="background:#fff8f8;border-bottom:1px solid #fecaca"><h3 style="color:#b91c1c">Ce que Greg n'est pas</h3></div>
+        <div class="section-body">
+          <div class="notgreg-grid">
+            <div class="notgreg-item"><div class="notgreg-t">Pas de promesses chiffrées</div><div class="notgreg-d">Pas de "perdre X kg en Y semaines"</div></div>
+            <div class="notgreg-item"><div class="notgreg-t">Pas de bodybuilding extrémiste</div><div class="notgreg-d">Image naturelle, harmonie, longévité</div></div>
+            <div class="notgreg-item"><div class="notgreg-t">Pas de produits dopants</div><div class="notgreg-d">Résultats 100% naturels</div></div>
+            <div class="notgreg-item"><div class="notgreg-t">Pas de programmes génériques</div><div class="notgreg-d">Tout est personnalisé et suivi</div></div>
           </div>
         </div>
       </div>
 
     </div>
-  </div>
 
-  <hr>
-
-  <!-- PAGES DE PAIEMENT -->
-  <div class="pg-section">
-    <p class="pg-title">Pages de paiement — cliquez pour prévisualiser en plein écran</p>
-    <div class="pg-grid">
-      <div class="pc" onclick="openModal('page-paiement.html','💳 Paiement 1×')">
-        <div class="pc-ico">💳</div>
-        <div><div class="pc-t">1 paiement</div><div class="pc-s">1 997 €</div><span class="pc-badge">Comptant</span></div>
-      </div>
-      <div class="pc" onclick="openModal('page-merci.html','🎉 Page merci')">
-        <div class="pc-ico">🎉</div>
-        <div><div class="pc-t">Page merci</div><div class="pc-s">Post-paiement</div></div>
+    <!-- ALIMENTATION -->
+    <div class="section-card">
+      <div class="section-head"><h3>Alimentation — Angle différenciateur</h3></div>
+      <div class="section-body">
+        <div class="alim-card">
+          <div class="alim-t">Argument clé en call</div>
+          <div class="alim-d">Le plan est établi uniquement pour le coaché, mais il est pensé pour que <strong>tout le monde puisse manger la même chose</strong> sans effort supplémentaire. Zéro logistique supplémentaire pour la famille.</div>
+          <div class="alim-d">L'alimentation reste <strong>simple et traditionnelle</strong> : riz, poulet, légumes. Pas de recettes élaborées. Le coaché prépare ses repas en plus grande quantité, la famille mange la même chose avec des portions adaptées.</div>
+          <div class="alim-d">Les recettes de l'application Azéo sont <strong>indépendantes du plan prescrit</strong>. Les autres recettes disponibles dans l'appli ne peuvent pas remplacer celles prescrites, sauf demande validée par Greg.</div>
+          <div class="alim-tip">Argument fort en call : zéro logistique supplémentaire pour la famille, tout le monde mange pareil.</div>
+        </div>
       </div>
     </div>
-  </div>
 
-</div><!-- /board -->
+  </div>
+</div><!-- /tab-cible -->
+
 </div><!-- /app -->
 
-<!-- ── MODAL PLEIN ÉCRAN ── -->
+<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
   <div class="modal-box" id="modalBox">
     <div class="modal-bar">
@@ -508,17 +657,22 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
 </div>
 
 <script>
+function showTab(name) {
+  document.querySelectorAll('.board').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
 function openModal(url, title) {
   document.getElementById('modalFrame').src = url;
   document.getElementById('modalTitle').textContent = title;
   document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
   document.getElementById('modalOverlay').classList.remove('open');
   setTimeout(() => { document.getElementById('modalFrame').src = ''; }, 300);
-  document.body.style.overflow = '';
 }
 
 function handleOverlayClick(e) {
