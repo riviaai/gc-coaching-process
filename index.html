@@ -247,6 +247,30 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
 .res-t{font-size:12px;font-weight:700;color:var(--text);margin-bottom:2px}
 .res-u{font-size:10px;color:var(--soft);font-family:monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:150px}
 
+/* ORGANIGRAMME */
+.org-container{max-width:800px;margin:20px auto;padding:20px}
+.org-header{text-align:center;margin-bottom:40px}
+.org-header h2{font-size:22px;font-weight:800;color:var(--text)}
+.org-header p{font-size:12px;color:var(--muted);margin-top:4px}
+.org-tree{display:flex;flex-direction:column;align-items:center}
+.org-level-1{display:flex;justify-content:center}
+.org-vline{width:2px;height:36px;background:var(--border2);margin:0 auto}
+.org-level-2{display:flex;justify-content:center;gap:48px;position:relative;padding-top:36px}
+.org-hline{position:absolute;top:0;left:calc(50% - 260px);right:calc(50% - 260px);height:2px;background:var(--border2)}
+.org-branch{display:flex;flex-direction:column;align-items:center;min-width:160px}
+.org-branch-line{width:2px;height:36px;background:var(--border2);margin-bottom:0}
+.org-sub-line{width:2px;height:24px;background:var(--border2)}
+.org-card{display:flex;flex-direction:column;align-items:center;padding:20px 24px;background:#fff;border-radius:16px;border:1.5px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,.04);transition:transform .15s,box-shadow .15s}
+.org-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.08)}
+.org-founder{border-width:2px;padding:24px 32px}
+.org-sub{padding:16px 20px}
+.org-avatar{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;color:#fff;border:3px solid #fff;box-shadow:0 3px 12px rgba(0,0,0,.1);margin-bottom:10px}
+.org-founder .org-avatar{width:68px;height:68px;font-size:24px}
+.org-avatar-sm{width:44px;height:44px;font-size:16px}
+.org-name{font-size:14px;font-weight:700;color:var(--text)}
+.org-founder .org-name{font-size:16px}
+.org-role{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-top:4px;padding:3px 12px;border-radius:20px}
+
 /* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s}
 .modal-overlay.open{opacity:1;pointer-events:all}
@@ -282,6 +306,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
   <button class="tab-btn" onclick="showTab('liens')">💳 Liens de paiement</button>
   <button class="tab-btn" onclick="showTab('cible')">🎯 Cible &amp; Offre</button>
   <button class="tab-btn" onclick="showTab('ressources')">🔗 Ressources</button>
+  <button class="tab-btn" onclick="showTab('organigramme')">👥 Organigramme</button>
 </div>
 
 <!-- BOARDS WRAPPER -->
@@ -733,6 +758,77 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
 
   </div>
 </div><!-- /tab-ressources -->
+
+<!-- ═══ TAB 5 : ORGANIGRAMME ═══ -->
+<div class="board" id="tab-organigramme">
+  <div class="org-container">
+    <div class="org-header">
+      <h2>Organisation de l'equipe</h2>
+      <p>Structure GC Coaching</p>
+    </div>
+
+    <div class="org-tree">
+      <!-- FONDATEUR -->
+      <div class="org-level org-level-1">
+        <div class="org-card org-founder">
+          <div class="org-avatar" style="background:linear-gradient(135deg,#3DBFB8,#2a9d8f)">G</div>
+          <div class="org-name">Greg</div>
+          <div class="org-role" style="color:#3DBFB8;background:rgba(61,191,184,.1)">Fondateur & Coach</div>
+        </div>
+      </div>
+
+      <!-- Ligne verticale -->
+      <div class="org-vline"></div>
+
+      <!-- Ligne horizontale + 3 branches -->
+      <div class="org-level org-level-2">
+        <div class="org-hline"></div>
+
+        <!-- STEVEN -->
+        <div class="org-branch">
+          <div class="org-branch-line"></div>
+          <div class="org-card">
+            <div class="org-avatar" style="background:linear-gradient(135deg,#2563eb,#1d4ed8)">S</div>
+            <div class="org-name">Steven</div>
+            <div class="org-role" style="color:#2563eb;background:rgba(37,99,235,.08)">Business</div>
+          </div>
+        </div>
+
+        <!-- QUENTIN + ANTHONY -->
+        <div class="org-branch">
+          <div class="org-branch-line"></div>
+          <div class="org-card">
+            <div class="org-avatar" style="background:linear-gradient(135deg,#F59E0B,#d97706)">Q</div>
+            <div class="org-name">Quentin</div>
+            <div class="org-role" style="color:#d97706;background:rgba(245,158,11,.08)">Manager Coach</div>
+          </div>
+          <div class="org-sub-line"></div>
+          <div class="org-card org-sub">
+            <div class="org-avatar org-avatar-sm" style="background:linear-gradient(135deg,#16a34a,#15803d)">A</div>
+            <div class="org-name">Anthony</div>
+            <div class="org-role" style="color:#16a34a;background:rgba(22,163,74,.08)">Coach</div>
+          </div>
+        </div>
+
+        <!-- FIONA + VIKTOR -->
+        <div class="org-branch">
+          <div class="org-branch-line"></div>
+          <div class="org-card">
+            <div class="org-avatar" style="background:linear-gradient(135deg,#ec4899,#db2777)">F</div>
+            <div class="org-name">Fiona</div>
+            <div class="org-role" style="color:#ec4899;background:rgba(236,72,153,.08)">Content Manager</div>
+          </div>
+          <div class="org-sub-line"></div>
+          <div class="org-card org-sub">
+            <div class="org-avatar org-avatar-sm" style="background:linear-gradient(135deg,#7C3AED,#6d28d9)">V</div>
+            <div class="org-name">Viktor</div>
+            <div class="org-role" style="color:#7C3AED;background:rgba(124,58,237,.08)">Monteur</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /tab-organigramme -->
 
 </div><!-- /boards-wrapper -->
 </div><!-- /app -->
