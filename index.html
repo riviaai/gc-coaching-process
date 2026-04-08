@@ -342,16 +342,50 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
       <p>De l'inscription au suivi continu — ce que vit le client a chaque etape</p>
     </div>
 
+    <!-- RECAP OFFRE -->
+    <div style="background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:24px;margin-bottom:32px">
+      <h3 style="font-size:15px;font-weight:800;margin-bottom:12px">Ce que le client obtient</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px"><span>🏋️</span> Programme d'entrainement personnalise</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px"><span>🥗</span> Plan alimentaire sur mesure</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px"><span>📲</span> Acces app de suivi (FitYou / Azeo)</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px"><span>💬</span> Support WhatsApp lun-ven 9h-17h</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px"><span>📊</span> Bilan tous les 15 jours sur l'app</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px"><span>🎥</span> Correction video des exercices</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px"><span>🔄</span> Ajustements nutrition en continu</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px"><span>💳</span> Paiement en 1x, 2x, 3x, 4x ou acompte</div>
+      </div>
+    </div>
+
     <div class="timeline">
-      <!-- PHASE 1 : INSCRIPTION -->
-      <div class="tl-sep"><span>Phase 1 — Inscription</span></div>
+      <!-- PHASE 1 : VENTE & INSCRIPTION -->
+      <div class="tl-sep"><span>Phase 1 — Vente & Inscription</span></div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:var(--closer)"></div>
+        <div class="tl-card">
+          <div class="tl-phase" style="color:var(--closer);background:var(--closer-d)">Avant le call</div>
+          <h3>Le closer cree le groupe WhatsApp</h3>
+          <p>Un groupe WhatsApp est cree avec le prospect avant meme le premier call. C'est par la que tout se passe ensuite : liens de paiement, messages, suivi.</p>
+          <div class="tl-who" style="color:var(--closer);background:var(--closer-d)">Closer</div>
+        </div>
+      </div>
 
       <div class="tl-step">
         <div class="tl-dot" style="background:var(--closer)"></div>
         <div class="tl-card">
           <div class="tl-phase" style="color:var(--closer);background:var(--closer-d)">Vente</div>
-          <h3>Le closer ferme la vente</h3>
-          <p>Pendant le call, il envoie le lien de paiement au prospect via WhatsApp. Le client paie en direct.</p>
+          <h3>Le closer fait le call et ferme la vente</h3>
+          <p>Il presente l'offre, repond aux objections, et envoie le lien de paiement pendant le call (WhatsApp ou SMS). Le client paie en direct. Options : paiement en 1x, 2x, 3x, 4x ou acompte.</p>
+          <div class="tl-who" style="color:var(--closer);background:var(--closer-d)">Closer</div>
+        </div>
+      </div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:var(--closer)"></div>
+        <div class="tl-card">
+          <h3>Le closer verifie le paiement et ajoute le coach</h3>
+          <p>Une fois le paiement confirme, le closer verifie que le client a bien recu son email de confirmation avec le lien d'inscription. Puis il ajoute le coach (Anthony) dans le groupe WhatsApp.</p>
           <div class="tl-who" style="color:var(--closer);background:var(--closer-d)">Closer</div>
         </div>
       </div>
@@ -359,8 +393,8 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
       <div class="tl-step">
         <div class="tl-dot" style="background:var(--teal)"></div>
         <div class="tl-card">
-          <h3>Le client recoit son email de confirmation</h3>
-          <p>Email automatique avec le recapitulatif de commande + le lien pour s'inscrire sur l'application de suivi (FitYou / Azeo).</p>
+          <h3>Le client recoit son email et s'inscrit sur l'app</h3>
+          <p>Email automatique avec recapitulatif de commande + lien d'inscription a l'application de suivi. Il s'inscrit, puis remplit le questionnaire complet : objectifs, sante, niveau, materiel dispo, alimentation, photos.</p>
           <div class="tl-who" style="color:var(--teal);background:var(--teal-d)">Client</div>
         </div>
       </div>
@@ -368,8 +402,8 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
       <div class="tl-step">
         <div class="tl-dot" style="background:var(--teal)"></div>
         <div class="tl-card">
-          <h3>Il s'inscrit sur l'app et remplit le questionnaire</h3>
-          <p>Le client entre ses infos : objectifs, niveau, materiel disponible, alimentation, photos. Tout ce dont le coach a besoin pour creer son programme.</p>
+          <h3>Il confirme dans le groupe WhatsApp</h3>
+          <p>Le client ecrit dans le groupe qu'il est bien inscrit sur l'app et que le questionnaire est rempli.</p>
           <div class="tl-who" style="color:var(--teal);background:var(--teal-d)">Client</div>
         </div>
       </div>
@@ -377,30 +411,41 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
       <div class="tl-step">
         <div class="tl-dot" style="background:var(--coach)"></div>
         <div class="tl-card">
-          <h3>Le coach envoie un message de bienvenue</h3>
-          <p>Dans le groupe WhatsApp, le coach souhaite la bienvenue au client et lui confirme que son programme sera pret pour son jour de demarrage attribue.</p>
-          <div class="tl-who" style="color:var(--coach);background:var(--coach-d)">Coach</div>
+          <h3>Le coach envoie le message de bienvenue</h3>
+          <p>Dans le groupe WhatsApp, le coach souhaite la bienvenue et confirme au client que son programme sera pret pour son jour de demarrage. Ce message pose le cadre de la relation.</p>
+          <div class="tl-who" style="color:var(--coach);background:var(--coach-d)">Coach (Anthony)</div>
         </div>
       </div>
 
       <!-- PHASE 2 : PROGRAMME -->
-      <div class="tl-sep"><span>Phase 2 — Programme</span></div>
+      <div class="tl-sep"><span>Phase 2 — Creation du programme</span></div>
 
       <div class="tl-step">
         <div class="tl-dot" style="background:var(--coach)"></div>
         <div class="tl-card">
-          <div class="tl-phase" style="color:var(--coach);background:var(--coach-d)">Creation</div>
+          <div class="tl-phase" style="color:var(--coach);background:var(--coach-d)">Preparation</div>
           <h3>Le coach cree le programme personnalise</h3>
-          <p>Programme d'entrainement + plan alimentaire adapte au profil du client. Le coach s'organise comme il veut pour le faire avant le jour de demarrage.</p>
-          <div class="tl-who" style="color:var(--coach);background:var(--coach-d)">Coach</div>
+          <p>A partir du questionnaire rempli, le coach cree un programme d'entrainement + un plan alimentaire adapte au materiel, au niveau et aux objectifs du client. Il s'organise librement pour le faire avant le jour de demarrage attribue.</p>
+          <div class="tl-who" style="color:var(--coach);background:var(--coach-d)">Coach (Anthony)</div>
+        </div>
+      </div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:var(--coach)"></div>
+        <div class="tl-card">
+          <h3>Pourquoi les clients sont repartis sur la semaine ?</h3>
+          <p>Chaque client se voit attribuer un jour de demarrage (lundi, mardi, mercredi...). Ca permet au coach de ne pas avoir 70 bilans le meme jour. Il repartit sa charge de travail du lundi au vendredi, chacun ayant son jour fixe.</p>
+          <div style="margin-top:10px;padding:10px 14px;background:var(--coach-d);border-radius:10px;font-size:12px;color:var(--muted)">
+            <strong style="color:var(--coach)">Exemple :</strong> Lundi = 12 clients, Mardi = 10 clients, Mercredi = 14 clients, etc. Le coach gere son planning sans pic de charge.
+          </div>
         </div>
       </div>
 
       <div class="tl-step">
         <div class="tl-dot" style="background:var(--teal)"></div>
         <div class="tl-card">
-          <h3>Le client recoit son programme la veille</h3>
-          <p>Tout est dans l'app : programme sport, nutrition, acces premium. Le client a une soiree pour tout lire et preparer ses questions.</p>
+          <h3>Le client recoit tout la veille de son jour</h3>
+          <p>Programme sport + nutrition + acces premium, tout dans l'app. Le client a la soiree pour lire, comprendre et preparer ses eventuelles questions.</p>
           <div class="tl-who" style="color:var(--teal);background:var(--teal-d)">Client</div>
         </div>
       </div>
@@ -408,21 +453,34 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
       <div class="tl-step">
         <div class="tl-dot" style="background:var(--teal)"></div>
         <div class="tl-card">
-          <h3>Il demarre son programme</h3>
-          <p>Le jour attribue (lundi, mardi, mercredi... reparti sur la semaine), le client commence son premier entrainement.</p>
+          <div class="tl-phase" style="color:var(--green);background:var(--green-d)">Demarrage</div>
+          <h3>Le client demarre son premier entrainement</h3>
+          <p>Le jour attribue, c'est parti. Le client suit son programme et peut poser ses premieres questions dans le groupe WhatsApp.</p>
           <div class="tl-who" style="color:var(--teal);background:var(--teal-d)">Client</div>
         </div>
       </div>
 
       <!-- PHASE 3 : SUIVI -->
-      <div class="tl-sep"><span>Phase 3 — Suivi continu</span></div>
+      <div class="tl-sep"><span>Phase 3 — Suivi au quotidien</span></div>
 
       <div class="tl-step">
         <div class="tl-dot" style="background:var(--teal)"></div>
         <div class="tl-card">
-          <h3>Le client pose ses questions sur WhatsApp</h3>
-          <p>Du lundi au vendredi, 9h a 17h. Le coach repond sous 24h. En dehors de ces horaires, pas de reponse.</p>
-          <div class="tl-who" style="color:var(--teal);background:var(--teal-d)">Client</div>
+          <h3>Questions WhatsApp — du lundi au vendredi</h3>
+          <p>Le client peut poser ses questions dans le groupe, du lundi au vendredi de 9h a 17h. Le coach repond sous 24h maximum. En dehors de ces horaires et le week-end : pas de reponse, c'est la regle.</p>
+          <div style="margin-top:10px;padding:10px 14px;background:rgba(220,38,38,.06);border-radius:10px;font-size:12px;color:#dc2626">
+            <strong>Important :</strong> Le client doit regrouper ses questions (pas envoyer 10 messages separes). Le coach repond en une seule fois.
+          </div>
+          <div class="tl-who" style="color:var(--teal);background:var(--teal-d)">Client → Coach</div>
+        </div>
+      </div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:var(--teal)"></div>
+        <div class="tl-card">
+          <h3>Le client envoie ses videos d'exercices</h3>
+          <p>Pour verifier sa technique, le client filme ses exercices et les envoie dans le groupe. Le coach corrige les mouvements si necessaire — ca evite les blessures et garantit les resultats.</p>
+          <div class="tl-who" style="color:var(--teal);background:var(--teal-d)">Client → Coach</div>
         </div>
       </div>
 
@@ -431,7 +489,15 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
         <div class="tl-card">
           <div class="tl-phase" style="color:var(--green);background:var(--green-d)">Tous les 15 jours</div>
           <h3>Bilan sur l'app</h3>
-          <p>Le client remplit son bilan directement sur l'app la veille du jour defini : poids, mensurations, photos (face, profil, dos a jeun), observations. Le coach recoit une notification et analyse le lendemain.</p>
+          <p>La veille de son jour defini, le client remplit son bilan directement dans l'app :</p>
+          <ul style="margin:8px 0 0 16px;font-size:12px;color:var(--muted);line-height:2">
+            <li>Poids et mensurations</li>
+            <li>Photos face, profil, dos (a jeun le matin)</li>
+            <li>Observations obligatoires : ressenti, difficultes, motivation, alimentation</li>
+          </ul>
+          <div style="margin-top:10px;padding:10px 14px;background:rgba(220,38,38,.06);border-radius:10px;font-size:12px;color:#dc2626">
+            <strong>Si le bilan est en retard</strong> = il est reporte au bilan suivant. Pas de rattrapage.
+          </div>
           <div class="tl-who" style="color:var(--teal);background:var(--teal-d)">Client</div>
         </div>
       </div>
@@ -439,21 +505,92 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
       <div class="tl-step">
         <div class="tl-dot" style="background:var(--coach)"></div>
         <div class="tl-card">
-          <h3>Le coach ajuste si besoin</h3>
-          <p>Nutrition ajustable a tout moment. Programme revu en fin de phase (4 a 8 semaines). L'objectif : progression continue sans lasser le client.</p>
-          <div class="tl-who" style="color:var(--coach);background:var(--coach-d)">Coach</div>
+          <h3>Le coach analyse et fait son retour</h3>
+          <p>Le coach recoit une notification dans l'app des que le bilan est soumis. Il l'analyse le lendemain et fait son retour au client avec les ajustements si besoin.</p>
+          <div class="tl-who" style="color:var(--coach);background:var(--coach-d)">Coach (Anthony)</div>
         </div>
       </div>
 
-      <!-- PHASE 4 : FIN -->
+      <div class="tl-step">
+        <div class="tl-dot" style="background:var(--coach)"></div>
+        <div class="tl-card">
+          <h3>Ajustements en continu</h3>
+          <p><strong>Nutrition :</strong> ajustable a tout moment selon les retours du bilan.<br><strong>Programme sport :</strong> revu en fin de phase (toutes les 4 a 8 semaines) pour continuer la progression sans lasser le client.</p>
+          <div class="tl-who" style="color:var(--coach);background:var(--coach-d)">Coach (Anthony)</div>
+        </div>
+      </div>
+
+      <!-- PHASE 4 : CLIENT INACTIF -->
+      <div class="tl-sep"><span>Si le client ne repond plus</span></div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:#dc2626"></div>
+        <div class="tl-card" style="border-color:rgba(220,38,38,.2)">
+          <h3>Procedure client inactif</h3>
+          <p>Si un client ne fait plus son bilan ou ne repond plus, voici ce que fait le coach :</p>
+          <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:flex-start;gap:10px">
+              <span style="background:var(--coach-d);color:var(--coach);font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;flex-shrink:0">J+0</span>
+              <span style="font-size:12px;color:var(--muted)">Bilan non recu → message ou mail le jour meme pour demander la raison</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px">
+              <span style="background:var(--coach-d);color:var(--coach);font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;flex-shrink:0">J+2</span>
+              <span style="font-size:12px;color:var(--muted)">Pas de reponse → relance par message ou mail</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px">
+              <span style="background:var(--coach-d);color:var(--coach);font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;flex-shrink:0">J+15</span>
+              <span style="font-size:12px;color:var(--muted)">Bilan suivant aussi manque → contact direct, prendre des nouvelles</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px">
+              <span style="background:rgba(220,38,38,.08);color:#dc2626;font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;flex-shrink:0">J+16</span>
+              <span style="font-size:12px;color:var(--muted)">Toujours rien → on arrete les messages et mails definitivement</span>
+            </div>
+          </div>
+          <div style="margin-top:12px;padding:10px 14px;background:var(--coach-d);border-radius:10px;font-size:12px;color:var(--muted)">
+            <strong style="color:var(--coach)">Si le client revient :</strong> le coaching reprend normalement jusqu'a son terme. Les jours sans reponse restent perdus pour lui.
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 5 : FIN -->
       <div class="tl-sep"><span>Fin de l'accompagnement</span></div>
 
       <div class="tl-step">
         <div class="tl-dot" style="background:var(--green)"></div>
         <div class="tl-card">
-          <h3>Dernier bilan et renouvellement</h3>
-          <p>Le coach fait une analyse complete de la progression et propose au client de continuer. Si le client est inactif (pas de bilan, pas de reponse), le coach suit une procedure de relance precise avant d'arreter le suivi.</p>
-          <div class="tl-who" style="color:var(--green);background:var(--green-d)">Coach</div>
+          <h3>Dernier bilan — analyse complete</h3>
+          <p>Le coach fait un bilan final de toute la progression : comparaison photos, evolution des mensurations, points forts, axes d'amelioration.</p>
+          <div class="tl-who" style="color:var(--coach);background:var(--coach-d)">Coach (Anthony)</div>
+        </div>
+      </div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:var(--green)"></div>
+        <div class="tl-card">
+          <div class="tl-phase" style="color:var(--green);background:var(--green-d)">Renouvellement</div>
+          <h3>Proposition de continuer</h3>
+          <p>Si le client est satisfait, le coach lui propose de renouveler. Nouveau lien de paiement envoye dans le groupe WhatsApp. Le suivi continue sans interruption.</p>
+          <div class="tl-who" style="color:var(--green);background:var(--green-d)">Coach → Client</div>
+        </div>
+      </div>
+
+      <!-- ROLE DE GREG -->
+      <div class="tl-sep"><span>Ton role dans tout ca</span></div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:var(--teal)"></div>
+        <div class="tl-card" style="border-color:rgba(61,191,184,.3)">
+          <h3>Greg — Fondateur & Coach</h3>
+          <p>Tu n'as pas besoin de gerer le quotidien. Ton role :</p>
+          <ul style="margin:8px 0 0 16px;font-size:12px;color:var(--muted);line-height:2">
+            <li><strong>Contenu</strong> — Tu continues de creer du contenu (videos, posts) pour attirer des prospects</li>
+            <li><strong>Vision</strong> — Tu definis la direction de l'offre et la strategie business</li>
+            <li><strong>Qualite</strong> — Tu supervises le travail du coach via les retours clients</li>
+            <li><strong>Decisions</strong> — Tarifs, nouvelles offres, recrutement de coachs supplementaires</li>
+          </ul>
+          <div style="margin-top:10px;padding:10px 14px;background:var(--teal-d);border-radius:10px;font-size:12px;color:var(--muted)">
+            <strong style="color:var(--teal)">L'equipe gere le reste :</strong> Steven (business & process), Quentin (management coach), Anthony (coaching client), Fiona (contenu), Viktor (montage).
+          </div>
         </div>
       </div>
     </div>
