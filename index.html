@@ -250,6 +250,24 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
 .res-t{font-size:12px;font-weight:700;color:var(--text);margin-bottom:2px}
 .res-u{font-size:10px;color:var(--soft);font-family:monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:150px}
 
+/* PARCOURS CLIENT */
+.parcours{max-width:880px;margin:0 auto;padding:24px 0}
+.parcours-title{text-align:center;margin-bottom:32px}
+.parcours-title h2{font-size:22px;font-weight:800}
+.parcours-title p{font-size:12px;color:var(--muted);margin-top:4px}
+.timeline{position:relative;padding-left:40px}
+.timeline::before{content:'';position:absolute;left:16px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--teal),var(--coach),var(--closer),var(--green))}
+.tl-step{position:relative;margin-bottom:28px}
+.tl-dot{position:absolute;left:-32px;top:4px;width:14px;height:14px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px var(--border)}
+.tl-phase{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;display:inline-block;padding:2px 10px;border-radius:20px}
+.tl-card{background:#fff;border-radius:14px;padding:20px 24px;border:1.5px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,.03)}
+.tl-card h3{font-size:15px;font-weight:700;margin-bottom:4px}
+.tl-card p{font-size:12px;color:var(--muted);line-height:1.6}
+.tl-card .tl-who{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:2px 8px;border-radius:12px;margin-top:8px}
+.tl-sep{text-align:center;margin:36px 0 12px;position:relative}
+.tl-sep span{background:var(--bg);padding:0 16px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);position:relative;z-index:1}
+.tl-sep::before{content:'';position:absolute;left:0;right:0;top:50%;height:1px;background:var(--border)}
+
 /* ORGANIGRAMME */
 .org-container{max-width:800px;margin:20px auto;padding:20px}
 .org-header{text-align:center;margin-bottom:40px}
@@ -305,7 +323,8 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
 
 <!-- TABS BAR -->
 <div class="tabs-bar">
-  <button class="tab-btn active" onclick="showTab('process')">⚙️ Process</button>
+  <button class="tab-btn active" onclick="showTab('parcours')">🗺️ Parcours Client</button>
+  <button class="tab-btn" onclick="showTab('process')">⚙️ Process détaillé</button>
   <button class="tab-btn" onclick="showTab('liens')">💳 Liens de paiement</button>
   <button class="tab-btn" onclick="showTab('cible')">🎯 Cible &amp; Offre</button>
   <button class="tab-btn" onclick="showTab('ressources')">🔗 Ressources</button>
@@ -315,8 +334,134 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
 <!-- BOARDS WRAPPER -->
 <div class="boards-wrapper">
 
+<!-- ═══ TAB 0 : PARCOURS CLIENT ═══ -->
+<div class="board active" id="tab-parcours">
+  <div class="parcours">
+    <div class="parcours-title">
+      <h2>Le parcours de ton client</h2>
+      <p>De l'inscription au suivi continu — ce que vit le client a chaque etape</p>
+    </div>
+
+    <div class="timeline">
+      <!-- PHASE 1 : INSCRIPTION -->
+      <div class="tl-sep"><span>Phase 1 — Inscription</span></div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:var(--closer)"></div>
+        <div class="tl-card">
+          <div class="tl-phase" style="color:var(--closer);background:var(--closer-d)">Vente</div>
+          <h3>Le closer ferme la vente</h3>
+          <p>Pendant le call, il envoie le lien de paiement au prospect via WhatsApp. Le client paie en direct.</p>
+          <div class="tl-who" style="color:var(--closer);background:var(--closer-d)">Closer</div>
+        </div>
+      </div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:var(--teal)"></div>
+        <div class="tl-card">
+          <h3>Le client recoit son email de confirmation</h3>
+          <p>Email automatique avec le recapitulatif de commande + le lien pour s'inscrire sur l'application de suivi (FitYou / Azeo).</p>
+          <div class="tl-who" style="color:var(--teal);background:var(--teal-d)">Client</div>
+        </div>
+      </div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:var(--teal)"></div>
+        <div class="tl-card">
+          <h3>Il s'inscrit sur l'app et remplit le questionnaire</h3>
+          <p>Le client entre ses infos : objectifs, niveau, materiel disponible, alimentation, photos. Tout ce dont le coach a besoin pour creer son programme.</p>
+          <div class="tl-who" style="color:var(--teal);background:var(--teal-d)">Client</div>
+        </div>
+      </div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:var(--coach)"></div>
+        <div class="tl-card">
+          <h3>Le coach envoie un message de bienvenue</h3>
+          <p>Dans le groupe WhatsApp, le coach souhaite la bienvenue au client et lui confirme que son programme sera pret pour son jour de demarrage attribue.</p>
+          <div class="tl-who" style="color:var(--coach);background:var(--coach-d)">Coach</div>
+        </div>
+      </div>
+
+      <!-- PHASE 2 : PROGRAMME -->
+      <div class="tl-sep"><span>Phase 2 — Programme</span></div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:var(--coach)"></div>
+        <div class="tl-card">
+          <div class="tl-phase" style="color:var(--coach);background:var(--coach-d)">Creation</div>
+          <h3>Le coach cree le programme personnalise</h3>
+          <p>Programme d'entrainement + plan alimentaire adapte au profil du client. Le coach s'organise comme il veut pour le faire avant le jour de demarrage.</p>
+          <div class="tl-who" style="color:var(--coach);background:var(--coach-d)">Coach</div>
+        </div>
+      </div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:var(--teal)"></div>
+        <div class="tl-card">
+          <h3>Le client recoit son programme la veille</h3>
+          <p>Tout est dans l'app : programme sport, nutrition, acces premium. Le client a une soiree pour tout lire et preparer ses questions.</p>
+          <div class="tl-who" style="color:var(--teal);background:var(--teal-d)">Client</div>
+        </div>
+      </div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:var(--teal)"></div>
+        <div class="tl-card">
+          <h3>Il demarre son programme</h3>
+          <p>Le jour attribue (lundi, mardi, mercredi... reparti sur la semaine), le client commence son premier entrainement.</p>
+          <div class="tl-who" style="color:var(--teal);background:var(--teal-d)">Client</div>
+        </div>
+      </div>
+
+      <!-- PHASE 3 : SUIVI -->
+      <div class="tl-sep"><span>Phase 3 — Suivi continu</span></div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:var(--teal)"></div>
+        <div class="tl-card">
+          <h3>Le client pose ses questions sur WhatsApp</h3>
+          <p>Du lundi au vendredi, 9h a 17h. Le coach repond sous 24h. En dehors de ces horaires, pas de reponse.</p>
+          <div class="tl-who" style="color:var(--teal);background:var(--teal-d)">Client</div>
+        </div>
+      </div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:var(--teal)"></div>
+        <div class="tl-card">
+          <div class="tl-phase" style="color:var(--green);background:var(--green-d)">Tous les 15 jours</div>
+          <h3>Bilan sur l'app</h3>
+          <p>Le client remplit son bilan directement sur l'app la veille du jour defini : poids, mensurations, photos (face, profil, dos a jeun), observations. Le coach recoit une notification et analyse le lendemain.</p>
+          <div class="tl-who" style="color:var(--teal);background:var(--teal-d)">Client</div>
+        </div>
+      </div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:var(--coach)"></div>
+        <div class="tl-card">
+          <h3>Le coach ajuste si besoin</h3>
+          <p>Nutrition ajustable a tout moment. Programme revu en fin de phase (4 a 8 semaines). L'objectif : progression continue sans lasser le client.</p>
+          <div class="tl-who" style="color:var(--coach);background:var(--coach-d)">Coach</div>
+        </div>
+      </div>
+
+      <!-- PHASE 4 : FIN -->
+      <div class="tl-sep"><span>Fin de l'accompagnement</span></div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:var(--green)"></div>
+        <div class="tl-card">
+          <h3>Dernier bilan et renouvellement</h3>
+          <p>Le coach fait une analyse complete de la progression et propose au client de continuer. Si le client est inactif (pas de bilan, pas de reponse), le coach suit une procedure de relance precise avant d'arreter le suivi.</p>
+          <div class="tl-who" style="color:var(--green);background:var(--green-d)">Coach</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /tab-parcours -->
+
 <!-- ═══ TAB 1 : PROCESS ═══ -->
-<div class="board active" id="tab-process">
+<div class="board" id="tab-process">
 
   <div class="phase-block p1">
     <div class="phase-head">
