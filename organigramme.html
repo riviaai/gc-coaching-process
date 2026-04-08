@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GC Coaching — Organigramme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#eef0f4;--border:#e2e5ea;
+  --teal:#3DBFB8;
+  --coach:#7C3AED;
+  --blue:#2563eb;
+  --amber:#F59E0B;
+  --green:#16a34a;
+  --pink:#ec4899;
+  --text:#111;--muted:#666;--soft:#999;
+}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+
+/* HEADER */
+.hd{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;border-bottom:1px solid #1e1e1e;background:#0a0a0a;position:sticky;top:0;z-index:100}
+.hd-logo{display:flex;align-items:center;gap:10px}
+.hd-logo-icon{width:32px;height:32px;background:linear-gradient(135deg,#3DBFB8,#2a9d8f);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:14px}
+.hd-mid h2{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#3DBFB8;text-align:center}
+.hd-mid p{font-size:9px;color:#555;margin-top:1px;letter-spacing:1px;text-transform:uppercase;text-align:center}
+.hd-nav{display:flex;gap:6px}
+.hd-nav a{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#555;text-decoration:none;padding:6px 12px;border-radius:6px;transition:all .2s}
+.hd-nav a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.hd-nav a.active{color:#3DBFB8;background:rgba(61,191,184,.1)}
+
+/* ORG */
+.org{max-width:1000px;margin:48px auto;padding:0 24px}
+.org-title{text-align:center;margin-bottom:48px}
+.org-title h1{font-size:28px;font-weight:900;letter-spacing:-0.5px}
+.org-title p{color:var(--muted);font-size:13px;margin-top:6px}
+
+/* Tree */
+.tree{display:flex;flex-direction:column;align-items:center;gap:0}
+
+/* Node */
+.person{display:flex;flex-direction:column;align-items:center;position:relative}
+.avatar{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;color:#fff;border:3px solid #fff;box-shadow:0 4px 16px rgba(0,0,0,.12);position:relative;z-index:2}
+.person-info{text-align:center;margin-top:10px}
+.person-name{font-size:15px;font-weight:800;color:var(--text)}
+.person-role{font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;margin-top:2px;padding:3px 10px;border-radius:20px;display:inline-block}
+
+/* Connector lines */
+.vline{width:2px;height:32px;background:var(--border);margin:0 auto}
+.hline-wrap{display:flex;align-items:flex-start;justify-content:center;position:relative}
+.hline{position:absolute;top:0;height:2px;background:var(--border)}
+
+/* Level row */
+.level{display:flex;justify-content:center;gap:64px;position:relative}
+.level::before{content:'';position:absolute;top:-32px;left:calc(50% - var(--hw));right:calc(50% - var(--hw));height:2px;background:var(--border)}
+
+/* Branch */
+.branch{display:flex;flex-direction:column;align-items:center}
+.branch .vline-up{width:2px;height:32px;background:var(--border)}
+
+/* Colors */
+.c-teal{background:linear-gradient(135deg,#3DBFB8,#2a9d8f)}
+.c-coach{background:linear-gradient(135deg,#7C3AED,#6d28d9)}
+.c-blue{background:linear-gradient(135deg,#2563eb,#1d4ed8)}
+.c-amber{background:linear-gradient(135deg,#F59E0B,#d97706)}
+.c-green{background:linear-gradient(135deg,#16a34a,#15803d)}
+.c-pink{background:linear-gradient(135deg,#ec4899,#db2777)}
+
+.r-teal{color:#3DBFB8;background:rgba(61,191,184,.1)}
+.r-coach{color:#7C3AED;background:rgba(124,58,237,.08)}
+.r-blue{color:#2563eb;background:rgba(37,99,235,.08)}
+.r-amber{color:#d97706;background:rgba(245,158,11,.08)}
+.r-green{color:#16a34a;background:rgba(22,163,74,.08)}
+.r-pink{color:#ec4899;background:rgba(236,72,153,.08)}
+
+/* Footer */
+.ft{text-align:center;padding:48px 24px 24px;font-size:10px;color:var(--soft);letter-spacing:1px;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hd">
+  <div class="hd-logo">
+    <div class="hd-logo-icon">GC</div>
+  </div>
+  <div class="hd-mid">
+    <h2>GC Coaching</h2>
+    <p>Organisation interne</p>
+  </div>
+  <div class="hd-nav">
+    <a href="index.html">Process</a>
+    <a href="organigramme.html" class="active">Equipe</a>
+  </div>
+</div>
+
+<!-- ORGANIGRAMME -->
+<div class="org">
+  <div class="org-title">
+    <h1>Organigramme</h1>
+    <p>Structure de l'equipe GC Coaching</p>
+  </div>
+
+  <div class="tree">
+    <!-- FONDATEUR -->
+    <div class="person">
+      <div class="avatar c-teal">G</div>
+      <div class="person-info">
+        <div class="person-name">Greg</div>
+        <div class="person-role r-teal">Fondateur & Coach</div>
+      </div>
+    </div>
+
+    <div class="vline"></div>
+
+    <!-- NIVEAU 2 : 3 piliers -->
+    <div style="position:relative;width:100%">
+      <!-- Ligne horizontale -->
+      <div style="position:absolute;top:0;left:calc(50% - 280px);right:calc(50% - 280px);height:2px;background:var(--border)"></div>
+
+      <div style="display:flex;justify-content:center;gap:120px">
+        <!-- STEVEN -->
+        <div class="branch">
+          <div class="vline-up"></div>
+          <div class="person">
+            <div class="avatar c-blue">S</div>
+            <div class="person-info">
+              <div class="person-name">Steven</div>
+              <div class="person-role r-blue">Business</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- QUENTIN -->
+        <div class="branch">
+          <div class="vline-up"></div>
+          <div class="person">
+            <div class="avatar c-amber">Q</div>
+            <div class="person-info">
+              <div class="person-name">Quentin</div>
+              <div class="person-role r-amber">Manager Coach</div>
+            </div>
+          </div>
+          <!-- Sous Quentin : Anthony -->
+          <div class="vline"></div>
+          <div class="person">
+            <div class="avatar c-green">A</div>
+            <div class="person-info">
+              <div class="person-name">Anthony</div>
+              <div class="person-role r-green">Coach</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FIONA -->
+        <div class="branch">
+          <div class="vline-up"></div>
+          <div class="person">
+            <div class="avatar c-pink">F</div>
+            <div class="person-info">
+              <div class="person-name">Fiona</div>
+              <div class="person-role r-pink">Content Manager</div>
+            </div>
+          </div>
+          <!-- Sous Fiona : Viktor -->
+          <div class="vline"></div>
+          <div class="person">
+            <div class="avatar c-coach">V</div>
+            <div class="person-info">
+              <div class="person-name">Viktor</div>
+              <div class="person-role r-coach">Monteur</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ft">GC Coaching &mdash; Organigramme interne</div>
+
+</body>
+</html>
