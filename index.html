@@ -398,7 +398,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
         <div class="tl-dot" style="background:var(--closer)"></div>
         <div class="tl-card">
           <h3>Le closer verifie le paiement et ajoute le coach</h3>
-          <p>Une fois le paiement confirme, le closer verifie que le client a bien recu son email de confirmation avec le lien d'inscription. Puis il ajoute le coach (Anthony) dans le groupe WhatsApp.</p>
+          <p>Une fois le paiement confirme, le closer verifie que le client a bien recu son email d'invitation. Puis il ajoute le coach (Anthony) dans le groupe WhatsApp.</p>
           <div class="tl-who" style="color:var(--closer);background:var(--closer-d)">Closer</div>
         </div>
       </div>
@@ -406,8 +406,20 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
       <div class="tl-step">
         <div class="tl-dot" style="background:var(--teal)"></div>
         <div class="tl-card">
-          <h3>Le client recoit son email et s'inscrit sur l'app</h3>
-          <p>Email automatique avec recapitulatif de commande + lien d'inscription a l'application de suivi. Il s'inscrit, puis remplit le questionnaire complet : objectifs, sante, niveau, materiel dispo, alimentation, photos.</p>
+          <h3>Le client recoit son lien d'invitation au groupe Coaching Personnalise</h3>
+          <p>Un groupe dedie est cree sur ASEO ("Coaching Personnalise"). Un lien d'invitation unique est genere pour ce groupe et envoye par email au client apres paiement. En passant par ce lien, le client s'inscrit directement et est automatiquement attribue au bon groupe — <strong>pas besoin de Zapier</strong>.</p>
+          <div class="tl-who" style="color:var(--teal);background:var(--teal-d)">Client</div>
+        </div>
+      </div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:var(--teal)"></div>
+        <div class="tl-card">
+          <h3>Il remplit le questionnaire d'onboarding</h3>
+          <p>Le formulaire est rattache au groupe "Coaching Personnalise". Il apparait automatiquement en haut de la page d'accueil de l'app pour tous les clients de ce groupe. Une fois rempli, il disparait. Pas d'automatisation supplementaire necessaire.</p>
+          <div style="margin-top:10px;padding:10px 14px;background:var(--teal-d);border-radius:10px;font-size:12px;color:var(--muted)">
+            <strong style="color:var(--teal)">Contenu du questionnaire :</strong> objectifs, sante, niveau, materiel dispo, alimentation, photos.
+          </div>
           <div class="tl-who" style="color:var(--teal);background:var(--teal-d)">Client</div>
         </div>
       </div>
@@ -416,8 +428,20 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
         <div class="tl-dot" style="background:var(--teal)"></div>
         <div class="tl-card">
           <h3>Il confirme dans le groupe WhatsApp</h3>
-          <p>Le client ecrit dans le groupe qu'il est bien inscrit sur l'app et que le questionnaire est rempli.</p>
+          <p>Le client ecrit dans le groupe WhatsApp qu'il est bien inscrit sur l'app et que le questionnaire est rempli. Le coach voit aussi cette info directement en haut de son tableau de bord.</p>
           <div class="tl-who" style="color:var(--teal);background:var(--teal-d)">Client</div>
+        </div>
+      </div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:var(--coach)"></div>
+        <div class="tl-card">
+          <h3>Le coach attribue manuellement le client a son profil</h3>
+          <p>Pas d'automatisation prevue pour cette etape. Le coach attribue manuellement le client a son profil depuis le back-office ASEO. Simple et rapide : <strong>3 clics</strong>.</p>
+          <div style="margin-top:10px;padding:10px 14px;background:var(--coach-d);border-radius:10px;font-size:12px;color:var(--muted)">
+            <strong style="color:var(--coach)">Pourquoi manuel ?</strong> Eviter les automatisations fragiles (Zapier) qui plantent sans prevenir. Un process manuel simple est plus fiable quand le volume est maitrise.
+          </div>
+          <div class="tl-who" style="color:var(--coach);background:var(--coach-d)">Coach (Anthony)</div>
         </div>
       </div>
 
@@ -603,6 +627,32 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
           </ul>
           <div style="margin-top:10px;padding:10px 14px;background:var(--teal-d);border-radius:10px;font-size:12px;color:var(--muted)">
             <strong style="color:var(--teal)">L'equipe gere le reste :</strong> Steven (business & process), Quentin (management coach), Anthony (coaching client), Fiona (contenu), Viktor (montage).
+          </div>
+        </div>
+      </div>
+
+      <!-- POINTS A RETENIR -->
+      <div class="tl-sep"><span>Points a retenir</span></div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:#F59E0B"></div>
+        <div class="tl-card" style="border-color:rgba(245,158,11,.3);background:rgba(245,158,11,.03)">
+          <h3>Pourquoi on evite Zapier au maximum</h3>
+          <p><strong>Zapier</strong> est un outil qui permet de connecter deux logiciels entre eux pour qu'ils s'echangent des informations automatiquement (ex : quand un client paye sur Stripe, l'ajouter automatiquement sur ASEO).</p>
+          <p style="margin-top:8px">C'est pratique mais <strong>fragile</strong> : quand ca plante, c'est difficile a detecter et a corriger. L'objectif ici est donc d'en utiliser <strong>le moins possible</strong>, et de privilegier des process manuels simples quand le volume le permet.</p>
+          <div style="margin-top:10px;padding:10px 14px;background:rgba(245,158,11,.08);border-radius:10px;font-size:12px;color:var(--muted)">
+            <strong style="color:#d97706">Regle generale :</strong> si un process prend moins de 5 minutes par jour au coach, on le garde manuel. Automatiser uniquement si le volume le justifie et si on a un moyen de detecter quand ca plante.
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-step">
+        <div class="tl-dot" style="background:#F59E0B"></div>
+        <div class="tl-card" style="border-color:rgba(245,158,11,.3)">
+          <h3>Les clients deja sur l'app avant le coaching</h3>
+          <p>Certains clients sont <strong>deja presents sur l'application ASEO</strong> avant de prendre le coaching personnalise (ils suivent par exemple un programme gratuit ou l'app standard). Pour eux, le flux d'inscription automatique via lien ne fonctionne pas.</p>
+          <div style="margin-top:10px;padding:10px 14px;background:rgba(245,158,11,.08);border-radius:10px;font-size:12px;color:var(--muted)">
+            <strong style="color:#d97706">Process a suivre :</strong> ces clients doivent etre <strong>ajoutes manuellement au groupe "Coaching Personnalise"</strong>. Les closers doivent en etre informes pour prevenir le coach, qui fait l'ajout manuellement depuis le back-office ASEO.
           </div>
         </div>
       </div>
