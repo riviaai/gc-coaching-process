@@ -342,6 +342,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
   <button class="tab-btn" onclick="showTab('cible')">🎯 Cible &amp; Offre</button>
   <button class="tab-btn" onclick="showTab('ressources')">🔗 Ressources</button>
   <button class="tab-btn" onclick="showTab('organigramme')">👥 Organigramme</button>
+  <button class="tab-btn" onclick="showTab('calls')" style="border-color:rgba(239,68,68,.3);color:#ef4444">📞 Suivi Calls</button>
 </div>
 
 <!-- BOARDS WRAPPER -->
@@ -681,7 +682,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
           <div class="arr">→</div>
           <div class="node c1"><span class="node-ico">✅</span><div class="node-t">Confirme réception email</div><div class="node-d">Mail reçu ? Lien d'inscription visible ?</div></div>
           <div class="arr">→</div>
-          <div class="node c1"><span class="node-ico">➕</span><div class="node-t">Ajoute le coach dans le groupe</div><div class="node-d">Une fois le paiement confirmé</div></div>
+          <div class="node c1"><span class="node-ico">➕</span><div class="node-t">Ajoute le coach dans le groupe</div><div class="node-d">Une fois le paiement confirmé — puis le closer sort du groupe</div></div>
         </div>
       </div>
       <div class="lane client">
@@ -691,11 +692,11 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
           <div class="arr">→</div>
           <div class="node c2"><span class="node-ico">📧</span><div class="node-t">Reçoit l'email auto</div><div class="node-d">Récap commande et lien d'inscription à l'application</div></div>
           <div class="arr">→</div>
-          <div class="node c2"><span class="node-ico">📲</span><div class="node-t">S'inscrit sur l'application</div><div class="node-d">Via le lien reçu dans l'email (en premier)</div></div>
+          <div class="node c2"><span class="node-ico">📲</span><div class="node-t">S'inscrit sur l'application</div><div class="node-d">Via le lien reçu par mail + envoyé dans le groupe WhatsApp par Ruben</div></div>
           <div class="arr">→</div>
-          <div class="node c2"><span class="node-ico">📝</span><div class="node-t">Remplit le questionnaire</div><div class="node-d">Dans l'app : objectifs, santé, matériel, photos, alimentation</div></div>
+          <div class="node c2"><span class="node-ico">📝</span><div class="node-t">Remplit le questionnaire</div><div class="node-d">Dans l'app : objectifs, santé, matériel, photos, alimentation (~50 questions)</div></div>
           <div class="arr">→</div>
-          <div class="node c2"><span class="node-ico">💬</span><div class="node-t">Le dit dans le groupe WhatsApp</div><div class="node-d">Annonce que son inscription est confirmée</div></div>
+          <div class="node c2"><span class="node-ico">💬</span><div class="node-t">Confirme dans le groupe WhatsApp</div><div class="node-d">Obligatoire : envoie un message pour confirmer que le questionnaire est rempli</div></div>
           <div class="arr">→</div>
           <div class="bub teal"><span class="bub-lbl">Groupe WhatsApp</span><div class="msg in">Je suis inscrit sur l'app 🔥</div></div>
         </div>
@@ -709,6 +710,10 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
           <div class="bub purple"><span class="bub-lbl">Message de bienvenue</span><div class="msg sys">Bienvenue (prénom) 💪 Inscris-toi sur l'app via le lien reçu par mail, puis remplis le questionnaire. Ton programme personnalisé (sport + diète) sera prêt d'ici ton jour de démarrage attribué 🔥</div></div>
           <div class="arr">→</div>
           <div class="node c3"><span class="node-ico">📋</span><div class="node-t">Reçoit le questionnaire rempli</div><div class="node-d">Notification app — toutes les infos pour créer le programme</div></div>
+          <div class="arr">→</div>
+          <div class="node c3"><span class="node-ico">⭐</span><div class="node-t">Active le premium client</div><div class="node-d">Fiche client → 1 clic → mode premium activé (bilans illimités + charges sauvegardées)</div><span class="pill purple">Obligatoire dès l'onboarding</span></div>
+          <div class="arr">→</div>
+          <div class="node c3"><span class="node-ico">🔗</span><div class="node-t">Attribue le client à son profil</div><div class="node-d">Back-office Azeo : onglet client → action → éditer → attribuer au coach (3 clics)</div></div>
         </div>
       </div>
     </div>
@@ -739,6 +744,8 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
           <div class="node c3"><span class="node-ico">🏋️</span><div class="node-t">Crée le programme</div><div class="node-d">Adapté au matériel, au niveau et aux objectifs</div><span class="pill purple">Avant le jour de démarrage attribué</span></div>
           <div class="arr">→</div>
           <div class="node c3"><span class="node-ico">📤</span><div class="node-t">Envoie la veille du jour attribué</div><div class="node-d">Programme, nutrition et FitYou. Clients répartis du lundi au vendredi</div></div>
+          <div class="arr">→</div>
+          <div class="node c3"><span class="node-ico">📅</span><div class="node-t">Note les dates clés</div><div class="node-d">Date de fin marquée en 2 endroits : plan alimentaire ET fiche client Azeo</div><span class="pill purple">Double vérification obligatoire</span></div>
           <div class="arr">→</div>
           <div class="bub purple"><span class="bub-lbl">Message WhatsApp</span><div class="msg sys">Ton programme est dispo dans l'app 🎯 Lis-le entièrement. Regroupe toutes tes questions en une seule fois avant de les poser 💪</div></div>
         </div>
@@ -784,7 +791,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
     <div class="phase-head">
       <div class="phase-num">!</div>
       <span class="phase-title">Client inactif</span>
-      <span class="phase-sub">Procédure si absence de bilan ou de réponse</span>
+      <span class="phase-sub">Déclencheur : bilan non reçu ET pas de réponse aux messages (les deux conditions)</span>
     </div>
     <div class="phase-body">
       <div class="lane coach">
@@ -800,6 +807,29 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
           <div class="arr">→</div>
           <div class="bub purple"><span class="bub-lbl">Si le client refait surface</span><div class="msg sys">Le coaching reprend normalement jusqu'à son terme. Les jours et semaines sans réponse restent perdus pour le client.</div></div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORCE MAJEURE -->
+  <div class="phase-block" style="border:1.5px solid rgba(99,102,241,.3);margin-bottom:10px;border-radius:16px;overflow:hidden">
+    <div class="phase-head" style="background:#f5f5ff;border-color:rgba(99,102,241,.3);border-bottom:1px solid rgba(99,102,241,.2)">
+      <div class="phase-num" style="background:rgba(99,102,241,.1);color:#6366f1;border:1.5px solid rgba(99,102,241,.3)">⚡</div>
+      <span class="phase-title" style="color:#6366f1">Cas de force majeure — Pause acceptée</span>
+      <span class="phase-sub">Uniquement sur justificatif officiel — le paiement ne change pas</span>
+    </div>
+    <div class="phase-body" style="background:#f5f5ff;display:flex;gap:16px;flex-wrap:wrap">
+      <div style="flex:1;min-width:200px;background:#fff;border-radius:10px;padding:14px;border:1px solid rgba(99,102,241,.2)">
+        <div style="font-size:10px;font-weight:800;letter-spacing:1px;color:#6366f1;margin-bottom:8px">CAS ACCEPTÉS</div>
+        <div style="font-size:12px;color:#333;line-height:1.8">🏥 Hospitalisation<br>⚰️ Décès dans la famille proche<br>🤰 Grossesse (report de la durée restante)<br>🦽 Accident avec arrêt médical</div>
+      </div>
+      <div style="flex:1;min-width:200px;background:#fff;border-radius:10px;padding:14px;border:1px solid rgba(99,102,241,.2)">
+        <div style="font-size:10px;font-weight:800;letter-spacing:1px;color:#6366f1;margin-bottom:8px">PROCÉDURE</div>
+        <div style="font-size:12px;color:#333;line-height:1.8">📄 Justificatif obligatoire (document médical, hôpital, etc.)<br>📅 Coach marque une nouvelle date de fin dans Azeo + plan alimentaire<br>💬 Information via WhatsApp au groupe coaching</div>
+      </div>
+      <div style="flex:1;min-width:200px;background:#fff;border-radius:10px;padding:14px;border:1.5px solid rgba(239,68,68,.2)">
+        <div style="font-size:10px;font-weight:800;letter-spacing:1px;color:#ef4444;margin-bottom:8px">CAS NON ACCEPTÉS</div>
+        <div style="font-size:12px;color:#333;line-height:1.8">❌ Vacances / voyages<br>❌ Manque de temps ou de motivation<br>❌ Problèmes financiers<br>❌ Tout autre motif sans justificatif</div>
       </div>
     </div>
   </div>
@@ -1177,6 +1207,187 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
     </div>
   </div>
 </div><!-- /tab-organigramme -->
+
+<!-- ═══ TAB 6 : SUIVI CALLS ═══ -->
+<div class="board" id="tab-calls">
+<style>
+.calls-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+.calls-header h2{font-size:18px;font-weight:900;color:var(--text)}
+.calls-header p{font-size:12px;color:var(--muted);margin-top:3px}
+.call-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:20px}
+.call-meta{display:flex;align-items:center;gap:16px;padding:14px 20px;background:#f8f9fb;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:10px}
+.call-date{font-size:13px;font-weight:800;color:var(--text)}
+.call-participants{display:flex;gap:6px;flex-wrap:wrap}
+.call-chip{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.5px}
+.chip-steven{background:rgba(245,158,11,.12);color:var(--closer);border:1px solid rgba(245,158,11,.3)}
+.chip-greg{background:rgba(61,191,184,.1);color:var(--teal);border:1px solid rgba(61,191,184,.3)}
+.chip-ruben{background:rgba(124,58,237,.1);color:var(--coach);border:1px solid rgba(124,58,237,.3)}
+.chip-lucas{background:rgba(239,68,68,.1);color:#ef4444;border:1px solid rgba(239,68,68,.25)}
+.chip-quentin{background:rgba(34,197,94,.1);color:#16a34a;border:1px solid rgba(34,197,94,.3)}
+.call-body{display:grid;grid-template-columns:1fr 320px;gap:0}
+@media(max-width:768px){.call-body{grid-template-columns:1fr}}
+.call-section{padding:20px}
+.call-section + .call-section{border-left:1px solid var(--border)}
+@media(max-width:768px){.call-section + .call-section{border-left:none;border-top:1px solid var(--border)}}
+.call-section-title{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--soft);margin-bottom:14px;display:flex;align-items:center;gap:6px}
+.call-section-title span{width:18px;height:18px;background:var(--border);border-radius:4px;display:inline-flex;align-items:center;justify-content:center;font-size:10px}
+
+/* RÉSUMÉ */
+.call-topic{display:flex;gap:10px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.call-topic:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.call-topic-ico{font-size:16px;flex-shrink:0;margin-top:1px}
+.call-topic-text{font-size:12.5px;color:var(--muted);line-height:1.6}
+.call-topic-text strong{color:var(--text)}
+
+/* ACTIONS */
+.action-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;padding:8px 10px;border-radius:8px;border:1px solid transparent}
+.action-row:last-child{margin-bottom:0}
+.action-row.done{background:#f0fdf4;border-color:rgba(34,197,94,.2)}
+.action-row.todo{background:#fffbeb;border-color:rgba(245,158,11,.2)}
+.action-row.blocker{background:#fef2f2;border-color:rgba(239,68,68,.2)}
+.action-status{font-size:12px;flex-shrink:0;margin-top:1px}
+.action-owner{font-size:9px;font-weight:800;padding:2px 7px;border-radius:10px;flex-shrink:0;letter-spacing:.5px;margin-top:2px}
+.owner-steven{background:rgba(245,158,11,.15);color:var(--closer)}
+.owner-greg{background:rgba(61,191,184,.12);color:var(--teal)}
+.owner-ruben{background:rgba(124,58,237,.12);color:var(--coach)}
+.owner-lucas{background:rgba(239,68,68,.1);color:#ef4444}
+.action-text{font-size:12px;color:var(--text);line-height:1.5;flex:1}
+</style>
+
+<div class="calls-header">
+  <div>
+    <h2>📞 Suivi Calls</h2>
+    <p>Historique des calls d'équipe — transcripts et points à faire</p>
+  </div>
+</div>
+
+<!-- CALL 1 : 20 AVRIL 2026 -->
+<div class="call-card">
+  <div class="call-meta">
+    <div>
+      <div class="call-date">Lundi 20 avril 2026</div>
+      <div style="font-size:11px;color:var(--soft);margin-top:2px">Réunion de lancement — Process & onboarding GC Coaching</div>
+    </div>
+    <div class="call-participants">
+      <span class="call-chip chip-steven">Steven</span>
+      <span class="call-chip chip-greg">Greg</span>
+      <span class="call-chip chip-ruben">Ruben</span>
+      <span class="call-chip chip-lucas">Lucas</span>
+      <span class="call-chip chip-quentin">Quentin (30 min)</span>
+    </div>
+  </div>
+
+  <div class="call-body">
+    <!-- RÉSUMÉ -->
+    <div class="call-section">
+      <div class="call-section-title"><span>📋</span> Décisions & points abordés</div>
+
+      <div class="call-topic">
+        <div class="call-topic-ico">📝</div>
+        <div class="call-topic-text"><strong>Questionnaire d'onboarding</strong> — actuellement bloqué à 39 questions sur ASEO. Greg en veut 60-70. Lucas va pousser ASEO pour monter à 50+ questions.</div>
+      </div>
+      <div class="call-topic">
+        <div class="call-topic-ico">💬</div>
+        <div class="call-topic-text"><strong>Groupe WhatsApp</strong> — Ruben crée le groupe avant le call. Il close seul (Greg peut rejoindre sur les premiers calls si besoin). Après close, Ruben ajoute le coach puis sort du groupe.</div>
+      </div>
+      <div class="call-topic">
+        <div class="call-topic-ico">📲</div>
+        <div class="call-topic-text"><strong>Lien application</strong> — Ruben envoie le lien FitYou dans le groupe WhatsApp après paiement (en doublon du mail auto, pour éviter les spams).</div>
+      </div>
+      <div class="call-topic">
+        <div class="call-topic-ico">✅</div>
+        <div class="call-topic-text"><strong>Questionnaire rempli</strong> — Le client doit confirmer dans le groupe WhatsApp qu'il a rempli le questionnaire (note à ajouter en bas du formulaire).</div>
+      </div>
+      <div class="call-topic">
+        <div class="call-topic-ico">⭐</div>
+        <div class="call-topic-text"><strong>Premium FitYou</strong> — Coach active manuellement le premium pour chaque client : fiche client → 1 clic. Bilans illimités + charges sauvegardées semaine après semaine.</div>
+      </div>
+      <div class="call-topic">
+        <div class="call-topic-ico">📅</div>
+        <div class="call-topic-text"><strong>Date de fin</strong> — À marquer en 2 endroits obligatoires : plan alimentaire ET fiche client Azeo. Les dates de bilan aussi dans la section "Notes" de l'app (visibles ou cachées au client).</div>
+      </div>
+      <div class="call-topic">
+        <div class="call-topic-ico">⚡</div>
+        <div class="call-topic-text"><strong>Pause force majeure</strong> — Acceptée sur justificatif uniquement : hospitalisation, décès, grossesse, accident. Les vacances et problèmes financiers ne sont pas des cas valables.</div>
+      </div>
+      <div class="call-topic">
+        <div class="call-topic-ico">💰</div>
+        <div class="call-topic-text"><strong>Downsell</strong> — Si Ruben ne peut pas closer à 1 497€/1 997€, downsell possible à 397€ (Cut Academy, Muscle Academy, House Academy — programmes génériques).</div>
+      </div>
+      <div class="call-topic">
+        <div class="call-topic-ico">📧</div>
+        <div class="call-topic-text"><strong>Email Ruben</strong> — Créer ruben.chiponi@gmail.com (ou similaire) pour avoir une adresse pro dédiée à l'accompagnement GC.</div>
+      </div>
+      <div class="call-topic">
+        <div class="call-topic-ico">🤖</div>
+        <div class="call-topic-text"><strong>IA Setter Meta</strong> — Steven attend la release Meta (dans ~3 jours). Objectif : remplacer le setter humain par l'IA pour le setting Instagram.</div>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="call-section">
+      <div class="call-section-title"><span>✅</span> Points à faire</div>
+
+      <div class="action-row todo">
+        <div class="action-status">🟡</div>
+        <div class="action-text">Pousser ASEO pour augmenter la limite de questions à 50-60</div>
+        <div class="action-owner owner-lucas">Lucas</div>
+      </div>
+      <div class="action-row todo">
+        <div class="action-status">🟡</div>
+        <div class="action-text">Créer ruben.chiponi@gmail.com pour les calls et l'agenda</div>
+        <div class="action-owner owner-ruben">Ruben</div>
+      </div>
+      <div class="action-row todo">
+        <div class="action-status">🟡</div>
+        <div class="action-text">Créer un compte FitYou + demander accès premium + programmes à Greg</div>
+        <div class="action-owner owner-ruben">Ruben</div>
+      </div>
+      <div class="action-row todo">
+        <div class="action-status">🟡</div>
+        <div class="action-text">Vérifier accès Manichat + revoir le message automatique "GO" avec Ruben</div>
+        <div class="action-owner owner-steven">Steven</div>
+      </div>
+      <div class="action-row todo">
+        <div class="action-status">🟡</div>
+        <div class="action-text">Faire vidéo tuto "comment prendre ses mensurations" (avec sa femme)</div>
+        <div class="action-owner owner-greg">Greg</div>
+      </div>
+      <div class="action-row todo">
+        <div class="action-status">🟡</div>
+        <div class="action-text">Faire vidéo tuto "comment faire les bilans" sur FitYou</div>
+        <div class="action-owner owner-greg">Greg</div>
+      </div>
+      <div class="action-row todo">
+        <div class="action-status">🟡</div>
+        <div class="action-text">Ajouter les 3 vidéos tutos (programme, mensurations, bilans) en bas de l'accueil FitYou</div>
+        <div class="action-owner owner-greg">Greg</div>
+      </div>
+      <div class="action-row todo">
+        <div class="action-status">🟡</div>
+        <div class="action-text">Modifier les prix des programmes en ligne (Cut Academy, Muscle Academy, House Academy)</div>
+        <div class="action-owner owner-greg">Greg</div>
+      </div>
+      <div class="action-row todo">
+        <div class="action-status">🟡</div>
+        <div class="action-text">Acheter une 2e SIM/e-SIM pour WhatsApp Business dédié coaching</div>
+        <div class="action-owner owner-greg">Greg</div>
+      </div>
+      <div class="action-row todo">
+        <div class="action-status">🟡</div>
+        <div class="action-text">Vérifier si l'activation premium peut être automatisée sur le lien de paiement</div>
+        <div class="action-owner owner-lucas">Lucas</div>
+      </div>
+      <div class="action-row done">
+        <div class="action-status">✅</div>
+        <div class="action-text">Process détaillé mis à jour sur ce dashboard (force majeure, premium, inactif)</div>
+        <div class="action-owner owner-steven">Steven</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /tab-calls -->
 
 </div><!-- /boards-wrapper -->
 </div><!-- /app -->
