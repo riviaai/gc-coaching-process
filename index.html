@@ -342,7 +342,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
   <button class="tab-btn" onclick="showTab('cible')">🎯 Cible &amp; Offre</button>
   <button class="tab-btn" onclick="showTab('ressources')">🔗 Ressources</button>
   <button class="tab-btn" onclick="showTab('organigramme')">👥 Organigramme</button>
-  <button class="tab-btn" onclick="showTab('calls')" style="border-color:rgba(239,68,68,.3);color:#ef4444">📞 Suivi Calls</button>
+  <button class="tab-btn" onclick="showTab('calls')">📞 Suivi Calls</button>
 </div>
 
 <!-- BOARDS WRAPPER -->
@@ -1203,6 +1203,16 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
             <div class="org-role" style="color:#7C3AED;background:rgba(124,58,237,.08)">Monteur</div>
           </div>
         </div>
+
+        <!-- LUCAS -->
+        <div class="org-branch">
+          <div class="org-branch-line"></div>
+          <div class="org-card">
+            <div class="org-avatar" style="background:linear-gradient(135deg,#0ea5e9,#0284c7)">L</div>
+            <div class="org-name">Lucas</div>
+            <div class="org-role" style="color:#0284c7;background:rgba(14,165,233,.08)">App Azeo / FitYou</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1214,8 +1224,11 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
 .calls-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
 .calls-header h2{font-size:18px;font-weight:900;color:var(--text)}
 .calls-header p{font-size:12px;color:var(--muted);margin-top:3px}
-.call-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:20px}
-.call-meta{display:flex;align-items:center;gap:16px;padding:14px 20px;background:#f8f9fb;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:10px}
+.call-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:16px}
+.call-meta{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:#f8f9fb;cursor:pointer;user-select:none;transition:.15s}
+.call-meta:hover{background:#f1f3f6}
+.call-meta-left{display:flex;align-items:center;gap:16px;flex-wrap:wrap;gap:10px}
+.call-meta-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .call-date{font-size:13px;font-weight:800;color:var(--text)}
 .call-participants{display:flex;gap:6px;flex-wrap:wrap}
 .call-chip{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.5px}
@@ -1224,27 +1237,26 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
 .chip-ruben{background:rgba(124,58,237,.1);color:var(--coach);border:1px solid rgba(124,58,237,.3)}
 .chip-lucas{background:rgba(239,68,68,.1);color:#ef4444;border:1px solid rgba(239,68,68,.25)}
 .chip-quentin{background:rgba(34,197,94,.1);color:#16a34a;border:1px solid rgba(34,197,94,.3)}
-.call-body{display:grid;grid-template-columns:1fr 320px;gap:0}
+.call-toggle{width:28px;height:28px;border-radius:50%;background:#e8eaed;display:flex;align-items:center;justify-content:center;font-size:12px;color:#666;transition:.2s;flex-shrink:0}
+.call-card.open .call-toggle{transform:rotate(180deg)}
+.call-transcript-btn{font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;background:#fff;border:1px solid var(--border2);color:var(--muted);cursor:pointer;transition:.15s;letter-spacing:.3px}
+.call-transcript-btn:hover{border-color:var(--teal);color:var(--teal)}
+.call-body{display:none;grid-template-columns:1fr 320px}
+.call-card.open .call-body{display:grid}
 @media(max-width:768px){.call-body{grid-template-columns:1fr}}
-.call-section{padding:20px}
+.call-section{padding:20px;border-top:1px solid var(--border)}
 .call-section + .call-section{border-left:1px solid var(--border)}
 @media(max-width:768px){.call-section + .call-section{border-left:none;border-top:1px solid var(--border)}}
 .call-section-title{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--soft);margin-bottom:14px;display:flex;align-items:center;gap:6px}
-.call-section-title span{width:18px;height:18px;background:var(--border);border-radius:4px;display:inline-flex;align-items:center;justify-content:center;font-size:10px}
-
-/* RÉSUMÉ */
 .call-topic{display:flex;gap:10px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border)}
 .call-topic:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
 .call-topic-ico{font-size:16px;flex-shrink:0;margin-top:1px}
 .call-topic-text{font-size:12.5px;color:var(--muted);line-height:1.6}
 .call-topic-text strong{color:var(--text)}
-
-/* ACTIONS */
 .action-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;padding:8px 10px;border-radius:8px;border:1px solid transparent}
 .action-row:last-child{margin-bottom:0}
 .action-row.done{background:#f0fdf4;border-color:rgba(34,197,94,.2)}
 .action-row.todo{background:#fffbeb;border-color:rgba(245,158,11,.2)}
-.action-row.blocker{background:#fef2f2;border-color:rgba(239,68,68,.2)}
 .action-status{font-size:12px;flex-shrink:0;margin-top:1px}
 .action-owner{font-size:9px;font-weight:800;padding:2px 7px;border-radius:10px;flex-shrink:0;letter-spacing:.5px;margin-top:2px}
 .owner-steven{background:rgba(245,158,11,.15);color:var(--closer)}
@@ -1252,35 +1264,61 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
 .owner-ruben{background:rgba(124,58,237,.12);color:var(--coach)}
 .owner-lucas{background:rgba(239,68,68,.1);color:#ef4444}
 .action-text{font-size:12px;color:var(--text);line-height:1.5;flex:1}
+/* TRANSCRIPT MODAL */
+.transcript-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:500;align-items:center;justify-content:center;padding:20px}
+.transcript-overlay.open{display:flex}
+.transcript-box{background:#fff;border-radius:16px;width:100%;max-width:720px;max-height:80vh;display:flex;flex-direction:column;overflow:hidden}
+.transcript-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--border);flex-shrink:0}
+.transcript-bar strong{font-size:13px;font-weight:800}
+.transcript-close{font-size:11px;font-weight:700;color:var(--muted);cursor:pointer;padding:5px 12px;border:1px solid var(--border);border-radius:6px;background:#f8f9fb}
+.transcript-close:hover{background:#e8eaed}
+.transcript-content{padding:20px;overflow-y:auto;font-size:12px;line-height:1.9;color:#333;white-space:pre-wrap;font-family:inherit}
 </style>
 
 <div class="calls-header">
   <div>
     <h2>📞 Suivi Calls</h2>
-    <p>Historique des calls d'équipe — transcripts et points à faire</p>
+    <p>Historique des calls d'équipe — cliquez sur une carte pour l'ouvrir</p>
+  </div>
+</div>
+
+<!-- TRANSCRIPT MODAL -->
+<div class="transcript-overlay" id="transcriptOverlay" onclick="if(event.target===this)closeTranscript()">
+  <div class="transcript-box">
+    <div class="transcript-bar">
+      <strong id="transcriptTitle">Transcript</strong>
+      <div class="transcript-close" onclick="closeTranscript()">✕ Fermer</div>
+    </div>
+    <div class="transcript-content" id="transcriptContent"></div>
   </div>
 </div>
 
 <!-- CALL 1 : 20 AVRIL 2026 -->
-<div class="call-card">
-  <div class="call-meta">
-    <div>
-      <div class="call-date">Lundi 20 avril 2026</div>
-      <div style="font-size:11px;color:var(--soft);margin-top:2px">Réunion de lancement — Process & onboarding GC Coaching</div>
+<div class="call-card" id="call-1">
+  <div class="call-meta" onclick="toggleCall('call-1')">
+    <div class="call-meta-left">
+      <div>
+        <div class="call-date">Lundi 20 avril 2026</div>
+        <div style="font-size:11px;color:var(--soft);margin-top:2px">Réunion de lancement — Process & onboarding GC Coaching</div>
+      </div>
+      <div class="call-participants">
+        <span class="call-chip chip-steven">Steven</span>
+        <span class="call-chip chip-greg">Greg</span>
+        <span class="call-chip chip-ruben">Ruben</span>
+        <span class="call-chip chip-lucas">Lucas</span>
+        <span class="call-chip chip-quentin">Quentin (30 min)</span>
+      </div>
     </div>
-    <div class="call-participants">
-      <span class="call-chip chip-steven">Steven</span>
-      <span class="call-chip chip-greg">Greg</span>
-      <span class="call-chip chip-ruben">Ruben</span>
-      <span class="call-chip chip-lucas">Lucas</span>
-      <span class="call-chip chip-quentin">Quentin (30 min)</span>
+    <div class="call-meta-right">
+      <div class="call-transcript-btn" onclick="event.stopPropagation();openTranscript('call-1')">📄 Transcript</div>
+      <div class="call-toggle">▼</div>
     </div>
   </div>
 
   <div class="call-body">
     <!-- RÉSUMÉ -->
     <div class="call-section">
-      <div class="call-section-title"><span>📋</span> Décisions & points abordés</div>
+      <div class="call-section-title">📋 Décisions & points abordés</div>
 
       <div class="call-topic">
         <div class="call-topic-ico">📝</div>
@@ -1316,11 +1354,11 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
       </div>
       <div class="call-topic">
         <div class="call-topic-ico">📧</div>
-        <div class="call-topic-text"><strong>Email Ruben</strong> — Créer ruben.chiponi@gmail.com (ou similaire) pour avoir une adresse pro dédiée à l'accompagnement GC.</div>
+        <div class="call-topic-text"><strong>Email Ruben</strong> — ruben.teamchipponi@gmail.com — créé ✅</div>
       </div>
       <div class="call-topic">
         <div class="call-topic-ico">🤖</div>
-        <div class="call-topic-text"><strong>IA Setter Meta</strong> — Steven attend la release Meta (dans ~3 jours). Objectif : remplacer le setter humain par l'IA pour le setting Instagram.</div>
+        <div class="call-topic-text"><strong>IA Setter Meta</strong> — En attente du retour de Meta pour valider l'accès. Objectif : remplacer le setter humain par l'IA pour le setting Instagram.</div>
       </div>
     </div>
 
@@ -1333,9 +1371,9 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
         <div class="action-text">Pousser ASEO pour augmenter la limite de questions à 50-60</div>
         <div class="action-owner owner-lucas">Lucas</div>
       </div>
-      <div class="action-row todo">
-        <div class="action-status">🟡</div>
-        <div class="action-text">Créer ruben.chiponi@gmail.com pour les calls et l'agenda</div>
+      <div class="action-row done">
+        <div class="action-status">✅</div>
+        <div class="action-text">Créer ruben.teamchipponi@gmail.com pour les calls et l'agenda</div>
         <div class="action-owner owner-ruben">Ruben</div>
       </div>
       <div class="action-row todo">
@@ -1345,22 +1383,12 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
       </div>
       <div class="action-row todo">
         <div class="action-status">🟡</div>
-        <div class="action-text">Vérifier accès Manichat + revoir le message automatique "GO" avec Ruben</div>
-        <div class="action-owner owner-steven">Steven</div>
-      </div>
-      <div class="action-row todo">
-        <div class="action-status">🟡</div>
-        <div class="action-text">Faire vidéo tuto "comment prendre ses mensurations" (avec sa femme)</div>
-        <div class="action-owner owner-greg">Greg</div>
-      </div>
-      <div class="action-row todo">
-        <div class="action-status">🟡</div>
         <div class="action-text">Faire vidéo tuto "comment faire les bilans" sur FitYou</div>
         <div class="action-owner owner-greg">Greg</div>
       </div>
       <div class="action-row todo">
         <div class="action-status">🟡</div>
-        <div class="action-text">Ajouter les 3 vidéos tutos (programme, mensurations, bilans) en bas de l'accueil FitYou</div>
+        <div class="action-text">Ajouter les vidéos tutos (programme + bilans) en bas de l'accueil FitYou</div>
         <div class="action-owner owner-greg">Greg</div>
       </div>
       <div class="action-row todo">
@@ -1377,6 +1405,11 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
         <div class="action-status">🟡</div>
         <div class="action-text">Vérifier si l'activation premium peut être automatisée sur le lien de paiement</div>
         <div class="action-owner owner-lucas">Lucas</div>
+      </div>
+      <div class="action-row done">
+        <div class="action-status">✅</div>
+        <div class="action-text">Email ruben.teamchipponi@gmail.com créé ✓</div>
+        <div class="action-owner owner-ruben">Ruben</div>
       </div>
       <div class="action-row done">
         <div class="action-status">✅</div>
@@ -1429,7 +1462,75 @@ function handleOverlayClick(e) {
   if (e.target === document.getElementById('modalOverlay')) closeModal();
 }
 
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeTranscript(); } });
+
+function toggleCall(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+const TRANSCRIPTS = {
+  'call-1': `CALL DU LUNDI 20 AVRIL 2026
+Participants : Steven, Greg, Ruben, Lucas, Quentin (30 min)
+Sujet : Réunion de lancement — Process & onboarding GC Coaching
+
+---
+
+[Quentin] Valider les process d'un point de vue coaching, le suivi attendu.
+
+[Steven] Le parcours client est documenté sur le dashboard. Les liens de paiement sont tous présents avec l'automatisation mail. Il faudra que Ruben envoie aussi le lien de l'application dans le groupe WhatsApp en doublon du mail.
+
+[Greg] Le formulaire : j'ai au moins 70 questions, je suis bloqué à 39 sur l'application.
+
+[Lucas] Je peux pousser jusqu'à 50-55. On va tester l'impact sur les performances mobile.
+
+[Greg] Ce serait bien. C'est pour avoir des infos sur les intolérances alimentaires, allergies, organisation, matériel disponible — tout ce qui permet du vrai personnalisé.
+
+[Steven] Le closer (Ruben) crée le groupe WhatsApp avant le call. Il close seul. Une fois le paiement confirmé, il ajoute le coach puis sort du groupe.
+
+[Ruben] Le client doit confirmer dans le groupe qu'il a rempli le questionnaire ?
+
+[Steven] Oui. À noter en bas du formulaire aussi. Le coach reçoit une notif app mais c'est plus sûr d'avoir la confirmation WhatsApp.
+
+[Lucas] Le coach attribue manuellement le client à son profil depuis le back-office. 3 clics max.
+
+[Steven] Il faut aussi qu'il active le premium pour chaque client — 1 clic sur la fiche client. Bilans illimités + charges sauvegardées semaine à semaine.
+
+[Lucas] Je vais voir si on peut l'automatiser directement au paiement.
+
+[Greg] La date de fin de coaching, je vais la marquer sur le plan alimentaire et sur la fiche client dans Azeo. Les deux endroits.
+
+[Ruben] Question sur les pauses — si quelqu'un est en vacances l'été, on accepte ?
+
+[Steven] Non. Les vacances ne sont pas un cas valable. On accepte uniquement les cas de force majeure : hospitalisation, décès, grossesse, accident — avec justificatif officiel.
+
+[Greg] Le coach adapte le programme si le client est en déplacement, hôtel avec salle, etc. C'est son rôle.
+
+[Steven] Pour les clients inactifs : le déclencheur c'est pas de bilan ET pas de réponse aux messages. Les deux conditions.
+
+[Greg] Je vais faire des vidéos tutos intégrées dans l'app : comment planifier son programme, comment faire les bilans. Ma femme fait la partie mesures.
+
+[Steven] Ruben, pour le downsell : si tu n'arrives pas à closer à 1 497/1 997€, tu peux proposer les programmes génériques à 397€ (Cut Academy, Muscle Academy, House Academy).
+
+[Ruben] Pour l'email, j'aurais besoin d'une adresse dédiée. Genre ruben.teamchipponi@gmail.com.
+
+[Steven] On fait un Gmail simple. C'est suffisant au départ.
+
+[Greg] Pour le setter IA Meta : j'attends encore le retour de Meta pour l'accès. Ça devrait arriver dans les prochains jours.
+
+[Quentin] Pour moi, le process est clair. On va affiner avec les premiers clients.
+
+[Steven] Exactement. On part sur les premiers clients, on voit les problèmes, on corrige, et on ouvre progressivement.`
+};
+
+function openTranscript(callId) {
+  document.getElementById('transcriptTitle').textContent = 'Transcript — ' + document.querySelector('#' + callId + ' .call-date').textContent;
+  document.getElementById('transcriptContent').textContent = TRANSCRIPTS[callId] || 'Transcript non disponible.';
+  document.getElementById('transcriptOverlay').classList.add('open');
+}
+
+function closeTranscript() {
+  document.getElementById('transcriptOverlay').classList.remove('open');
+}
 </script>
 </body>
 </html>
