@@ -406,6 +406,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
 <div class="tabs-bar">
   <button class="tab-btn active" onclick="showTab('parcours')">🗺️ Parcours Client</button>
   <button class="tab-btn" onclick="showTab('process')">⚙️ Process détaillé</button>
+  <button class="tab-btn" onclick="showTab('coaching-process')">📋 Process coaching</button>
   <button class="tab-btn" onclick="showTab('liens')">💳 Liens de paiement</button>
   <button class="tab-btn" onclick="showTab('cible')">🎯 Cible &amp; Offre</button>
   <button class="tab-btn" onclick="showTab('ressources')">🔗 Ressources</button>
@@ -919,6 +920,239 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
   </div>
 
 </div><!-- /tab-process -->
+
+<!-- ═══ TAB : PROCESS COACHING ═══ -->
+<div class="board" id="tab-coaching-process">
+  <div class="cible-wrap">
+
+    <!-- HEADER -->
+    <div style="text-align:center;margin-bottom:24px">
+      <h2 style="font-size:20px;font-weight:900;color:var(--text)">Processus de coaching en ligne</h2>
+      <p style="font-size:12px;color:var(--muted);margin-top:4px">Version complète — Coaching 3 mois / 6 mois</p>
+    </div>
+
+    <!-- ÉTAPES 1-5 : ENTRÉE CLIENT -->
+    <div class="section-card">
+      <div class="section-head green"><h3>Phase 1 — Paiement, formulaire et premier contact</h3></div>
+      <div class="section-body">
+
+        <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:16px">
+          <div style="width:28px;height:28px;background:var(--green);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">1</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;margin-bottom:4px">Paiement et entrée client</div>
+            <p style="font-size:12px;color:var(--muted);line-height:1.6">Le client effectue le paiement. Il reçoit immédiatement un email automatique contenant le formulaire de renseignement à compléter.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:16px">
+          <div style="width:28px;height:28px;background:var(--green);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">2</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;margin-bottom:4px">Formulaire de renseignement</div>
+            <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:8px">Le client remplit un formulaire complet :</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+              <div style="font-size:11px;color:var(--muted);padding:4px 8px;background:var(--green-d);border-radius:6px">Informations personnelles</div>
+              <div style="font-size:11px;color:var(--muted);padding:4px 8px;background:var(--green-d);border-radius:6px">Objectifs</div>
+              <div style="font-size:11px;color:var(--muted);padding:4px 8px;background:var(--green-d);border-radius:6px">Problèmes de santé / blessures</div>
+              <div style="font-size:11px;color:var(--muted);padding:4px 8px;background:var(--green-d);border-radius:6px">Niveau d'entraînement</div>
+              <div style="font-size:11px;color:var(--muted);padding:4px 8px;background:var(--green-d);border-radius:6px">Préférences alimentaires</div>
+              <div style="font-size:11px;color:var(--muted);padding:4px 8px;background:var(--green-d);border-radius:6px">Matériel disponible (cases à cocher)</div>
+              <div style="font-size:11px;color:var(--muted);padding:4px 8px;background:var(--green-d);border-radius:6px">Photos : face / profil / dos</div>
+              <div style="font-size:11px;color:var(--muted);padding:4px 8px;background:var(--green-d);border-radius:6px">Numéro de téléphone</div>
+            </div>
+            <p style="font-size:11px;color:var(--green);font-weight:600;margin-top:8px">Le matériel coché permet de créer un programme adapté et personnalisé.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:16px">
+          <div style="width:28px;height:28px;background:var(--green);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">3</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;margin-bottom:4px">Ajout WhatsApp et premier contact</div>
+            <p style="font-size:12px;color:var(--muted);line-height:1.6">Le client est ajouté sur WhatsApp. Message envoyé pour lui demander de créer un compte sur l'application et lui expliquer les prochaines étapes.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:16px">
+          <div style="width:28px;height:28px;background:var(--green);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">4</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;margin-bottom:4px">Délai et création du coaching</div>
+            <p style="font-size:12px;color:var(--muted);line-height:1.6">Délai de création : jusqu'à <strong>72 heures ouvrables</strong>. Tous les programmes sont envoyés le <strong>vendredi</strong> pour un démarrage le <strong>lundi</strong>.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <div style="width:28px;height:28px;background:var(--green);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">5</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;margin-bottom:4px">Envoi des programmes + message WhatsApp</div>
+            <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:8px">Le client reçoit : programme d'entraînement, plan alimentaire, accès premium FitYou.</p>
+            <div style="padding:10px 14px;background:var(--coach-d);border-radius:10px;font-size:12px;color:var(--muted);font-style:italic">
+              <strong style="color:var(--coach)">Message WhatsApp :</strong> « Tiens [Prénom], voici ton programme. Lis-le entièrement, réunis toutes tes questions en une seule fois avant de les poser. Ton jour de bilan sera le [jour], il faudra que tu me fasses tes bilans tous les 15 jours. C'est parti ! 💪 »
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ÉTAPES 6-8 : SUIVI -->
+    <div class="section-card" style="margin-top:16px">
+      <div class="section-head" style="background:var(--coach);"><h3 style="color:#fff">Phase 2 — Démarrage et suivi quotidien</h3></div>
+      <div class="section-body">
+
+        <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:16px">
+          <div style="width:28px;height:28px;background:var(--coach);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">6</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;margin-bottom:4px">Démarrage du coaching</div>
+            <p style="font-size:12px;color:var(--muted);line-height:1.6">Début officiel : <strong>lundi</strong>. Le client commence avec ses programmes.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:16px">
+          <div style="width:28px;height:28px;background:var(--coach);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">7</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;margin-bottom:4px">Suivi WhatsApp</div>
+            <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:8px">Support via WhatsApp, du lundi au vendredi, de 9h à 17h. Délai de réponse : maximum 24h ouvrables.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <div style="padding:8px 10px;background:var(--coach-d);border-radius:8px;font-size:11px;color:var(--muted)">✅ Poser des questions</div>
+              <div style="padding:8px 10px;background:var(--coach-d);border-radius:8px;font-size:11px;color:var(--muted)">📹 Envoyer des vidéos d'exercices</div>
+              <div style="padding:8px 10px;background:var(--coach-d);border-radius:8px;font-size:11px;color:var(--muted)">🔧 Recevoir corrections et conseils</div>
+              <div style="padding:8px 10px;background:rgba(220,38,38,.06);border-radius:8px;font-size:11px;color:#dc2626;font-weight:600">⚠️ Vendredi soir : zéro message en attente</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <div style="width:28px;height:28px;background:var(--coach);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">8</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;margin-bottom:4px">Bilan tous les 15 jours</div>
+            <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:8px">Le client envoie le <strong>samedi</strong> : poids, mensurations, photos (face/profil/dos, à jeun le matin) + retour complet écrit dans la case « observations ».</p>
+            <div style="padding:10px 14px;background:rgba(220,38,38,.04);border:1px solid rgba(220,38,38,.15);border-radius:10px;font-size:11px;color:#dc2626">
+              <strong>Règle stricte :</strong> si le bilan n'est pas envoyé le bon jour, il est reporté au prochain bilan (15 jours après). Aucun traitement anticipé. Traitement le lundi, retour au client le lundi.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ÉTAPES 9-13 : AJUSTEMENTS ET FIN -->
+    <div class="section-card" style="margin-top:16px">
+      <div class="section-head" style="background:var(--teal);"><h3 style="color:#fff">Phase 3 — Ajustements, philosophie et fin</h3></div>
+      <div class="section-body">
+
+        <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:16px">
+          <div style="width:28px;height:28px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">9</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;margin-bottom:4px">Organisation des bilans</div>
+            <p style="font-size:12px;color:var(--muted);line-height:1.6">Un fichier Excel est envoyé au client par mail avec les dates des bilans et les informations à remplir. Le client renvoie le fichier Excel rempli par mail + les photos en pièce jointe.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:16px">
+          <div style="width:28px;height:28px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">10</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;margin-bottom:4px">Ajustements du coaching</div>
+            <p style="font-size:12px;color:var(--muted);line-height:1.6">Suite au bilan : ajustement du plan alimentaire (possible à tout moment) et du programme d'entraînement si nécessaire. Programmes : 4 à 8 semaines, évolution à la fin de chaque phase.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:16px">
+          <div style="width:28px;height:28px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">11</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;margin-bottom:4px">Philosophie des programmes</div>
+            <p style="font-size:12px;color:var(--muted);line-height:1.6">Programmes adaptés au matériel disponible, simples et efficaces, faciles à appliquer. Pas de combinaisons farfelues ou de supersets sur plusieurs machines. Même dans une salle bondée, le client peut suivre son programme sans difficulté.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:16px">
+          <div style="width:28px;height:28px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">12</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;margin-bottom:4px">Renouvellement</div>
+            <p style="font-size:12px;color:var(--muted);line-height:1.6">Sur les derniers mois : demander au client s'il souhaite continuer. Anticiper pour réserver sa place.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <div style="width:28px;height:28px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">13</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;margin-bottom:4px">Fin de coaching</div>
+            <p style="font-size:12px;color:var(--muted);line-height:1.6">Réception du dernier bilan. Analyse complète. Recommandations pour la suite. Proposition de continuer l'accompagnement.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PROCESSUS CLIENT INACTIF -->
+    <div class="section-card" style="margin-top:16px">
+      <div class="section-head" style="background:#dc2626;"><h3 style="color:#fff">Processus client inactif</h3></div>
+      <div class="section-body">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(220,38,38,.03);border-radius:8px">
+            <span style="background:rgba(220,38,38,.08);color:#dc2626;font-size:10px;font-weight:800;padding:3px 10px;border-radius:10px;flex-shrink:0">J+0</span>
+            <span style="font-size:12px;color:var(--muted)">Bilan non envoyé : envoyer un message ou mail le jour même pour demander la raison.</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(220,38,38,.03);border-radius:8px">
+            <span style="background:rgba(220,38,38,.08);color:#dc2626;font-size:10px;font-weight:800;padding:3px 10px;border-radius:10px;flex-shrink:0">J+2</span>
+            <span style="font-size:12px;color:var(--muted)">Pas de réponse : relance par message ou mail.</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(220,38,38,.03);border-radius:8px">
+            <span style="background:rgba(220,38,38,.08);color:#dc2626;font-size:10px;font-weight:800;padding:3px 10px;border-radius:10px;flex-shrink:0">J+15</span>
+            <span style="font-size:12px;color:var(--muted)">Prochain bilan aussi manqué : contacter le jour même pour prendre des nouvelles.</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(220,38,38,.03);border-radius:8px">
+            <span style="background:rgba(220,38,38,.08);color:#dc2626;font-size:10px;font-weight:800;padding:3px 10px;border-radius:10px;flex-shrink:0">J+16</span>
+            <span style="font-size:12px;color:var(--muted)">Toujours rien : on arrête les messages et mails définitivement.</span>
+          </div>
+          <div style="padding:10px 14px;background:var(--coach-d);border-radius:10px;font-size:12px;color:var(--muted);margin-top:4px">
+            <strong style="color:var(--coach)">Si le client revient :</strong> le coaching reprend normalement jusqu'à son terme. Les jours sans réponse restent perdus pour lui.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AXES D'AMÉLIORATION -->
+    <div class="section-card" style="margin-top:16px">
+      <div class="section-head" style="background:var(--closer);"><h3 style="color:#fff">Axes d'amélioration</h3></div>
+      <div class="section-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div style="padding:10px 12px;background:var(--closer-d);border-radius:8px">
+            <div style="font-size:11px;font-weight:800;color:var(--closer);margin-bottom:3px">1. Fluidifier l'entrée client</div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.5">Intégrer formulaire + création compte app directement avec le closer.</div>
+          </div>
+          <div style="padding:10px 12px;background:var(--closer-d);border-radius:8px">
+            <div style="font-size:11px;font-weight:800;color:var(--closer);margin-bottom:3px">2. Améliorer les photos</div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.5">Donner des consignes précises. Insister sur l'importance du avant/après.</div>
+          </div>
+          <div style="padding:10px 12px;background:var(--closer-d);border-radius:8px">
+            <div style="font-size:11px;font-weight:800;color:var(--closer);margin-bottom:3px">3. Témoignages clients</div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.5">Demander des vidéos aux clients satisfaits.</div>
+          </div>
+          <div style="padding:10px 12px;background:var(--closer-d);border-radius:8px">
+            <div style="font-size:11px;font-weight:800;color:var(--closer);margin-bottom:3px">4. Respect des horaires</div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.5">Ne plus répondre hors horaires. Ne plus habituer les clients à ça.</div>
+          </div>
+          <div style="padding:10px 12px;background:var(--closer-d);border-radius:8px">
+            <div style="font-size:11px;font-weight:800;color:var(--closer);margin-bottom:3px">5. Communication</div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.5">Stopper les vocaux. Passer uniquement en messages écrits.</div>
+          </div>
+          <div style="padding:10px 12px;background:var(--closer-d);border-radius:8px">
+            <div style="font-size:11px;font-weight:800;color:var(--closer);margin-bottom:3px">6. Simplifier les bilans</div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.5">Réduire Excel + mail + photos. Trop d'actions actuellement.</div>
+          </div>
+          <div style="padding:10px 12px;background:var(--closer-d);border-radius:8px">
+            <div style="font-size:11px;font-weight:800;color:var(--closer);margin-bottom:3px">7. Respect des dates de bilan</div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.5">Imposer strictement le samedi. Ne pas accepter les retards.</div>
+          </div>
+          <div style="padding:10px 12px;background:var(--closer-d);border-radius:8px">
+            <div style="font-size:11px;font-weight:800;color:var(--closer);margin-bottom:3px">8. Améliorer le renouvellement</div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.5">Mettre en place une vraie stratégie pour pousser à continuer.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /tab-coaching-process -->
 
 <!-- ═══ TAB 2 : LIENS DE PAIEMENT ═══ -->
 <div class="board" id="tab-liens">
