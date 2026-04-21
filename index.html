@@ -270,7 +270,37 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
 .tl-sep::before{content:'';position:absolute;left:0;right:0;top:50%;height:1px;background:var(--border)}
 
 /* RESPONSIVE MOBILE */
-@media(max-width:600px){
+@media(max-width:768px){
+  /* HEADER */
+  .hd{padding:10px 12px;flex-wrap:wrap;gap:6px}
+  .hd-mid h2{font-size:9px;letter-spacing:2px}
+  .legend{display:none}
+
+  /* TABS */
+  .tabs-bar{padding:8px 10px 0;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tab-btn{padding:8px 14px;font-size:10px;white-space:nowrap;flex-shrink:0}
+
+  /* BOARDS */
+  .board{padding:12px 10px 30px;overflow-x:hidden}
+
+  /* PROCESS TAB — remove min-width, stack nodes vertically */
+  .phase-block{min-width:unset !important}
+  .pg-section{min-width:unset !important}
+  .lane{grid-template-columns:1fr !important}
+  .lane-lbl{flex-direction:row;padding:6px 10px;gap:6px}
+  .lane-lbl .name{writing-mode:horizontal-tb;transform:none;font-size:8px}
+  .track{flex-direction:column;align-items:stretch;gap:8px;padding:8px}
+  .node{width:100% !important;max-width:100%}
+  .bub{width:100% !important;max-width:100%}
+  .detail{width:100% !important;max-width:100%}
+  .sp2{display:none}
+  .arr{display:none}
+  .phase-head{flex-wrap:wrap;gap:6px;padding:8px 12px}
+  .phase-title{font-size:10px}
+  .phase-sub{font-size:8px;display:block;width:100%;margin-top:2px;margin-left:0}
+  .phase-body{padding:8px}
+
+  /* PARCOURS CLIENT TAB */
   .parcours{padding:16px 0}
   .parcours-title h2{font-size:16px}
   .timeline{padding-left:28px}
@@ -279,6 +309,44 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
   .tl-card h3{font-size:12px}
   .tl-card p{font-size:11px}
   .tl-sep{margin:20px 0 8px}
+
+  /* PAIEMENT TAB */
+  .pay-table th,.pay-table td{padding:6px 8px;font-size:10px}
+  .pay-table .montant{font-size:11px}
+  .pay-table .nom-lien{font-size:9px;padding:2px 5px}
+  .offer-head{flex-direction:column;align-items:flex-start;gap:6px;padding:10px 14px}
+  .offer-head h3{font-size:12px}
+
+  /* CIBLE TAB */
+  .cible-grid{grid-template-columns:1fr !important}
+  .pain-table td{padding:6px 8px;font-size:11px}
+
+  /* LIENS / CONTEXT */
+  .context-list li{font-size:11px}
+  .note-item{font-size:11px;flex-direction:column;gap:4px}
+
+  /* ORGANIGRAMME */
+  .org-level-2{flex-direction:column;align-items:center;gap:16px;padding-top:16px}
+  .org-hline{display:none}
+  .org-branch{min-width:auto;width:100%;max-width:280px}
+  .org-card{padding:14px 16px}
+  .org-founder{padding:16px 20px}
+  .org-avatar{width:44px;height:44px;font-size:16px}
+  .org-founder .org-avatar{width:52px;height:52px;font-size:18px}
+  .org-name{font-size:12px}
+
+  /* PROCESS COACHING CARDS */
+  .pg-grid{flex-direction:column}
+  .pc{width:100%}
+
+  /* CALLS TAB */
+  .call-body{grid-template-columns:1fr !important}
+  .call-section + .call-section{border-left:none;border-top:1px solid var(--border)}
+
+  /* GENERAL */
+  .section-body{padding:12px 14px}
+  .profile-list li{font-size:11px}
+  .offer-item{flex-direction:column}
 }
 
 /* ORGANIGRAMME */
@@ -482,9 +550,12 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
       <div class="tl-step">
         <div class="tl-dot" style="background:var(--teal)"></div>
         <div class="tl-card">
-          <h3>Le client reçoit tout la veille de son jour</h3>
-          <p>Programme sport + nutrition + accès premium, tout dans l'app. Le client a la soirée pour lire, comprendre et préparer ses éventuelles questions.</p>
-          <div class="tl-who" style="color:var(--teal);background:var(--teal-d)">Client</div>
+          <h3>Le coach envoie le programme + message de lancement</h3>
+          <p>Programme sport + nutrition + accès premium, tout dans l'app. Le coach envoie aussi un message dans le groupe WhatsApp :</p>
+          <div style="margin-top:10px;padding:10px 14px;background:var(--coach-d);border-radius:10px;font-size:12px;color:var(--muted);font-style:italic">
+            <strong style="color:var(--coach)">Message type :</strong> « Tiens [Prénom], voici ton programme. Ton jour de bilan sera le [jour], il faudra que tu me fasses tes bilans tous les 15 jours. On se retrouve pour ton premier bilan le [date]. C'est parti ! 💪 »
+          </div>
+          <div class="tl-who" style="color:var(--coach);background:var(--coach-d)">Coach (Anthony)</div>
         </div>
       </div>
 

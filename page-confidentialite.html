@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title>Politique de confidentialit&eacute; — GC Coaching</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#0a0a0a;color:#fff;min-height:100vh;-webkit-font-smoothing:antialiased}
+
+    /* ── HEADER ── */
+    .gc-hd{background:#0d0d0d;border-bottom:1px solid #1e1e1e;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+    .gc-badge{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#3DBFB8;border:1px solid rgba(61,191,184,.3);padding:5px 12px;border-radius:3px}
+
+    /* ── HERO ── */
+    .gc-hero{background:#0d0d0d;border-bottom:1px solid #1e1e1e;padding:48px 24px 44px;text-align:center;position:relative;overflow:hidden}
+    .gc-hero::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(61,191,184,.08) 0%,transparent 70%);pointer-events:none}
+    .gc-ew{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#3DBFB8;margin-bottom:18px}
+    .gc-h1{font-size:clamp(24px,5vw,42px);font-weight:900;text-transform:uppercase;letter-spacing:-1px;line-height:1.05;margin-bottom:12px}
+    .gc-h1 span{color:#3DBFB8}
+    .gc-sub{font-size:14px;color:#666;max-width:520px;margin:0 auto;line-height:1.6;font-style:italic}
+
+    /* ── CONTENU ── */
+    .gc-container{max-width:760px;margin:0 auto;padding:40px 20px 80px}
+
+    /* Info box */
+    .gc-info{background:#111;border:1px solid #1e1e1e;border-radius:12px;padding:20px 24px;margin-bottom:32px;display:flex;flex-direction:column;gap:4px}
+    .gc-info strong{color:#fff;font-size:13px;font-weight:700}
+    .gc-info span{color:#666;font-size:12px;line-height:1.5}
+    .gc-info a{color:#3DBFB8;text-decoration:none}
+
+    /* Articles */
+    .gc-article{background:#111;border:1px solid #1e1e1e;border-radius:12px;padding:28px 24px;margin-bottom:12px}
+    .gc-article-title{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#3DBFB8;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+    .gc-article-title::before{content:'';display:block;width:3px;height:16px;background:#3DBFB8;border-radius:2px;flex-shrink:0}
+    .gc-article h3{font-size:12px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:1px;margin:20px 0 10px}
+    .gc-article p{font-size:13px;color:#999;line-height:1.75;margin-bottom:12px}
+    .gc-article p:last-child{margin-bottom:0}
+    .gc-article ul{list-style:none;padding:0;margin:12px 0}
+    .gc-article ul li{font-size:13px;color:#999;line-height:1.7;padding:6px 0 6px 20px;position:relative}
+    .gc-article ul li::before{content:'\2013';position:absolute;left:0;color:#3DBFB8;font-weight:700}
+    .gc-article strong{color:#fff;font-weight:600}
+    .gc-article a{color:#3DBFB8;text-decoration:none}
+    .gc-article a:hover{text-decoration:underline}
+
+    /* Check items */
+    .gc-check{display:flex;align-items:flex-start;gap:10px;margin:14px 0}
+    .gc-check-ico{width:20px;height:20px;border-radius:50%;background:rgba(61,191,184,.1);border:1.5px solid #3DBFB8;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+    .gc-check-ico svg{width:9px;height:9px}
+    .gc-check-content strong{color:#fff;font-size:12px;font-weight:700;display:block;margin-bottom:4px}
+    .gc-check-content span{color:#999;font-size:13px;line-height:1.7}
+
+    /* Footer */
+    .gc-footer{background:#0d0d0d;border-top:1px solid #1e1e1e;padding:24px;text-align:center}
+    .gc-footer p{font-size:12px;color:#555;line-height:1.6}
+    .gc-footer a{color:#3DBFB8;text-decoration:underline}
+
+    /* Responsive */
+    @media(max-width:520px){
+      .gc-hd{padding:12px 16px}
+      .gc-badge{font-size:9px;letter-spacing:1px;padding:4px 8px}
+      .gc-hero{padding:32px 16px 28px}
+      .gc-h1{font-size:clamp(22px,7vw,32px);letter-spacing:0}
+      .gc-container{padding:24px 14px 60px}
+      .gc-article{padding:20px 16px}
+      .gc-info{padding:16px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="gc-hd">
+    <img src="https://www.gregchipponicoaching.fr/img_s2/154296/logo/logo-greg-v2.svg" alt="Greg Chipponi Coaching" style="height:34px;width:auto;object-fit:contain;">
+    <div class="gc-badge">Documents l&eacute;gaux</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="gc-hero">
+    <div class="gc-ew">GC Coaching</div>
+    <h1 class="gc-h1">Politique de<br><span>confidentialit&eacute;</span></h1>
+    <p class="gc-sub">Protection et traitement de vos donn&eacute;es personnelles.</p>
+  </div>
+
+  <!-- CONTENU -->
+  <div class="gc-container">
+
+    <!-- INFO -->
+    <div class="gc-info">
+      <strong>Greg Chipponi Coaching &amp; M&eacute;lanie Alagna</strong>
+      <span>Site : <a href="https://www.gregchipponicoaching.fr">gregchipponicoaching.fr</a></span>
+      <span>Email de contact : <a href="mailto:contact@gregchipponicoaching.fr">contact@gregchipponicoaching.fr</a></span>
+    </div>
+
+    <!-- PREAMBULE -->
+    <div class="gc-article">
+      <div class="gc-article-title">Pr&eacute;ambule</div>
+      <p>Les pr&eacute;sentes Conditions G&eacute;n&eacute;rales de Vente (ci-apr&egrave;s &laquo; CGV &raquo;) r&eacute;gissent les relations contractuelles entre Greg Chipponi Coaching (ci-apr&egrave;s &laquo; le Prestataire &raquo;) et toute personne physique (ci-apr&egrave;s &laquo; le Client &raquo;) souscrivant &agrave; une offre de coaching sportif et/ou nutritionnel personnalis&eacute; en ligne propos&eacute;e sur le site gregchipponicoaching.fr ou via l&rsquo;application FitYou. En passant commande, le Client reconna&icirc;t avoir pris connaissance des pr&eacute;sentes CGV et les accepter sans r&eacute;serve.</p>
+    </div>
+
+    <!-- DONNEES PERSONNELLES -->
+    <div class="gc-article">
+      <div class="gc-article-title">Donn&eacute;es d&rsquo;identification personnelle</div>
+      <p>Nous pouvons recueillir des donn&eacute;es d&rsquo;identification personnelle des Utilisateurs de diff&eacute;rentes mani&egrave;res, y compris, mais sans s&rsquo;y limiter, lorsque les Utilisateurs visitent notre Site, s&rsquo;inscrivent sur le Site, s&rsquo;abonnent aux courriels &eacute;lectroniques d&rsquo;informations, et en lien avec d&rsquo;autres activit&eacute;s, services, caract&eacute;ristiques ou ressources que nous mettons &agrave; disposition sur notre Site.</p>
+      <p>Les Utilisateurs peuvent &ecirc;tre invit&eacute;s &agrave; fournir, le cas &eacute;ch&eacute;ant, une adresse &eacute;lectronique. Les Utilisateurs peuvent toutefois visiter notre Site anonymement. Nous collectons certaines donn&eacute;es d&rsquo;identification personnelle des Utilisateurs seulement s&rsquo;ils nous les communiquent volontairement.</p>
+      <p>Les Utilisateurs peuvent toujours refuser de fournir des donn&eacute;es d&rsquo;identification personnelle, en sachant que ce refus peut les emp&ecirc;cher d&rsquo;acc&eacute;der &agrave; certaines activit&eacute;s li&eacute;es au Site.</p>
+    </div>
+
+    <!-- DONNEES NON PERSONNELLES -->
+    <div class="gc-article">
+      <div class="gc-article-title">Donn&eacute;es d&rsquo;identification non personnelles</div>
+      <p>Nous pouvons collecter des donn&eacute;es d&rsquo;identification non personnelles sur les Utilisateurs chaque fois qu&rsquo;ils interagissent avec notre Site. Les informations d&rsquo;identification non personnelles peuvent inclure le nom du navigateur, le type d&rsquo;ordinateur et des informations techniques sur les moyens de connexion &agrave; notre Site utilis&eacute;s par les Utilisateurs, tels que le syst&egrave;me d&rsquo;exploitation et les fournisseurs de services Internet utilis&eacute;s, ainsi que d&rsquo;autres informations similaires.</p>
+    </div>
+
+    <!-- COOKIES -->
+    <div class="gc-article">
+      <div class="gc-article-title">Cookies de navigateur web</div>
+      <p>Notre Site peut utiliser des cookies pour am&eacute;liorer l&rsquo;exp&eacute;rience de l&rsquo;Utilisateur. Le navigateur web de l&rsquo;Utilisateur place des cookies sur son disque dur &agrave; des fins d&rsquo;archivage, pouvant parfois permettre de suivre les informations le concernant.</p>
+      <p>L&rsquo;Utilisateur peut choisir de configurer son navigateur web pour qu&rsquo;il refuse les cookies, ou pour &ecirc;tre averti lorsque des cookies sont collect&eacute;s. Dans ce cas, veuillez noter que certaines parties du Site peuvent ne pas fonctionner correctement.</p>
+    </div>
+
+    <!-- UTILISATION DES DONNEES -->
+    <div class="gc-article">
+      <div class="gc-article-title">Utilisation des donn&eacute;es collect&eacute;es</div>
+      <p>La soci&eacute;t&eacute; peut recueillir et utiliser les donn&eacute;es personnelles des Utilisateurs :</p>
+
+      <div class="gc-check">
+        <div class="gc-check-ico"><svg viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="#3DBFB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="gc-check-content">
+          <strong>Pour am&eacute;liorer le service client</strong>
+          <span>Les informations que vous nous fournissez nous permettent de r&eacute;pondre plus efficacement &agrave; vos demandes et &agrave; vos besoins d&rsquo;assistance.</span>
+        </div>
+      </div>
+
+      <div class="gc-check">
+        <div class="gc-check-ico"><svg viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="#3DBFB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="gc-check-content">
+          <strong>Pour personnaliser l&rsquo;exp&eacute;rience Utilisateur</strong>
+          <span>Nous pouvons utiliser les donn&eacute;es en les agr&eacute;geant pour comprendre comment les cat&eacute;gories d&rsquo;Utilisateurs utilisent les services et les ressources fournis sur notre Site.</span>
+        </div>
+      </div>
+
+      <div class="gc-check">
+        <div class="gc-check-ico"><svg viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="#3DBFB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="gc-check-content">
+          <strong>Pour envoyer des courriels &eacute;lectroniques p&eacute;riodiques</strong>
+          <span>Nous pouvons utiliser l&rsquo;adresse &eacute;lectronique communiqu&eacute;e pour envoyer &agrave; l&rsquo;Utilisateur des informations et des mises &agrave; jour concernant sa commande ou son abonnement. Elle peut &eacute;galement &ecirc;tre utilis&eacute;e pour r&eacute;pondre &agrave; ses demandes, questions et autres requ&ecirc;tes. Si l&rsquo;Utilisateur d&eacute;cide de s&rsquo;inscrire &agrave; notre liste de diffusion, il recevra des courriels &eacute;lectroniques qui peuvent notamment contenir des nouvelles de la soci&eacute;t&eacute;, des mises &agrave; jour, des informations sur les produits ou services connexes. L&rsquo;Utilisateur peut se d&eacute;sabonner &agrave; tout moment via les instructions au bas de chaque courriel ou en nous contactant via notre Site.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROTECTION -->
+    <div class="gc-article">
+      <div class="gc-article-title">Comment nous prot&eacute;geons vos donn&eacute;es</div>
+      <p>Nous adoptons des pratiques appropri&eacute;es de collecte, de stockage et de traitement des donn&eacute;es ainsi que des mesures de s&eacute;curit&eacute; pour nous prot&eacute;ger de tout acc&egrave;s non autoris&eacute;, d&rsquo;alt&eacute;ration, de divulgation ou de destruction de vos donn&eacute;es personnelles (nom d&rsquo;Utilisateur, mot de passe, informations de transaction et donn&eacute;es stock&eacute;es sur notre Site).</p>
+    </div>
+
+    <!-- PARTAGE -->
+    <div class="gc-article">
+      <div class="gc-article-title">Partage de vos donn&eacute;es personnelles</div>
+      <p>Nous ne vendons, n&rsquo;&eacute;changeons ou ne louons aucune donn&eacute;e d&rsquo;identification personnelle des Utilisateurs &agrave; des tiers ext&eacute;rieurs. Nous pouvons partager des informations d&eacute;mographiques g&eacute;n&eacute;riques, agr&eacute;g&eacute;es et ind&eacute;pendantes de toute donn&eacute;e d&rsquo;identification personnelle, concernant les visiteurs et les Utilisateurs du Site avec nos partenaires commerciaux, nos affili&eacute;s de confiance et nos annonceurs aux fins d&eacute;crites ci-dessus.</p>
+    </div>
+
+    <!-- SITES TIERS -->
+    <div class="gc-article">
+      <div class="gc-article-title">Sites internet de tiers</div>
+      <p>Les Utilisateurs peuvent trouver, sur notre Site, des publicit&eacute;s ou d&rsquo;autres contenus qui renvoient aux sites et services de nos partenaires, fournisseurs, annonceurs, sponsors, conc&eacute;dants de licence et autres tiers. Nous ne contr&ocirc;lons pas le contenu ou les liens qui apparaissent sur ces sites internet de tiers, et nous ne sommes pas responsables des pratiques employ&eacute;es par les sites internet reli&eacute;s vers notre Site ou &agrave; partir de notre Site.</p>
+      <p>En outre, ces sites internet, y compris leur contenu et leurs liens, peuvent &ecirc;tre en constante &eacute;volution. Ces sites et services peuvent avoir leurs propres politiques de confidentialit&eacute; et de service &agrave; la client&egrave;le. La navigation et l&rsquo;interaction sur tout autre site internet, y compris les sites internet qui ont un lien vers ou depuis notre Site, sont soumises aux conditions et politiques qui leurs sont propres.</p>
+    </div>
+
+    <!-- MODIFICATIONS -->
+    <div class="gc-article">
+      <div class="gc-article-title">Modifications de la pr&eacute;sente politique</div>
+      <p>L&rsquo;entreprise a la possibilit&eacute; de mettre &agrave; jour cette politique de confidentialit&eacute; &agrave; tout moment. Nous encourageons les Utilisateurs &agrave; consulter fr&eacute;quemment cette page pour prendre connaissance des changements &eacute;ventuels, et ainsi rester inform&eacute;s de notre contribution &agrave; la protection des donn&eacute;es personnelles que nous recueillons.</p>
+      <p>Vous reconnaissez et acceptez qu&rsquo;il est de votre responsabilit&eacute; de revoir p&eacute;riodiquement cette politique de confidentialit&eacute; et de prendre connaissance des modifications.</p>
+    </div>
+
+    <!-- ACCEPTATION -->
+    <div class="gc-article">
+      <div class="gc-article-title">Votre acceptation de ces conditions</div>
+      <p>En utilisant ce Site, vous signifiez votre acceptation de cette politique de confidentialit&eacute;. Si vous n&rsquo;acceptez pas cette politique, veuillez ne pas utiliser notre Site. Si vous utilisez le Site apr&egrave;s la modification de la pr&eacute;sente politique de confidentialit&eacute;, vous serez consid&eacute;r&eacute; comme ayant accept&eacute; ces modifications.</p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="gc-footer">
+    <p>&copy; GC Coaching &mdash; <a href="https://www.gregchipponicoaching.fr">gregchipponicoaching.fr</a></p>
+  </footer>
+
+</body>
+</html>
