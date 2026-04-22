@@ -1585,7 +1585,42 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
     <h2>📞 Suivi Calls</h2>
     <p>Historique des calls d'équipe — cliquez sur une carte pour l'ouvrir</p>
   </div>
+  <button onclick="document.getElementById('add-call-form').style.display=document.getElementById('add-call-form').style.display==='none'?'block':'none'" style="padding:8px 18px;background:var(--teal);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit">+ Ajouter un call</button>
 </div>
+
+<!-- FORMULAIRE AJOUT CALL -->
+<div id="add-call-form" style="display:none;background:#fff;border:1.5px solid var(--teal-b);border-radius:14px;padding:20px;margin-bottom:20px">
+  <div style="font-size:13px;font-weight:800;color:var(--teal);margin-bottom:14px">Nouveau call</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+    <div>
+      <label style="font-size:10px;font-weight:700;color:var(--soft);display:block;margin-bottom:4px">DATE</label>
+      <input type="date" id="new-call-date" style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:8px;font-size:12px;font-family:inherit">
+    </div>
+    <div>
+      <label style="font-size:10px;font-weight:700;color:var(--soft);display:block;margin-bottom:4px">SUJET</label>
+      <input type="text" id="new-call-subject" placeholder="Ex: Point hebdo process" style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:8px;font-size:12px;font-family:inherit">
+    </div>
+  </div>
+  <div style="margin-bottom:10px">
+    <label style="font-size:10px;font-weight:700;color:var(--soft);display:block;margin-bottom:4px">LIEN ENREGISTREMENT (Loom, Google Meet, Fathom...)</label>
+    <input type="url" id="new-call-link" placeholder="https://www.loom.com/share/..." style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:8px;font-size:12px;font-family:inherit">
+  </div>
+  <div style="margin-bottom:10px">
+    <label style="font-size:10px;font-weight:700;color:var(--soft);display:block;margin-bottom:4px">PARTICIPANTS (séparés par des virgules)</label>
+    <input type="text" id="new-call-participants" placeholder="Steven, Greg, Quentin" style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:8px;font-size:12px;font-family:inherit">
+  </div>
+  <div style="margin-bottom:14px">
+    <label style="font-size:10px;font-weight:700;color:var(--soft);display:block;margin-bottom:4px">NOTES / RÉSUMÉ (optionnel)</label>
+    <textarea id="new-call-notes" rows="3" placeholder="Points abordés, décisions prises..." style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:8px;font-size:12px;font-family:inherit;resize:vertical"></textarea>
+  </div>
+  <div style="display:flex;gap:8px">
+    <button onclick="addNewCall()" style="padding:8px 20px;background:var(--teal);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit">Ajouter</button>
+    <button onclick="document.getElementById('add-call-form').style.display='none'" style="padding:8px 20px;background:#f1f3f6;color:var(--muted);border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit">Annuler</button>
+  </div>
+</div>
+
+<!-- CALLS AJOUTÉS DYNAMIQUEMENT -->
+<div id="dynamic-calls"></div>
 
 <!-- TRANSCRIPT MODAL -->
 <div class="transcript-overlay" id="transcriptOverlay" onclick="if(event.target===this)closeTranscript()">
@@ -1836,6 +1871,107 @@ function openTranscript(callId) {
 function closeTranscript() {
   document.getElementById('transcriptOverlay').classList.remove('open');
 }
+
+// ═══ DYNAMIC CALLS (localStorage) ═══
+const CALLS_KEY = 'gc_coaching_calls';
+const chipColors = {
+  'steven': 'chip-steven', 'greg': 'chip-greg', 'ruben': 'chip-ruben',
+  'lucas': 'chip-lucas', 'quentin': 'chip-quentin'
+};
+
+function getSavedCalls() {
+  try { return JSON.parse(localStorage.getItem(CALLS_KEY)) || []; } catch(e) { return []; }
+}
+
+function saveCalls(calls) {
+  localStorage.setItem(CALLS_KEY, JSON.stringify(calls));
+}
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr + 'T00:00:00');
+  const jours = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
+  const mois = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  return `${jours[d.getDay()]} ${d.getDate()} ${mois[d.getMonth()]} ${d.getFullYear()}`;
+}
+
+function getChipClass(name) {
+  const n = name.trim().toLowerCase();
+  return chipColors[n] || 'chip-steven';
+}
+
+function renderDynamicCalls() {
+  const calls = getSavedCalls();
+  const container = document.getElementById('dynamic-calls');
+  if (!calls.length) { container.innerHTML = ''; return; }
+
+  container.innerHTML = calls.map((c, i) => {
+    const chips = (c.participants || '').split(',').filter(p => p.trim()).map(p =>
+      `<span class="call-chip ${getChipClass(p)}">${p.trim()}</span>`
+    ).join('');
+
+    const linkHtml = c.link ? `<a href="${c.link}" target="_blank" style="display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;background:var(--teal-d);border:1px solid var(--teal-b);color:var(--teal);text-decoration:none;margin-top:8px">▶ Voir l'enregistrement</a>` : '';
+
+    const notesHtml = c.notes ? `<div style="margin-top:10px;font-size:12px;color:var(--muted);line-height:1.7;white-space:pre-wrap">${c.notes.replace(/</g,'&lt;')}</div>` : '';
+
+    return `<div class="call-card" id="dyn-call-${i}">
+  <div class="call-meta" onclick="toggleCall('dyn-call-${i}')">
+    <div class="call-meta-left">
+      <div>
+        <div class="call-date">${formatDate(c.date)}</div>
+        <div style="font-size:11px;color:var(--soft);margin-top:2px">${c.subject.replace(/</g,'&lt;')}</div>
+      </div>
+      <div class="call-participants">${chips}</div>
+    </div>
+    <div class="call-meta-right">
+      <button onclick="event.stopPropagation();deleteCall(${i})" style="font-size:9px;font-weight:700;padding:4px 10px;border-radius:6px;background:rgba(220,38,38,.06);border:1px solid rgba(220,38,38,.15);color:#dc2626;cursor:pointer;font-family:inherit">Supprimer</button>
+      <div class="call-toggle">▼</div>
+    </div>
+  </div>
+  <div class="call-body" style="grid-template-columns:1fr">
+    <div class="call-section">
+      ${linkHtml}
+      ${notesHtml}
+      ${!c.link && !c.notes ? '<div style="font-size:12px;color:var(--soft);font-style:italic">Aucune note pour ce call.</div>' : ''}
+    </div>
+  </div>
+</div>`;
+  }).join('\n');
+}
+
+function addNewCall() {
+  const date = document.getElementById('new-call-date').value;
+  const subject = document.getElementById('new-call-subject').value.trim();
+  const link = document.getElementById('new-call-link').value.trim();
+  const participants = document.getElementById('new-call-participants').value.trim();
+  const notes = document.getElementById('new-call-notes').value.trim();
+
+  if (!date || !subject) { alert('Date et sujet sont obligatoires.'); return; }
+
+  const calls = getSavedCalls();
+  calls.unshift({ date, subject, link, participants, notes, created: Date.now() });
+  saveCalls(calls);
+
+  // Reset form
+  document.getElementById('new-call-date').value = '';
+  document.getElementById('new-call-subject').value = '';
+  document.getElementById('new-call-link').value = '';
+  document.getElementById('new-call-participants').value = '';
+  document.getElementById('new-call-notes').value = '';
+  document.getElementById('add-call-form').style.display = 'none';
+
+  renderDynamicCalls();
+}
+
+function deleteCall(index) {
+  if (!confirm('Supprimer ce call ?')) return;
+  const calls = getSavedCalls();
+  calls.splice(index, 1);
+  saveCalls(calls);
+  renderDynamicCalls();
+}
+
+// Render on load
+document.addEventListener('DOMContentLoaded', renderDynamicCalls);
 </script>
 </body>
 </html>
