@@ -400,6 +400,19 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
     <div class="leg"><div class="leg-dot" style="background:#3DBFB8"></div><span style="color:#aaa">Client</span></div>
     <div class="leg"><div class="leg-dot" style="background:#7C3AED"></div><span style="color:#aaa">Coach</span></div>
   </div>
+  <div style="display:flex;gap:6px">
+    <button id="edit-toggle" onclick="toggleEditMode()" style="padding:6px 14px;background:var(--teal);color:#fff;border:none;border-radius:6px;font-size:10px;font-weight:700;cursor:pointer;font-family:inherit">✏️ Modifier</button>
+  </div>
+</div>
+
+<!-- EDIT BAR (visible only in edit mode) -->
+<div id="edit-bar" style="display:none;align-items:center;justify-content:space-between;padding:6px 24px;background:#1a1a1a;border-bottom:1px solid #333;gap:10px;flex-wrap:wrap">
+  <div style="display:flex;align-items:center;gap:6px">
+    <button onclick="undoLastChange()" style="padding:5px 12px;background:#333;color:#ccc;border:1px solid #444;border-radius:6px;font-size:10px;font-weight:700;cursor:pointer;font-family:inherit">↩ Annuler</button>
+    <button onclick="showVersions()" style="padding:5px 12px;background:#333;color:#ccc;border:1px solid #444;border-radius:6px;font-size:10px;font-weight:700;cursor:pointer;font-family:inherit">📋 Historique</button>
+    <button onclick="resetEdits()" style="padding:5px 12px;background:#333;color:#888;border:1px solid #444;border-radius:6px;font-size:10px;font-weight:700;cursor:pointer;font-family:inherit">↺ Reset original</button>
+  </div>
+  <div id="edit-status" style="font-size:10px;color:#3DBFB8;font-weight:600"></div>
 </div>
 
 <!-- TABS BAR -->
@@ -446,7 +459,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
 
       <div class="tl-step">
         <div class="tl-dot" style="background:var(--closer)"></div>
-        <div class="tl-card">
+        <div class="tl-card" data-editable="pc-1">
           <div class="tl-phase" style="color:var(--closer);background:var(--closer-d)">Avant le call</div>
           <h3>Le closer crée le groupe WhatsApp</h3>
           <p>Un groupe WhatsApp est créé avec le prospect avant même le premier call. C'est par là que tout se passe ensuite : liens de paiement, messages, suivi.</p>
@@ -456,7 +469,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
 
       <div class="tl-step">
         <div class="tl-dot" style="background:var(--closer)"></div>
-        <div class="tl-card">
+        <div class="tl-card" data-editable="pc-2">
           <div class="tl-phase" style="color:var(--closer);background:var(--closer-d)">Vente</div>
           <h3>Le closer fait le call et ferme la vente</h3>
           <p>Il présente l'offre, répond aux objections, et envoie le lien de paiement pendant le call (WhatsApp ou SMS). Le client paie en direct. Options : paiement en 1x, 2x, 3x, 4x ou acompte.</p>
@@ -466,7 +479,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
 
       <div class="tl-step">
         <div class="tl-dot" style="background:var(--closer)"></div>
-        <div class="tl-card">
+        <div class="tl-card" data-editable="pc-3">
           <h3>Le closer vérifie le paiement et ajoute le coach</h3>
           <p>Une fois le paiement confirmé, le closer vérifie que le client a bien reçu son email d'invitation. Puis il ajoute le coach (Anthony) dans le groupe WhatsApp.</p>
           <div class="tl-who" style="color:var(--closer);background:var(--closer-d)">Closer</div>
@@ -475,7 +488,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
 
       <div class="tl-step">
         <div class="tl-dot" style="background:var(--teal)"></div>
-        <div class="tl-card">
+        <div class="tl-card" data-editable="pc-4">
           <h3>Le client reçoit son lien d'invitation au groupe Coaching Personnalisé</h3>
           <p>Un groupe dédié est créé sur ASEO ("Coaching Personnalisé"). Un lien d'invitation unique est généré pour ce groupe et envoyé par email au client après paiement. En passant par ce lien, le client s'inscrit directement et est automatiquement attribué au bon groupe — <strong>pas besoin de Zapier</strong>.</p>
           <div class="tl-who" style="color:var(--teal);background:var(--teal-d)">Client</div>
@@ -484,7 +497,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
 
       <div class="tl-step">
         <div class="tl-dot" style="background:var(--teal)"></div>
-        <div class="tl-card">
+        <div class="tl-card" data-editable="pc-5">
           <h3>Il remplit le questionnaire d'onboarding</h3>
           <p>Le formulaire est rattaché au groupe "Coaching Personnalisé". Il apparaît automatiquement en haut de la page d'accueil de l'app pour tous les clients de ce groupe. Une fois rempli, il disparaît. Pas d'automatisation supplémentaire nécessaire.</p>
           <div style="margin-top:10px;padding:10px 14px;background:var(--teal-d);border-radius:10px;font-size:12px;color:var(--muted)">
@@ -496,7 +509,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
 
       <div class="tl-step">
         <div class="tl-dot" style="background:var(--teal)"></div>
-        <div class="tl-card">
+        <div class="tl-card" data-editable="pc-6">
           <h3>Il confirme dans le groupe WhatsApp</h3>
           <p>Le client écrit dans le groupe WhatsApp qu'il est bien inscrit sur l'app et que le questionnaire est rempli. Le coach voit aussi cette info directement en haut de son tableau de bord.</p>
           <div class="tl-who" style="color:var(--teal);background:var(--teal-d)">Client</div>
@@ -505,7 +518,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
 
       <div class="tl-step">
         <div class="tl-dot" style="background:var(--coach)"></div>
-        <div class="tl-card">
+        <div class="tl-card" data-editable="pc-7">
           <h3>Le coach attribue manuellement le client à son profil</h3>
           <p>Pas d'automatisation prévue pour cette étape. Le coach attribue manuellement le client à son profil depuis le back-office ASEO. Simple et rapide : <strong>3 clics</strong>.</p>
           <div style="margin-top:10px;padding:10px 14px;background:var(--coach-d);border-radius:10px;font-size:12px;color:var(--muted)">
@@ -517,7 +530,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
 
       <div class="tl-step">
         <div class="tl-dot" style="background:var(--coach)"></div>
-        <div class="tl-card">
+        <div class="tl-card" data-editable="pc-8">
           <h3>Le coach envoie le message de bienvenue</h3>
           <p>Dans le groupe WhatsApp, le coach souhaite la bienvenue et confirme au client que son programme sera prêt pour son jour de démarrage. Ce message pose le cadre de la relation.</p>
           <div class="tl-who" style="color:var(--coach);background:var(--coach-d)">Coach (Anthony)</div>
@@ -738,7 +751,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
     <!-- ÉTAPES 1-5 : ENTRÉE CLIENT -->
     <div class="section-card">
       <div class="section-head green"><h3>Phase 1 — Paiement, formulaire et premier contact</h3></div>
-      <div class="section-body">
+      <div class="section-body" data-editable="cp-1">
 
         <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:16px">
           <div style="width:28px;height:28px;background:var(--green);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">1</div>
@@ -800,7 +813,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
     <!-- ÉTAPES 6-8 : SUIVI -->
     <div class="section-card" style="margin-top:16px">
       <div class="section-head" style="background:var(--coach);"><h3 style="color:#fff">Phase 2 — Démarrage et suivi quotidien</h3></div>
-      <div class="section-body">
+      <div class="section-body" data-editable="cp-2">
 
         <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:16px">
           <div style="width:28px;height:28px;background:var(--coach);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">6</div>
@@ -841,7 +854,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
     <!-- ÉTAPES 9-13 : AJUSTEMENTS ET FIN -->
     <div class="section-card" style="margin-top:16px">
       <div class="section-head" style="background:var(--teal);"><h3 style="color:#fff">Phase 3 — Ajustements, philosophie et fin</h3></div>
-      <div class="section-body">
+      <div class="section-body" data-editable="cp-3">
 
         <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:16px">
           <div style="width:28px;height:28px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">9</div>
@@ -892,7 +905,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
     <!-- PROCESSUS CLIENT INACTIF -->
     <div class="section-card" style="margin-top:16px">
       <div class="section-head" style="background:#dc2626;"><h3 style="color:#fff">Processus client inactif</h3></div>
-      <div class="section-body">
+      <div class="section-body" data-editable="cp-4">
         <div style="display:flex;flex-direction:column;gap:10px">
           <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(220,38,38,.03);border-radius:8px">
             <span style="background:rgba(220,38,38,.08);color:#dc2626;font-size:10px;font-weight:800;padding:3px 10px;border-radius:10px;flex-shrink:0">J+0</span>
@@ -920,7 +933,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
     <!-- AXES D'AMÉLIORATION -->
     <div class="section-card" style="margin-top:16px">
       <div class="section-head" style="background:var(--closer);"><h3 style="color:#fff">Axes d'amélioration</h3></div>
-      <div class="section-body">
+      <div class="section-body" data-editable="cp-5">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
           <div style="padding:10px 12px;background:var(--closer-d);border-radius:8px">
             <div style="font-size:11px;font-weight:800;color:var(--closer);margin-bottom:3px">1. Fluidifier l'entrée client</div>
@@ -1779,6 +1792,122 @@ function deleteCall(index) {
 
 // Render on load
 document.addEventListener('DOMContentLoaded', renderDynamicCalls);
+
+// ═══ EDIT MODE — contenteditable + localStorage + versioning ═══
+const EDITS_KEY = 'gc_edits_current';
+const HISTORY_KEY = 'gc_edits_history';
+const MAX_VERSIONS = 30;
+let editMode = false;
+
+function getEdits() { try { return JSON.parse(localStorage.getItem(EDITS_KEY)) || {}; } catch(e) { return {}; } }
+function getHistory() { try { return JSON.parse(localStorage.getItem(HISTORY_KEY)) || []; } catch(e) { return []; } }
+
+function saveSnapshot(label) {
+  const edits = {};
+  document.querySelectorAll('[data-editable]').forEach(el => {
+    edits[el.getAttribute('data-editable')] = el.innerHTML;
+  });
+  localStorage.setItem(EDITS_KEY, JSON.stringify(edits));
+  const history = getHistory();
+  history.unshift({ date: new Date().toLocaleString('fr-FR'), label: label || 'Modification', data: edits });
+  if (history.length > MAX_VERSIONS) history.length = MAX_VERSIONS;
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+  updateStatus('Sauvegardé — ' + new Date().toLocaleTimeString('fr-FR'));
+}
+
+function updateStatus(msg) { const s = document.getElementById('edit-status'); if (s) s.textContent = msg; }
+
+function toggleEditMode() {
+  editMode = !editMode;
+  const btn = document.getElementById('edit-toggle');
+  const bar = document.getElementById('edit-bar');
+  const editables = document.querySelectorAll('[data-editable]');
+  if (editMode) {
+    btn.textContent = '💾 Sauvegarder';
+    btn.style.background = '#dc2626';
+    bar.style.display = 'flex';
+    editables.forEach(el => {
+      el.contentEditable = 'true';
+      el.style.outline = '2px dashed rgba(61,191,184,.4)';
+      el.style.outlineOffset = '4px';
+      el.style.cursor = 'text';
+    });
+    updateStatus('Mode édition actif — clique sur un texte pour le modifier');
+  } else {
+    saveSnapshot('Sauvegarde manuelle');
+    btn.textContent = '✏️ Modifier';
+    btn.style.background = 'var(--teal)';
+    bar.style.display = 'none';
+    editables.forEach(el => {
+      el.contentEditable = 'false';
+      el.style.outline = '';
+      el.style.outlineOffset = '';
+      el.style.cursor = '';
+    });
+  }
+}
+
+function undoLastChange() {
+  const history = getHistory();
+  if (history.length < 2) { alert('Pas de version précédente.'); return; }
+  history.shift();
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+  localStorage.setItem(EDITS_KEY, JSON.stringify(history[0].data));
+  applyEdits(history[0].data);
+  updateStatus('Restauré : ' + history[0].date);
+}
+
+function showVersions() {
+  const history = getHistory();
+  if (!history.length) { alert('Aucun historique.'); return; }
+  const o = document.createElement('div');
+  o.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px';
+  o.onclick = e => { if (e.target === o) o.remove(); };
+  o.innerHTML = '<div style="background:#fff;border-radius:16px;width:100%;max-width:500px;max-height:70vh;overflow:hidden;display:flex;flex-direction:column">' +
+    '<div style="padding:14px 20px;border-bottom:1px solid #e2e5ea;display:flex;justify-content:space-between;align-items:center">' +
+    '<strong style="font-size:14px">Historique (' + history.length + ' versions)</strong>' +
+    '<button onclick="this.closest(\'div[style*=fixed]\').remove()" style="padding:5px 12px;border:1px solid #e2e5ea;border-radius:6px;background:#f8f9fb;font-size:11px;cursor:pointer;font-family:inherit">Fermer</button></div>' +
+    '<div style="overflow-y:auto;padding:12px 20px">' +
+    history.map((v, i) => '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f0f0f0">' +
+      '<div><div style="font-size:12px;font-weight:700">' + v.label + '</div><div style="font-size:10px;color:#999;margin-top:2px">' + v.date + '</div></div>' +
+      (i > 0 ? '<button onclick="restoreVersion(' + i + ');this.closest(\'div[style*=fixed]\').remove()" style="padding:4px 12px;background:#3DBFB8;color:#fff;border:none;border-radius:6px;font-size:10px;font-weight:700;cursor:pointer;font-family:inherit">Restaurer</button>' : '<span style="font-size:10px;color:#3DBFB8;font-weight:700">Actuelle</span>') +
+    '</div>').join('') + '</div></div>';
+  document.body.appendChild(o);
+}
+
+function restoreVersion(i) {
+  const h = getHistory();
+  if (!h[i]) return;
+  localStorage.setItem(EDITS_KEY, JSON.stringify(h[i].data));
+  applyEdits(h[i].data);
+  updateStatus('Restauré : ' + h[i].date);
+}
+
+function resetEdits() {
+  if (!confirm('Remettre tous les textes à leur version originale ?')) return;
+  localStorage.removeItem(EDITS_KEY);
+  location.reload();
+}
+
+function applyEdits(edits) {
+  Object.entries(edits).forEach(([id, html]) => {
+    const el = document.querySelector('[data-editable="' + id + '"]');
+    if (el) el.innerHTML = html;
+  });
+}
+
+// Auto-save quand on quitte un bloc édité
+document.addEventListener('focusout', e => {
+  if (editMode && e.target && e.target.hasAttribute && e.target.hasAttribute('data-editable')) {
+    saveSnapshot('Auto-save');
+  }
+});
+
+// Apply saved edits on load
+document.addEventListener('DOMContentLoaded', () => {
+  const edits = getEdits();
+  if (Object.keys(edits).length) applyEdits(edits);
+});
 </script>
 </body>
 </html>
