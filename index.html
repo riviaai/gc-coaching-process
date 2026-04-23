@@ -1839,8 +1839,17 @@ document.addEventListener('DOMContentLoaded', renderDynamicCalls);
 // ═══ EDIT MODE, contenteditable + localStorage + versioning ═══
 const EDITS_KEY = 'gc_edits_current';
 const HISTORY_KEY = 'gc_edits_history';
+const VERSION_KEY = 'gc_content_version';
+const CONTENT_VERSION = '2026-04-23-v3'; // bump à chaque modification du HTML pour invalider les anciens edits
 const MAX_VERSIONS = 30;
 let editMode = false;
+
+// Si la version du HTML a changé (nouveau deploy), on clear les edits stockés
+// pour que les nouveaux contenus s'affichent
+if (localStorage.getItem(VERSION_KEY) !== CONTENT_VERSION) {
+  localStorage.removeItem(EDITS_KEY);
+  localStorage.setItem(VERSION_KEY, CONTENT_VERSION);
+}
 
 function getEdits() { try { return JSON.parse(localStorage.getItem(EDITS_KEY)) || {}; } catch(e) { return {}; } }
 function getHistory() { try { return JSON.parse(localStorage.getItem(HISTORY_KEY)) || []; } catch(e) { return []; } }
