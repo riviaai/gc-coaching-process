@@ -1405,6 +1405,7 @@ Des questions ? Je suis là 🙌
 .chip-ruben{background:rgba(124,58,237,.1);color:var(--coach);border:1px solid rgba(124,58,237,.3)}
 .chip-lucas{background:rgba(239,68,68,.1);color:#ef4444;border:1px solid rgba(239,68,68,.25)}
 .chip-quentin{background:rgba(34,197,94,.1);color:#16a34a;border:1px solid rgba(34,197,94,.3)}
+.chip-khalid{background:rgba(14,165,233,.1);color:#0284c7;border:1px solid rgba(14,165,233,.3)}
 .call-toggle{width:28px;height:28px;border-radius:50%;background:#e8eaed;display:flex;align-items:center;justify-content:center;font-size:12px;color:#666;transition:.2s;flex-shrink:0}
 .call-card.open .call-toggle{transform:rotate(180deg)}
 .call-transcript-btn{font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;background:#fff;border:1px solid var(--border2);color:var(--muted);cursor:pointer;transition:.15s;letter-spacing:.3px}
@@ -1431,6 +1432,7 @@ Des questions ? Je suis là 🙌
 .owner-greg{background:rgba(61,191,184,.12);color:var(--teal)}
 .owner-ruben{background:rgba(124,58,237,.12);color:var(--coach)}
 .owner-lucas{background:rgba(239,68,68,.1);color:#ef4444}
+.owner-khalid{background:rgba(14,165,233,.12);color:#0284c7}
 .action-text{font-size:12px;color:var(--text);line-height:1.5;flex:1}
 /* TRANSCRIPT MODAL */
 .transcript-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:500;align-items:center;justify-content:center;padding:20px}
@@ -1623,6 +1625,138 @@ Des questions ? Je suis là 🙌
   </div>
 </div>
 
+<!-- CALL 2 : 24 AVRIL 2026 -->
+<div class="call-card" id="call-2">
+  <div class="call-meta" onclick="toggleCall('call-2')">
+    <div class="call-meta-left">
+      <div>
+        <div class="call-date">Jeudi 24 avril 2026</div>
+        <div style="font-size:11px;color:var(--soft);margin-top:2px">Onboarding Khalid (setter) & organisation setting Instagram</div>
+      </div>
+      <div class="call-participants">
+        <span class="call-chip chip-steven">Steven</span>
+        <span class="call-chip chip-greg">Greg</span>
+        <span class="call-chip chip-khalid">Khalid</span>
+      </div>
+    </div>
+    <div class="call-meta-right">
+      <div class="call-transcript-btn" onclick="event.stopPropagation();openTranscript('call-2')">📄 Transcript</div>
+      <div class="call-toggle">▼</div>
+    </div>
+  </div>
+
+  <div class="call-body">
+    <!-- RÉSUMÉ -->
+    <div class="call-section">
+      <div class="call-section-title">📋 Décisions & points abordés</div>
+
+      <div class="call-topic">
+        <div class="call-topic-ico">💬</div>
+        <div class="call-topic-text"><strong>Récupération DM</strong>, Khalid commence par traiter les 60-70 conversations non lues dans la boîte générale d'Instagram de Greg. Priorité : personnes déjà intéressées, mots-clés, commentaires engagés, sondages stories.</div>
+      </div>
+      <div class="call-topic">
+        <div class="call-topic-ico">📂</div>
+        <div class="call-topic-text"><strong>Tri des boîtes Insta</strong>, Khalid bosse uniquement dans la boîte <strong>Générale</strong> (les conversations pros sont automatiquement routées là par l'automatisation). Si Khalid ouvre une conversation, il prévient Greg (sinon elle peut être marquée lue côté Greg même en "non lu").</div>
+      </div>
+      <div class="call-topic">
+        <div class="call-topic-ico">🗣️</div>
+        <div class="call-topic-text"><strong>Ton et identité</strong>, Khalid parle <strong>au nom de Greg</strong> (les gens ne répondent plus sinon). Il se présente comme un membre de l'équipe quand c'est nécessaire (qualif, rdv). Reste professionnel dans le ton.</div>
+      </div>
+      <div class="call-topic">
+        <div class="call-topic-ico">🎯</div>
+        <div class="call-topic-text"><strong>Qualification</strong>, On envoie en call uniquement des personnes avec <strong>une vraie douleur et l'envie d'un coaching</strong>. Pas les fans qui veulent juste "avoir Greg". Pas de promesses chiffrées type "tu vas perdre 10 kg", tout est au cas par cas.</div>
+      </div>
+      <div class="call-topic">
+        <div class="call-topic-ico">⚠️</div>
+        <div class="call-topic-text"><strong>Prévenir le closer</strong>, Si un prospect évoque maladie, blessure, cas particulier : Khalid prévient systématiquement Ruben avant le call. Screenshots + contexte.</div>
+      </div>
+      <div class="call-topic">
+        <div class="call-topic-ico">👥</div>
+        <div class="call-topic-text"><strong>Groupe WhatsApp Khalid/Greg</strong>, Greg crée un groupe avec Khalid (+ Ruben si besoin) pour poser les captures, valider les conversations sensibles, et débloquer rapidement.</div>
+      </div>
+      <div class="call-topic">
+        <div class="call-topic-ico">📅</div>
+        <div class="call-topic-text"><strong>iClose</strong>, Greg s'inscrit sur iClose pour voir les RDV pris par les closers. Pas la plateforme Rivia pour l'instant (le closer préfère iClose + Google Sheet, on rebasculera plus tard si besoin).</div>
+      </div>
+      <div class="call-topic">
+        <div class="call-topic-ico">🔗</div>
+        <div class="call-topic-text"><strong>Lien iClose direct</strong>, Khalid envoie directement le lien iClose au prospect (pas besoin de réserver à sa place). Relance via Insta si pas de booking.</div>
+      </div>
+      <div class="call-topic">
+        <div class="call-topic-ico">⏱️</div>
+        <div class="call-topic-text"><strong>Délai de réponse Khalid</strong>, Max 2h en journée (idéalement 15 min). Greg n'impose pas d'horaires fixes, Khalid organise sa journée. Priorité absolue donnée à l'accompagnement de Greg.</div>
+      </div>
+      <div class="call-topic">
+        <div class="call-topic-ico">🎬</div>
+        <div class="call-topic-text"><strong>Contenu Greg</strong>, Greg finit ses contenus par "abonne-toi + écris-moi en commentaire si tu veux que je t'accompagne". L'automatisation route dans les DM → Khalid suit. 1 à 2 contenus/jour + stories.</div>
+      </div>
+      <div class="call-topic">
+        <div class="call-topic-ico">📉</div>
+        <div class="call-topic-text"><strong>Limites messages/jour</strong>, Objectif 500 messages/jour, mais les comptes peuvent bloquer à 250. Dépend aussi de la longueur des conversations (30 conversations longues = max 200 msg).</div>
+      </div>
+      <div class="call-topic">
+        <div class="call-topic-ico">🔁</div>
+        <div class="call-topic-text"><strong>Coach qui plante</strong>, Si un coach lâche en cours de route (4/6/12 mois) : on rebascule les clients sur un autre coach. Préavis 1 mois obligatoire dans le contrat freelance. C'est arrivé 2 fois sur 5 ans.</div>
+      </div>
+      <div class="call-topic">
+        <div class="call-topic-ico">🚀</div>
+        <div class="call-topic-text"><strong>Démarrage</strong>, Khalid commence <strong>lundi matin</strong>. Premiers calls de closing visés pour <strong>mercredi</strong>. Call de setup Khalid + Greg lundi 8h30 pour transmettre les accès Insta et iClose (2FA).</div>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="call-section">
+      <div class="call-section-title"><span>✅</span> Points à faire</div>
+
+      <div class="action-row todo">
+        <div class="action-status">🟡</div>
+        <div class="action-text">Envoyer le lien d'inscription iClose à Greg</div>
+        <div class="action-owner owner-steven">Steven</div>
+      </div>
+      <div class="action-row todo">
+        <div class="action-status">🟡</div>
+        <div class="action-text">S'inscrire sur iClose pour récupérer les RDV des closers</div>
+        <div class="action-owner owner-greg">Greg</div>
+      </div>
+      <div class="action-row todo">
+        <div class="action-status">🟡</div>
+        <div class="action-text">Retrouver les codes Instagram + donner accès à Khalid (2FA Insta)</div>
+        <div class="action-owner owner-greg">Greg</div>
+      </div>
+      <div class="action-row todo">
+        <div class="action-status">🟡</div>
+        <div class="action-text">Call de setup lundi 8h30 (Insta + iClose, 2FA)</div>
+        <div class="action-owner owner-khalid">Khalid</div>
+      </div>
+      <div class="action-row todo">
+        <div class="action-status">🟡</div>
+        <div class="action-text">Démarrer le setting lundi, priorité aux 60-70 DM non traités</div>
+        <div class="action-owner owner-khalid">Khalid</div>
+      </div>
+      <div class="action-row todo">
+        <div class="action-status">🟡</div>
+        <div class="action-text">Créer le groupe WhatsApp Greg + Khalid (+ Ruben si pertinent)</div>
+        <div class="action-owner owner-greg">Greg</div>
+      </div>
+      <div class="action-row todo">
+        <div class="action-status">🟡</div>
+        <div class="action-text">Signer le contrat freelance fondateur + coach (envoyé par Quentin)</div>
+        <div class="action-owner owner-greg">Greg</div>
+      </div>
+      <div class="action-row todo">
+        <div class="action-status">🟡</div>
+        <div class="action-text">Envoyer à Khalid des exemples de conversations/setting déjà faites pour référence</div>
+        <div class="action-owner owner-greg">Greg</div>
+      </div>
+      <div class="action-row todo">
+        <div class="action-status">🟡</div>
+        <div class="action-text">Objectif mercredi : premiers RDV de closing bookés</div>
+        <div class="action-owner owner-khalid">Khalid</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div><!-- /tab-calls -->
 
 </div><!-- /boards-wrapper -->
@@ -1722,7 +1856,103 @@ Sujet : Réunion de lancement, Process & onboarding GC Coaching
 
 [Quentin] Pour moi, le process est clair. On va affiner avec les premiers clients.
 
-[Steven] Exactement. On part sur les premiers clients, on voit les problèmes, on corrige, et on ouvre progressivement.`
+[Steven] Exactement. On part sur les premiers clients, on voit les problèmes, on corrige, et on ouvre progressivement.`,
+
+  'call-2': `CALL DU JEUDI 24 AVRIL 2026
+Participants : Steven, Greg, Khalid
+Sujet : Onboarding Khalid (setter) & organisation setting Instagram
+
+---
+
+[Steven] OK Khalid, tu vas avoir accès à cette page. Le but, c'est déjà de récupérer toutes les personnes qui ont commencé une conversation, qui sont intéressées, qui envoient des mots-clés par message. Ensuite les commentaires où ça envoie des mots-clés. Et les stories avec sondages.
+
+[Steven] Rien qu'au niveau des conversations, tu en as pas mal à faire. L'automatisation met les messages dans la partie générale. Moi, toutes tes conversations sont dans la partie générale, je vais trier comme ça directement.
+
+[Greg] Ok, quand c'est privé, je mets dans l'autre partie (principal/général, je confonds toujours).
+
+[Steven] Pour Greg : n'hésite pas à finir avec nous. Il faudra qu'on ait un groupe avec Khalid aussi. Des fois je vais regarder mes messages, moi je regarde tout, c'est ma manière de contrôler.
+
+[Greg] Je prends plus trop d'amis en coaching, ça fait des emmerdes (ils veulent pas payer, ils veulent des prix). Je te dirai au fur et à mesure.
+
+[Steven] Khalid, si tu ouvres une conversation perso, préviens Greg. Des fois même en non-lu, une conversation peut être marquée comme lue.
+
+[Steven] Si tu vois des choses qui ne vont pas Greg, n'hésite pas à faire des captures d'écran. Tu peux faire un groupe avec Khalid, lui envoyer la capture.
+
+[Greg] Je pense que je ferai un groupe avec Khalid. Peut-être même avec Ruben.
+
+[Steven] Tu t'organises comme tu préfères. Khalid, surtout prévenir le closer à chaque fois s'il y a par exemple maladie ou truc particulier dans la conversation.
+
+[Steven] On envoie uniquement des personnes qui ont vraiment un boulot/une douleur et envie d'avoir un coaching. Les fans de Greg qui veulent juste "avoir Greg" : on évite.
+
+[Greg] Khalid quand il parle, il parle en mon nom ?
+
+[Steven] Oui, il parle en ton nom. Sinon les gens ne répondent plus.
+
+[Greg] Khalid, regarde un peu mes vidéos pour voir comment je parle. Des fois je suis un peu cru. "Merci amigo" c'est mon nom, les gens me répondent comme ça. À toi de voir, en privé rester professionnel c'est pas mal.
+
+[Greg] Je ne vais pas répondre au truc technique, je vais leur faire comprendre qu'un membre de mon équipe va prendre l'appel, leur faire comprendre qu'ils seront accompagnés.
+
+[Greg] Les gens vont me dire "est-ce que je peux perdre ça ?", je ne veux pas leur donner une promesse chiffrée.
+
+[Steven] Exactement. Il faut dire "tout est envisageable, tout est faisable, on sait faire, mais c'est au cas par cas".
+
+[Steven] On peut commencer le setting à partir de lundi/mardi, pour envoyer les premiers calls. Ça va prendre un petit temps.
+
+[Greg] Lui il est prêt. Il y a juste un truc avec Lucas : quand il a dit que les clients sont attribués dans la partie coach, je me rappelle plus comment faire. Il faut un petit visio avec lui.
+
+[Steven] Si j'ai bien compris, le lien est déjà fait, tout est attribué automatiquement (premium, questionnaire). Le coach s'attribue juste le client. Ça je vais expliquer à Anthony au fur et à mesure.
+
+[Greg] Je pense que sur les 10-20 premiers, je serai un peu là en assistant d'Anthony pour vérifier les programmes, prendre du recul, et après recruter un deuxième.
+
+[Greg] Question : si le coach me plante au bout de 3 mois sur un 4 ou 6 mois, on fait quoi ?
+
+[Steven] Tu rebascules les clients sur un autre coach. En 5 ans, c'est arrivé 2 fois. Dans le contrat, tu as une période de préavis (1 mois). Les clients sont généralement compréhensifs.
+
+[Greg] C'est comme de l'embauche ?
+
+[Steven] Non, contrat de prestataire freelance. Quentin avait envoyé un modèle dans le groupe.
+
+[Greg] Ok je vais regarder ça. Lucas a bien poussé pour le formulaire avec plus de questions.
+
+[Greg] Ce week-end (dimanche/lundi/mardi), je vais mettre un gros coup de boost. Les vacances scolaires, les enfants à la maison, c'est un peu délicat à 2 à gérer.
+
+[Greg] Khalid, il y a au moins 60-70 messages non traités dans le général. Il y a du potentiel. Attention, parfois j'ai quelques admiratrices qui envoient des messages un peu bizarre, il prend pas de rendez-vous.
+
+[Khalid] J'ai l'habitude.
+
+[Khalid] Par rapport au lien iClose, je réserve à la place de la personne ou j'envoie juste le lien ?
+
+[Steven] Pour Greg il y a assez de confiance, envoie direct le lien. Tu relances via Insta si pas de booking. Tu auras accès à iClose de toute manière, tu verras ce qui est booké.
+
+[Greg] Je tourne plein de nouveaux contenus. Je finis par "abonne-toi et écris-moi en commentaire si tu veux que je t'accompagne". Si l'automatisation est réglée, ça ramène des DM.
+
+[Steven] Je pense pas qu'on manque de contenu. Khalid sera plus limité par le nombre de messages. Limite théorique 500/jour, mais on a des comptes bloqués à 250. Dépend aussi des conversations longues.
+
+[Steven] Manitoua, tu regarderas Steven, t'inquiète. J'ai été hospitalisé 2 jours Greg, excuse-moi.
+
+[Greg] T'inquiète. Pour iClose, je te renvoie le lien pour que tu t'inscrives. Ça sera mieux géré.
+
+[Greg] Putain ça me fait des plateformes. iClose, plateforme Rivia ?
+
+[Steven] Pour l'instant la plateforme Rivia est en stand-by. Le closer préfère iClose + Google Sheet. On basculera plus tard si besoin. Je préfère qu'un closer dise "je gère avec iClose, tout est à jour" plutôt que "Rivia et rien n'est à jour".
+
+[Steven] Lundi Khalid commence, mercredi les premiers calls de closing.
+
+[Greg] On fait le call de setup quand ? Il faut les 2FA Insta + iClose.
+
+[Khalid] Lundi matin, le plus tôt possible. 8h30 ?
+
+[Greg] 8h30 c'est bon, les enfants seront à l'école.
+
+[Khalid] Question : quand tu engueules une conversation, tu as des délais de réponse ?
+
+[Khalid] Moi en journée, j'essaie de répondre max 15 minutes. Sinon c'est instant. Gros délai seulement le soir tard (23h → réponse le lendemain).
+
+[Steven] Parfait. Tant que le boulot est fait, je n'impose pas d'heures.
+
+[Steven] Khalid, priorité absolue à notre accompagnement. Si tu as une interrogation : message. Si je ne réponds pas : appelle direct, même à 22h. On bosse ensemble.
+
+[Steven] Assurez-vous que tous les liens marchent. Belle journée, les Greg et Khalid.`
 };
 
 function openTranscript(callId) {
@@ -1739,7 +1969,7 @@ function closeTranscript() {
 const CALLS_KEY = 'gc_coaching_calls';
 const chipColors = {
   'steven': 'chip-steven', 'greg': 'chip-greg', 'ruben': 'chip-ruben',
-  'lucas': 'chip-lucas', 'quentin': 'chip-quentin'
+  'lucas': 'chip-lucas', 'quentin': 'chip-quentin', 'khalid': 'chip-khalid'
 };
 
 function getSavedCalls() {
@@ -1840,7 +2070,7 @@ document.addEventListener('DOMContentLoaded', renderDynamicCalls);
 const EDITS_KEY = 'gc_edits_current';
 const HISTORY_KEY = 'gc_edits_history';
 const VERSION_KEY = 'gc_content_version';
-const CONTENT_VERSION = '2026-04-23-v3'; // bump à chaque modification du HTML pour invalider les anciens edits
+const CONTENT_VERSION = '2026-04-24-v4'; // bump à chaque modification du HTML pour invalider les anciens edits
 const MAX_VERSIONS = 30;
 let editMode = false;
 
