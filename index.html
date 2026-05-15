@@ -7,6 +7,11 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>GC Coaching, Dashboard</title>
+<meta name="description" content="Dashboard interne GC Coaching, suivi des performances et organisation de l'équipe.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="GC Coaching, Dashboard">
+<meta property="og:description" content="Dashboard interne GC Coaching">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -438,6 +443,70 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
     <div class="parcours-title">
       <h2>Le parcours de ton client</h2>
       <p style="max-width:600px;margin:6px auto 0;line-height:1.6">Le parcours client, c'est tout ce qui se passe entre le moment où le prospect paie et le moment où le coaching démarre. Chaque étape est documentée pour que le closer, le coach et le client sachent exactement quoi faire.</p>
+    </div>
+
+    <!-- CLOSE INFO WIDGET -->
+    <div id="close-info-widget" style="background:#fff;border:1.5px solid rgba(245,158,11,.35);border-radius:14px;padding:20px 24px;margin-bottom:20px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:18px">🤝</span>
+          <span style="font-size:13px;font-weight:800;letter-spacing:.5px;color:var(--closer)">INFOS CLOSE</span>
+        </div>
+        <button onclick="toggleCloseEdit()" id="close-edit-btn" style="font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;border:1px solid rgba(245,158,11,.3);background:rgba(245,158,11,.08);color:var(--closer);cursor:pointer;font-family:inherit">✏️ Modifier</button>
+      </div>
+
+      <!-- FORMULAIRE (caché par défaut si données existent) -->
+      <div id="close-form" style="display:none">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px">
+          <div>
+            <label style="font-size:9.5px;font-weight:700;color:var(--soft);display:block;margin-bottom:5px;letter-spacing:1px;text-transform:uppercase">Date du close</label>
+            <input type="date" id="ci-date-close" style="width:100%;padding:8px 10px;border:1.5px solid var(--border);border-radius:8px;font-size:12px;font-family:inherit;outline:none" oninput="computeCloseDates()">
+          </div>
+          <div>
+            <label style="font-size:9.5px;font-weight:700;color:var(--soft);display:block;margin-bottom:5px;letter-spacing:1px;text-transform:uppercase">Durée du programme</label>
+            <select id="ci-duree" style="width:100%;padding:8px 10px;border:1.5px solid var(--border);border-radius:8px;font-size:12px;font-family:inherit;outline:none;background:#fff" onchange="computeCloseDates()">
+              <option value="">— choisir —</option>
+              <option value="1">1 mois</option>
+              <option value="2">2 mois</option>
+              <option value="3">3 mois</option>
+              <option value="4">4 mois</option>
+              <option value="6">6 mois</option>
+              <option value="12">12 mois</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:9.5px;font-weight:700;color:var(--soft);display:block;margin-bottom:5px;letter-spacing:1px;text-transform:uppercase">Délai signature (jours)</label>
+            <input type="number" id="ci-delai-sign" value="3" min="1" max="30" style="width:100%;padding:8px 10px;border:1.5px solid var(--border);border-radius:8px;font-size:12px;font-family:inherit;outline:none" oninput="computeCloseDates()">
+          </div>
+        </div>
+        <button onclick="saveCloseInfo()" style="padding:8px 20px;background:var(--closer);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit">💾 Enregistrer</button>
+      </div>
+
+      <!-- AFFICHAGE RÉSUMÉ -->
+      <div id="close-display">
+        <div id="close-empty" style="color:var(--soft);font-size:12px;font-style:italic">Aucun close enregistré — cliquez sur Modifier pour renseigner les infos.</div>
+        <div id="close-data" style="display:none">
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+            <div style="background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.2);border-radius:10px;padding:12px 14px">
+              <div style="font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--soft);margin-bottom:5px">Date du close</div>
+              <div id="ci-show-close" style="font-size:15px;font-weight:800;color:var(--closer)">—</div>
+            </div>
+            <div style="background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.2);border-radius:10px;padding:12px 14px">
+              <div style="font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--soft);margin-bottom:5px">Programme</div>
+              <div id="ci-show-duree" style="font-size:15px;font-weight:800;color:var(--closer)">—</div>
+            </div>
+            <div style="background:rgba(61,191,184,.07);border:1px solid rgba(61,191,184,.25);border-radius:10px;padding:12px 14px">
+              <div style="font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--soft);margin-bottom:5px">Durée</div>
+              <div id="ci-show-period" style="font-size:13px;font-weight:800;color:var(--teal)">—</div>
+            </div>
+            <div id="ci-sign-card" style="background:rgba(124,58,237,.07);border:1px solid rgba(124,58,237,.25);border-radius:10px;padding:12px 14px">
+              <div style="font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--soft);margin-bottom:5px">Signature avant</div>
+              <div id="ci-show-sign-deadline" style="font-size:13px;font-weight:800;color:var(--coach)">—</div>
+              <div id="ci-show-sign-countdown" style="font-size:10px;font-weight:700;margin-top:3px;color:var(--soft)"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- RECAP OFFRE -->
@@ -2206,7 +2275,96 @@ document.addEventListener('focusout', e => {
 document.addEventListener('DOMContentLoaded', () => {
   const edits = getEdits();
   if (Object.keys(edits).length) applyEdits(edits);
+  loadCloseInfo();
 });
+
+// ── CLOSE INFO WIDGET ──────────────────────────────────────────
+function fmtDate(d) {
+  return d.toLocaleDateString('fr-FR', {day:'2-digit', month:'long', year:'numeric'});
+}
+function addMonths(d, n) {
+  const r = new Date(d);
+  r.setMonth(r.getMonth() + n);
+  return r;
+}
+function addDays(d, n) {
+  const r = new Date(d);
+  r.setDate(r.getDate() + n);
+  return r;
+}
+function computeCloseDates() {
+  const dateClose = document.getElementById('ci-date-close').value;
+  const duree = parseInt(document.getElementById('ci-duree').value || '0');
+  const delai = parseInt(document.getElementById('ci-delai-sign').value || '3');
+  if (!dateClose || !duree) return;
+  // just previewing — no action needed here, save handles it
+}
+function toggleCloseEdit() {
+  const form = document.getElementById('close-form');
+  const btn = document.getElementById('close-edit-btn');
+  const isOpen = form.style.display !== 'none';
+  form.style.display = isOpen ? 'none' : 'block';
+  btn.textContent = isOpen ? '✏️ Modifier' : '✖ Fermer';
+  if (!isOpen) {
+    const saved = JSON.parse(localStorage.getItem('gc-close-info') || '{}');
+    if (saved.dateClose) document.getElementById('ci-date-close').value = saved.dateClose;
+    if (saved.duree) document.getElementById('ci-duree').value = saved.duree;
+    if (saved.delaiSign) document.getElementById('ci-delai-sign').value = saved.delaiSign;
+  }
+}
+function saveCloseInfo() {
+  const dateClose = document.getElementById('ci-date-close').value;
+  const duree = document.getElementById('ci-duree').value;
+  const delai = document.getElementById('ci-delai-sign').value || '3';
+  if (!dateClose || !duree) { alert('Renseigne la date et la durée.'); return; }
+  localStorage.setItem('gc-close-info', JSON.stringify({dateClose, duree, delaiSign: delai}));
+  renderCloseInfo({dateClose, duree, delaiSign: delai});
+  document.getElementById('close-form').style.display = 'none';
+  document.getElementById('close-edit-btn').textContent = '✏️ Modifier';
+}
+function renderCloseInfo(data) {
+  if (!data || !data.dateClose || !data.duree) return;
+  const dClose = new Date(data.dateClose + 'T12:00:00');
+  const duree = parseInt(data.duree);
+  const delai = parseInt(data.delaiSign || '3');
+  const dFin = addMonths(dClose, duree);
+  const dSign = addDays(dClose, delai);
+  const today = new Date(); today.setHours(12,0,0,0);
+  const daysToSign = Math.ceil((dSign - today) / 86400000);
+
+  document.getElementById('ci-show-close').textContent = fmtDate(dClose);
+  document.getElementById('ci-show-duree').textContent = duree + (duree === 1 ? ' mois' : ' mois');
+  document.getElementById('ci-show-period').textContent = fmtDate(dClose) + ' → ' + fmtDate(dFin);
+  document.getElementById('ci-show-sign-deadline').textContent = fmtDate(dSign);
+
+  const countEl = document.getElementById('ci-show-sign-countdown');
+  const card = document.getElementById('ci-sign-card');
+  if (daysToSign < 0) {
+    countEl.textContent = 'Délai dépassé';
+    card.style.background = 'rgba(239,68,68,.07)';
+    card.style.borderColor = 'rgba(239,68,68,.3)';
+    document.getElementById('ci-show-sign-deadline').style.color = '#ef4444';
+  } else if (daysToSign === 0) {
+    countEl.textContent = "⚠️ À signer aujourd'hui !";
+    card.style.background = 'rgba(239,68,68,.07)';
+    card.style.borderColor = 'rgba(239,68,68,.3)';
+    document.getElementById('ci-show-sign-deadline').style.color = '#ef4444';
+  } else {
+    countEl.textContent = 'J-' + daysToSign + ' pour signer';
+    card.style.background = 'rgba(124,58,237,.07)';
+    card.style.borderColor = 'rgba(124,58,237,.25)';
+    document.getElementById('ci-show-sign-deadline').style.color = 'var(--coach)';
+  }
+
+  document.getElementById('close-empty').style.display = 'none';
+  document.getElementById('close-data').style.display = 'block';
+}
+function loadCloseInfo() {
+  const saved = localStorage.getItem('gc-close-info');
+  if (saved) {
+    try { renderCloseInfo(JSON.parse(saved)); } catch(e) {}
+  }
+}
 </script>
 </body>
 </html>
