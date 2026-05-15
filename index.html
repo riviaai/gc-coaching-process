@@ -425,6 +425,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
 <!-- TABS BAR -->
 <div class="tabs-bar">
   <button class="tab-btn active" onclick="showTab('parcours')">🗺️ Parcours Client</button>
+  <button class="tab-btn" onclick="showTab('closer-process')" style="color:#F59E0B">🤝 Process Closer</button>
   <button class="tab-btn" onclick="showTab('process')">⚙️ Process détaillé</button>
   <button class="tab-btn" onclick="showTab('coaching-process')">📋 Process coaching</button>
   <button class="tab-btn" onclick="showTab('liens')">💳 Liens de paiement</button>
@@ -634,6 +635,259 @@ Des questions ? Je suis là 🙌
     </div>
   </div>
 </div><!-- /tab-parcours -->
+
+<!-- ═══ TAB : PROCESS CLOSER ═══ -->
+<div class="board" id="tab-closer-process">
+<style>
+.cp-wrap{max-width:860px;margin:0 auto;padding:8px 0 40px}
+.cp-hero{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1.5px solid rgba(245,158,11,.4);border-radius:16px;padding:24px 28px;margin-bottom:28px}
+.cp-hero h2{font-size:20px;font-weight:900;color:#92400e;margin-bottom:4px}
+.cp-hero p{font-size:12.5px;color:#78350f;line-height:1.7}
+
+/* INFOS CLÉS */
+.cp-keys{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:28px}
+@media(max-width:640px){.cp-keys{grid-template-columns:1fr}}
+.cp-key{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:14px 16px}
+.cp-key-lbl{font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft);margin-bottom:6px}
+.cp-key-val{font-size:14px;font-weight:800;color:var(--text);font-family:monospace;letter-spacing:.3px}
+.cp-key-sub{font-size:10px;color:var(--muted);margin-top:3px}
+
+/* STEPS */
+.cp-steps{display:flex;flex-direction:column;gap:4px}
+.cp-step{border-radius:14px;overflow:hidden;border:1.5px solid var(--border)}
+.cp-step-head{display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;user-select:none;transition:.15s}
+.cp-step-head:hover{filter:brightness(.97)}
+.cp-step.s1 .cp-step-head{background:#fffbeb;border-bottom:1px solid rgba(245,158,11,.2)}
+.cp-step.s2 .cp-step-head{background:#fef9f0;border-bottom:1px solid rgba(245,158,11,.15)}
+.cp-step.s3 .cp-step-head{background:#f0fdf4;border-bottom:1px solid rgba(34,197,94,.2)}
+.cp-step.s4 .cp-step-head{background:#faf5ff;border-bottom:1px solid rgba(124,58,237,.2)}
+.cp-step.s5 .cp-step-head{background:#fff1f2;border-bottom:1px solid rgba(239,68,68,.2)}
+.cp-step-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;flex-shrink:0}
+.s1 .cp-step-num{background:rgba(245,158,11,.2);color:#b45309;border:1.5px solid rgba(245,158,11,.4)}
+.s2 .cp-step-num{background:rgba(245,158,11,.15);color:#b45309;border:1.5px solid rgba(245,158,11,.3)}
+.s3 .cp-step-num{background:rgba(34,197,94,.15);color:#15803d;border:1.5px solid rgba(34,197,94,.3)}
+.s4 .cp-step-num{background:rgba(124,58,237,.12);color:var(--coach);border:1.5px solid rgba(124,58,237,.3)}
+.s5 .cp-step-num{background:rgba(239,68,68,.1);color:#dc2626;border:1.5px solid rgba(239,68,68,.25)}
+.cp-step-info{flex:1}
+.cp-step-title{font-size:13px;font-weight:800;color:var(--text)}
+.s3 .cp-step-title{color:#15803d} .s5 .cp-step-title{color:#dc2626}
+.cp-step-sub{font-size:10.5px;color:var(--muted);margin-top:1px}
+.cp-step-phase{font-size:9px;font-weight:800;padding:3px 10px;border-radius:20px;letter-spacing:.5px}
+.s1 .cp-step-phase,.s2 .cp-step-phase{background:rgba(245,158,11,.12);color:#b45309}
+.s3 .cp-step-phase{background:rgba(34,197,94,.1);color:#15803d}
+.s4 .cp-step-phase{background:rgba(124,58,237,.1);color:var(--coach)}
+.s5 .cp-step-phase{background:rgba(239,68,68,.08);color:#dc2626}
+.cp-step-toggle{font-size:13px;color:var(--soft);transition:.2s;flex-shrink:0}
+.cp-step.open .cp-step-toggle{transform:rotate(180deg)}
+.cp-step-body{display:none;padding:18px 20px;background:#fff}
+.cp-step.open .cp-step-body{display:block}
+
+/* CHECKLIST */
+.cp-check{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.cp-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:9px;border:1px solid var(--border);background:#fafafa;font-size:12.5px;color:var(--text);line-height:1.5}
+.cp-item-ico{font-size:15px;flex-shrink:0;margin-top:1px}
+.cp-item strong{color:var(--text)}
+.cp-item .cp-tag{font-size:9px;font-weight:800;padding:2px 8px;border-radius:10px;margin-left:6px;vertical-align:middle;flex-shrink:0}
+.tag-amber{background:rgba(245,158,11,.12);color:#b45309;border:1px solid rgba(245,158,11,.25)}
+.tag-green{background:rgba(34,197,94,.1);color:#15803d;border:1px solid rgba(34,197,94,.25)}
+.tag-red{background:rgba(239,68,68,.08);color:#dc2626;border:1px solid rgba(239,68,68,.2)}
+
+/* MINI LIENS PAIEMENT */
+.cp-offers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px}
+@media(max-width:640px){.cp-offers{grid-template-columns:1fr}}
+.cp-offer{border:1.5px solid var(--border);border-radius:10px;overflow:hidden}
+.cp-offer-head{padding:8px 12px;font-size:11px;font-weight:800}
+.cp-offer-head.four{background:#f0fdf4;color:#166534;border-bottom:1px solid rgba(34,197,94,.2)}
+.cp-offer-head.six{background:#eff6ff;color:#1d4ed8;border-bottom:1px solid rgba(37,99,235,.2)}
+.cp-offer-head.twelve{background:#faf5ff;color:#6d28d9;border-bottom:1px solid rgba(109,40,217,.2)}
+.cp-offer-rows{padding:8px 12px;display:flex;flex-direction:column;gap:4px}
+.cp-offer-row{display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--text)}
+.cp-offer-row a{font-size:9.5px;color:#2563eb;text-decoration:none;font-family:monospace}
+.cp-offer-row a:hover{text-decoration:underline}
+
+/* NOTE */
+.cp-note{background:#f0fdf4;border:1px solid rgba(34,197,94,.25);border-left:3px solid #22c55e;border-radius:8px;padding:10px 14px;font-size:12px;color:#15803d;line-height:1.6;margin-top:10px}
+.cp-warn{background:#fff1f2;border:1px solid rgba(239,68,68,.2);border-left:3px solid #ef4444;border-radius:8px;padding:10px 14px;font-size:12px;color:#991b1b;line-height:1.6;margin-top:10px}
+.cp-info{background:#eff6ff;border:1px solid rgba(37,99,235,.2);border-left:3px solid #3b82f6;border-radius:8px;padding:10px 14px;font-size:12px;color:#1e40af;line-height:1.6;margin-top:10px}
+</style>
+
+<div class="cp-wrap">
+
+  <div class="cp-hero">
+    <h2>🤝 Process Closer</h2>
+    <p>Tout ce qu'il faut savoir pour closer un client, de la création du groupe jusqu'à la remise au coach. Suis chaque étape dans l'ordre.</p>
+  </div>
+
+  <!-- INFOS CLÉS -->
+  <div class="cp-keys">
+    <div class="cp-key">
+      <div class="cp-key-lbl">📱 Numéro Greg (on/off)</div>
+      <div class="cp-key-val">+33 6 16 29 63 48</div>
+      <div class="cp-key-sub">À ajouter dans le groupe WhatsApp</div>
+    </div>
+    <div class="cp-key">
+      <div class="cp-key-lbl">💬 Nom du groupe</div>
+      <div class="cp-key-val" style="font-size:12px">Prénom Nom X Team Chipponi</div>
+      <div class="cp-key-sub">Format exact, sans variation</div>
+    </div>
+    <div class="cp-key">
+      <div class="cp-key-lbl">📲 Lien app FitYou</div>
+      <div class="cp-key-val" style="font-size:10px"><a href="https://api-fityou.azeoo.com/v1/qrcodes/Smx4L2Z0ckc3TUk9" target="_blank" style="color:#2563eb;word-break:break-all">api-fityou.azeoo.com/...</a></div>
+      <div class="cp-key-sub">À envoyer si client n'a pas l'app</div>
+    </div>
+  </div>
+
+  <!-- ÉTAPES -->
+  <div class="cp-steps">
+
+    <!-- ÉTAPE 1 -->
+    <div class="cp-step s1 open">
+      <div class="cp-step-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="cp-step-num">1</div>
+        <div class="cp-step-info">
+          <div class="cp-step-title">Avant le call — Créer le groupe</div>
+          <div class="cp-step-sub">À faire avant même le premier contact téléphonique</div>
+        </div>
+        <span class="cp-step-phase">Avant le call</span>
+        <span class="cp-step-toggle">▼</span>
+      </div>
+      <div class="cp-step-body">
+        <div class="cp-check">
+          <div class="cp-item"><span class="cp-item-ico">💬</span><div>Crée le groupe WhatsApp avec le prospect <strong>avant le call</strong> — c'est par là que tout se passe (paiement, messages, suivi).</div></div>
+          <div class="cp-item"><span class="cp-item-ico">✏️</span><div>Nomme le groupe exactement : <strong style="font-family:monospace">Prénom Nom X Team Chipponi</strong></div></div>
+          <div class="cp-item"><span class="cp-item-ico">➕</span><div>Ajoute Greg sur son numéro ON/OFF : <strong style="font-family:monospace">+33 6 16 29 63 48</strong></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 2 -->
+    <div class="cp-step s2 open">
+      <div class="cp-step-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="cp-step-num">2</div>
+        <div class="cp-step-info">
+          <div class="cp-step-title">Pendant le call — Closer la vente</div>
+          <div class="cp-step-sub">Présenter l'offre, gérer les objections, encaisser</div>
+        </div>
+        <span class="cp-step-phase">Call</span>
+        <span class="cp-step-toggle">▼</span>
+      </div>
+      <div class="cp-step-body">
+        <div class="cp-check">
+          <div class="cp-item"><span class="cp-item-ico">🎯</span><div>Présente l'offre, réponds aux objections, envoie le <strong>lien de paiement pendant le call</strong> (WhatsApp ou SMS). Le client paie en direct.</div></div>
+          <div class="cp-item"><span class="cp-item-ico">📲</span><div><strong>Demande si le client a déjà l'application FitYou/Azeo.</strong>
+            <br>• S'il l'a déjà → préviens Greg directement dans le groupe.
+            <br>• S'il ne l'a pas → envoie le lien d'installation dans le groupe pendant ou juste après le call.
+          </div></div>
+          <div class="cp-item"><span class="cp-item-ico">💳</span><div>Options disponibles : <strong>1×, 2×, 3×, 4× ou acompte 250€</strong>. Voir les liens ci-dessous.</div></div>
+        </div>
+
+        <!-- OFFRES RAPIDES -->
+        <div style="font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--soft);margin-bottom:8px">Liens de paiement rapides</div>
+        <div class="cp-offers">
+          <div class="cp-offer">
+            <div class="cp-offer-head four">4 mois — 1 497 €</div>
+            <div class="cp-offer-rows">
+              <div class="cp-offer-row"><span>1×</span><a href="https://coaching.gregchipponicoaching.fr/fdc700e1-b9d352fa-8eb51d98" target="_blank">1 497 € →</a></div>
+              <div class="cp-offer-row"><span>2×</span><a href="https://coaching.gregchipponicoaching.fr/fdc700e1-b9d352fa-5f3bf182-5a642cef" target="_blank">748,50 × 2 →</a></div>
+              <div class="cp-offer-row"><span>3×</span><a href="https://coaching.gregchipponicoaching.fr/fdc700e1-b9d352fa-5f3bf182-1f2a3817-5d8ef76f" target="_blank">499 × 3 →</a></div>
+              <div class="cp-offer-row"><span>4×</span><a href="https://coaching.gregchipponicoaching.fr/fdc700e1-b9d352fa-5f3bf182-1f2a3817-ff2ab35c-9cc046cb" target="_blank">374,25 × 4 →</a></div>
+            </div>
+          </div>
+          <div class="cp-offer">
+            <div class="cp-offer-head six">6 mois — 1 997 € ⭐</div>
+            <div class="cp-offer-rows">
+              <div class="cp-offer-row"><span>1×</span><a href="https://coaching.gregchipponicoaching.fr/fdc700e1-b9d352fa" target="_blank">1 997 € →</a></div>
+              <div class="cp-offer-row"><span>2×</span><a href="https://coaching.gregchipponicoaching.fr/fdc700e1-b9d352fa-5f3bf182" target="_blank">998,50 × 2 →</a></div>
+              <div class="cp-offer-row"><span>3×</span><a href="https://coaching.gregchipponicoaching.fr/fdc700e1-b9d352fa-5f3bf182-1f2a3817" target="_blank">665,67 × 3 →</a></div>
+              <div class="cp-offer-row"><span>4×</span><a href="https://coaching.gregchipponicoaching.fr/fdc700e1-b9d352fa-5f3bf182-1f2a3817-ff2ab35c" target="_blank">499,25 × 4 →</a></div>
+            </div>
+          </div>
+          <div class="cp-offer">
+            <div class="cp-offer-head twelve">12 mois — 3 600 €</div>
+            <div class="cp-offer-rows">
+              <div class="cp-offer-row"><span>1×</span><a href="https://coaching.gregchipponicoaching.fr/fdc700e1-b9d352fa-8eb51d98" target="_blank">3 600 € →</a></div>
+              <div class="cp-offer-row"><span>2×</span><a href="https://coaching.gregchipponicoaching.fr/fdc700e1-b9d352fa-5f3bf182" target="_blank">1 800 × 2 →</a></div>
+              <div class="cp-offer-row"><span>3×</span><a href="https://coaching.gregchipponicoaching.fr/fdc700e1-b9d352fa-5f3bf182-1f2a3817" target="_blank">1 200 × 3 →</a></div>
+              <div class="cp-offer-row"><span>4×</span><a href="https://coaching.gregchipponicoaching.fr/fdc700e1-b9d352fa-5f3bf182-1f2a3817-ff2ab35c" target="_blank">900 × 4 →</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="cp-info">💡 Pour les liens complets (acompte, Klarna, PayPal), consulte l'onglet <strong>💳 Liens de paiement</strong>. Tu peux aussi vérifier le paiement en temps réel sur <strong>Systeme.io</strong>.</div>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 3 -->
+    <div class="cp-step s3 open">
+      <div class="cp-step-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="cp-step-num">3</div>
+        <div class="cp-step-info">
+          <div class="cp-step-title">Après le closing — Passer la main au coach</div>
+          <div class="cp-step-sub">À faire immédiatement après confirmation du paiement</div>
+        </div>
+        <span class="cp-step-phase">Après le close</span>
+        <span class="cp-step-toggle">▼</span>
+      </div>
+      <div class="cp-step-body">
+        <div class="cp-check">
+          <div class="cp-item"><span class="cp-item-ico">✅</span><div><strong>Vérifie le paiement sur Systeme.io.</strong> Les closers voient en temps réel si le paiement est confirmé (notification immédiate).</div></div>
+          <div class="cp-item"><span class="cp-item-ico">📲</span><div><strong>Envoie le lien de l'app dans le groupe</strong>, même si le client va aussi le recevoir par mail — ça évite qu'il se perde dans sa boîte de réception.<br><a href="https://api-fityou.azeoo.com/v1/qrcodes/Smx4L2Z0ckc3TUk9" target="_blank" style="font-size:10.5px;color:#2563eb;font-family:monospace;word-break:break-all">https://api-fityou.azeoo.com/v1/qrcodes/Smx4L2Z0ckc3TUk9</a></div></div>
+          <div class="cp-item"><span class="cp-item-ico">➕</span><div><strong>Ajoute Greg dans le groupe</strong> dès que le paiement est confirmé.</div></div>
+          <div class="cp-item"><span class="cp-item-ico">🗣️</span><div><strong>Présente le client à Greg avec la durée</strong> — ex : <em>« Voici Julien, il rejoint pour 6 mois. »</em></div></div>
+          <div class="cp-item"><span class="cp-item-ico">🚪</span><div><strong>Sors du groupe</strong> une fois Greg ajouté et la présentation faite.</div></div>
+        </div>
+        <div class="cp-note">✅ Une fois ces 5 étapes faites, ton boulot est terminé. Le coach prend le relais.</div>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 4 -->
+    <div class="cp-step s4">
+      <div class="cp-step-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="cp-step-num">4</div>
+        <div class="cp-step-info">
+          <div class="cp-step-title">Message de présentation au coach</div>
+          <div class="cp-step-sub">Template à copier-coller dans le groupe</div>
+        </div>
+        <span class="cp-step-phase">Template</span>
+        <span class="cp-step-toggle">▼</span>
+      </div>
+      <div class="cp-step-body">
+        <div style="font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--soft);margin-bottom:8px">Message à envoyer dans le groupe</div>
+        <div style="background:#f9f7ff;border:1.5px solid rgba(124,58,237,.2);border-radius:10px;padding:14px 16px;font-size:13px;color:#3b0764;line-height:1.9;white-space:pre-wrap;font-family:inherit">Salut Greg 👋
+
+Je te présente [Prénom Nom], qui rejoint Team Chipponi pour [X mois] 💪
+
+[Prénom], voici Greg, ton coach ! Il va prendre soin de toi à partir de maintenant.
+
+Greg va te contacter très rapidement pour démarrer 🚀</div>
+        <div class="cp-info" style="margin-top:10px">💡 Adapte le message selon la situation (homme/femme, durée choisie). L'essentiel : mentionner le prénom du client ET la durée.</div>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 5 : DOWNSELL -->
+    <div class="cp-step s5">
+      <div class="cp-step-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="cp-step-num">5</div>
+        <div class="cp-step-info">
+          <div class="cp-step-title">Si la vente ne passe pas — Downsell</div>
+          <div class="cp-step-sub">Plan B si le prospect ne close pas sur les offres principales</div>
+        </div>
+        <span class="cp-step-phase">Downsell</span>
+        <span class="cp-step-toggle">▼</span>
+      </div>
+      <div class="cp-step-body">
+        <p style="font-size:12.5px;color:var(--muted);margin-bottom:12px;line-height:1.6">Si tu n'arrives pas à closer sur les offres à <strong>1 497 €</strong> ou <strong>1 997 €</strong>, tu peux proposer les programmes en accès autonome :</p>
+        <div class="cp-check">
+          <div class="cp-item"><span class="cp-item-ico">💪</span><div><strong>Cut Academy</strong> — 397 € — Programme perte de masse grasse</div></div>
+          <div class="cp-item"><span class="cp-item-ico">🏋️</span><div><strong>Muscle Academy</strong> — 397 € — Programme prise de masse</div></div>
+          <div class="cp-item"><span class="cp-item-ico">🏠</span><div><strong>House Academy</strong> — 397 € — Programme sans matériel, à la maison</div></div>
+        </div>
+        <div class="cp-warn">⚠️ Le downsell à 397 € est un programme sans suivi personnalisé. Le client n'a pas accès au coaching 1:1 ni à l'app de suivi. À utiliser uniquement si l'offre principale est refusée.</div>
+      </div>
+    </div>
+
+  </div><!-- /cp-steps -->
+</div><!-- /cp-wrap -->
+</div><!-- /tab-closer-process -->
 
 <!-- ═══ TAB 1 : PROCESS ═══ -->
 <div class="board" id="tab-process">
