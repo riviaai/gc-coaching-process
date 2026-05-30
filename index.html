@@ -431,7 +431,6 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0 14px}
   <button class="tab-btn" onclick="showTab('liens')">💳 Liens de paiement</button>
   <button class="tab-btn" onclick="showTab('cible')">🎯 Cible &amp; Offre</button>
   <button class="tab-btn" onclick="showTab('ressources')" style="display:none">🔗 Ressources</button>
-  <button class="tab-btn" onclick="showTab('indispos')">📅 Indispos</button>
   <button class="tab-btn" onclick="showTab('organigramme')">👥 Organigramme</button>
   <button class="tab-btn" onclick="showTab('calls')">📞 Suivi Calls</button>
 </div>
@@ -1540,11 +1539,12 @@ Des questions ? Je suis là 🙌
       <div class="section-body">
         <div class="offer-grid">
           <div class="offer-item"><div class="offer-item-t">🏋️ Plan d'entraînement évolutif</div><div class="offer-item-d">Programme personnalisé sur Azéo premium. S'adapte à la progression chaque semaine.</div></div>
-          <div class="offer-item"><div class="offer-item-t">💬 Suivi WhatsApp 5j/7</div><div class="offer-item-d">De 8h30 à 17h30. Questions, ajustements, corrections de mouvements par vidéo.</div></div>
+          <div class="offer-item"><div class="offer-item-t">💬 Accès direct WhatsApp 5j/7</div><div class="offer-item-d">De 8h30 à 17h30. Accès direct au coach, pas de groupe privé — personnalisation totale. Questions, ajustements, corrections de mouvements par vidéo.</div></div>
           <div class="offer-item"><div class="offer-item-t">🥗 Plan nutritionnel évolutif</div><div class="offer-item-d">Selon les préférences et la vie de famille. Construit à partir du formulaire. Zéro privation.</div></div>
           <div class="offer-item"><div class="offer-item-t">📊 Bilan tous les 15 jours</div><div class="offer-item-d">Poids, mensurations, photos (face / profil / dos). Permet d'ajuster en continu.</div></div>
           <div class="offer-item"><div class="offer-item-t">⭐ Application Azéo premium</div><div class="offer-item-d">1 700 recettes, suivi des charges, courbes de progression, liste de courses automatique.</div></div>
           <div class="offer-item"><div class="offer-item-t">🎥 Vidéos de formation</div><div class="offer-item-d">Tutos exercices avec consignes écrites et vidéo dans l'appli. Le client ne se retrouve jamais bloqué.</div></div>
+          <div class="offer-item"><div class="offer-item-t">🔴 Adaptation élastiques possible</div><div class="offer-item-d">Si le client n'a pas accès à une salle, le programme peut être adapté avec des séances utilisant des élastiques.</div></div>
         </div>
       </div>
     </div>
@@ -1575,6 +1575,8 @@ Des questions ? Je suis là 🙌
             <div class="notgreg-item"><div class="notgreg-t">Pas de bodybuilding extrémiste</div><div class="notgreg-d">Image naturelle, harmonie, longévité</div></div>
             <div class="notgreg-item"><div class="notgreg-t">Pas de produits dopants</div><div class="notgreg-d">Résultats 100% naturels</div></div>
             <div class="notgreg-item"><div class="notgreg-t">Pas de programmes génériques</div><div class="notgreg-d">Tout est personnalisé et suivi</div></div>
+            <div class="notgreg-item"><div class="notgreg-t">Pas de prépa course/endurance/Hyrox</div><div class="notgreg-d">Spécialité : transformation physique et sport santé/bien-être en salle exclusivement. Si le client fait de la course à côté et veut un programme musculation, on peut adapter en fonction de son activité.</div></div>
+            <div class="notgreg-item"><div class="notgreg-t">Pas de groupe privé</div><div class="notgreg-d">Accès direct au coach par WhatsApp 5j/7 — plus personnalisé et plus prestigieux qu'un groupe collectif.</div></div>
           </div>
         </div>
       </div>
@@ -1591,6 +1593,12 @@ Des questions ? Je suis là 🙌
           <div class="alim-d">L'alimentation reste <strong>simple et traditionnelle</strong> : riz, poulet, légumes. Pas de recettes élaborées. Le coaché prépare ses repas en plus grande quantité, la famille mange la même chose avec des portions adaptées.</div>
           <div class="alim-d">Les recettes de l'application Azéo sont <strong>indépendantes du plan prescrit</strong>. Les autres recettes disponibles dans l'appli ne peuvent pas remplacer celles prescrites, sauf demande validée par Greg.</div>
           <div class="alim-tip">Argument fort en call : zéro logistique supplémentaire pour la famille, tout le monde mange pareil.</div>
+        </div>
+        <div class="alim-card" style="margin-top:12px">
+          <div class="alim-t">Sommeil, stress, énergie, récupération</div>
+          <div class="alim-d"><strong>Sommeil &amp; stress</strong> : des conseils personnalisés, pas de recette miracle. Tout est ajusté en fonction des bilans et des retours du client.</div>
+          <div class="alim-d"><strong>Récupération</strong> : conseils pratiques + adaptation du programme selon les retours. Si le client récupère mal, le volume ou l'intensité s'adapte.</div>
+          <div class="alim-d"><strong>Énergie</strong> : résultat de l'ensemble des points — sommeil, récupération, stress. Défini à partir du premier formulaire, puis ajusté selon chaque bilan toutes les deux semaines.</div>
         </div>
       </div>
     </div>
@@ -1675,100 +1683,6 @@ Des questions ? Je suis là 🙌
   </div>
 </div><!-- /tab-ressources -->
 
-<!-- ═══ TAB 5 : ORGANIGRAMME ═══ -->
-<div class="board" id="tab-indispos">
-  <div class="cible-wrap">
-
-    <div style="text-align:center;margin-bottom:20px">
-      <h2 style="font-size:20px;font-weight:900">📅 Indisponibilités Closers</h2>
-      <p style="font-size:12px;color:var(--muted);margin-top:4px">Calendrier partagé — données enregistrées dans le navigateur</p>
-    </div>
-
-    <!-- DISPOS GÉNÉRALES -->
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:20px">
-      <div style="padding:12px;border-radius:10px;border:1.5px solid rgba(124,58,237,.25);background:rgba(124,58,237,.06)">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-          <div style="width:28px;height:28px;border-radius:50%;background:#7C3AED;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center">Au</div>
-          <strong style="font-size:13px;color:#7C3AED">Audeline</strong>
-        </div>
-        <div style="font-size:11px;color:var(--muted);line-height:1.6">Créneaux à renseigner</div>
-      </div>
-      <div style="padding:12px;border-radius:10px;border:1.5px solid rgba(37,99,235,.25);background:rgba(37,99,235,.06)">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-          <div style="width:28px;height:28px;border-radius:50%;background:#2563eb;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center">Fr</div>
-          <strong style="font-size:13px;color:#2563eb">Fred</strong>
-        </div>
-        <div style="font-size:11px;color:var(--muted);line-height:1.7">Jours travaillés : 13-14h, 18-22h<br>Jours off (2j/sem) : +9-11h, 14-16h</div>
-      </div>
-      <div style="padding:12px;border-radius:10px;border:1.5px solid rgba(249,115,22,.25);background:rgba(249,115,22,.06)">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-          <div style="width:28px;height:28px;border-radius:50%;background:#f97316;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center">Do</div>
-          <strong style="font-size:13px;color:#f97316">Dorian</strong>
-        </div>
-        <div style="font-size:11px;color:var(--muted);line-height:1.7">Lun-Ven, 8h-17h</div>
-      </div>
-    </div>
-
-    <!-- CALENDRIER -->
-    <div style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:16px;margin-bottom:20px">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-        <button onclick="indPrevMonth()" style="width:30px;height:30px;border-radius:50%;border:1px solid rgba(0,0,0,.12);background:#fff;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center">‹</button>
-        <span id="ind-month-lbl" style="font-size:14px;font-weight:800;color:var(--text)"></span>
-        <button onclick="indNextMonth()" style="width:30px;height:30px;border-radius:50%;border:1px solid rgba(0,0,0,.12);background:#fff;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center">›</button>
-      </div>
-      <!-- Jours de semaine -->
-      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:6px">
-        <div style="text-align:center;font-size:10px;font-weight:700;color:var(--muted);padding:4px">Lun</div>
-        <div style="text-align:center;font-size:10px;font-weight:700;color:var(--muted);padding:4px">Mar</div>
-        <div style="text-align:center;font-size:10px;font-weight:700;color:var(--muted);padding:4px">Mer</div>
-        <div style="text-align:center;font-size:10px;font-weight:700;color:var(--muted);padding:4px">Jeu</div>
-        <div style="text-align:center;font-size:10px;font-weight:700;color:var(--muted);padding:4px">Ven</div>
-        <div style="text-align:center;font-size:10px;font-weight:700;color:rgba(0,0,0,.25);padding:4px">Sam</div>
-        <div style="text-align:center;font-size:10px;font-weight:700;color:rgba(0,0,0,.25);padding:4px">Dim</div>
-      </div>
-      <div id="ind-cal-grid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px"></div>
-      <!-- Légende -->
-      <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
-        <div style="display:flex;align-items:center;gap:5px"><div style="width:14px;height:14px;border-radius:4px;background:#7C3AED"></div><span style="font-size:11px;color:var(--muted)">Audeline</span></div>
-        <div style="display:flex;align-items:center;gap:5px"><div style="width:14px;height:14px;border-radius:4px;background:#2563eb"></div><span style="font-size:11px;color:var(--muted)">Fred</span></div>
-        <div style="display:flex;align-items:center;gap:5px"><div style="width:14px;height:14px;border-radius:4px;background:#f97316"></div><span style="font-size:11px;color:var(--muted)">Dorian</span></div>
-      </div>
-    </div>
-
-    <!-- FORMULAIRE AJOUT -->
-    <div style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:16px;margin-bottom:20px">
-      <div style="font-size:13px;font-weight:800;margin-bottom:12px;color:var(--text)">➕ Ajouter une indisponibilité</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px">
-        <div>
-          <label style="font-size:11px;font-weight:700;color:var(--muted);display:block;margin-bottom:4px">Closer</label>
-          <select id="ind-closer" style="width:100%;padding:8px 10px;border:1px solid rgba(0,0,0,.15);border-radius:8px;font-size:12px;font-family:inherit;background:#fff">
-            <option value="Audeline">Audeline</option>
-            <option value="Fred">Fred</option>
-            <option value="Dorian">Dorian</option>
-          </select>
-        </div>
-        <div>
-          <label style="font-size:11px;font-weight:700;color:var(--muted);display:block;margin-bottom:4px">Date début</label>
-          <input type="date" id="ind-start" style="width:100%;padding:8px 10px;border:1px solid rgba(0,0,0,.15);border-radius:8px;font-size:12px;font-family:inherit;box-sizing:border-box">
-        </div>
-        <div>
-          <label style="font-size:11px;font-weight:700;color:var(--muted);display:block;margin-bottom:4px">Date fin (optionnel)</label>
-          <input type="date" id="ind-end" style="width:100%;padding:8px 10px;border:1px solid rgba(0,0,0,.15);border-radius:8px;font-size:12px;font-family:inherit;box-sizing:border-box">
-        </div>
-      </div>
-      <div style="margin-bottom:12px">
-        <label style="font-size:11px;font-weight:700;color:var(--muted);display:block;margin-bottom:4px">Note (optionnel)</label>
-        <input type="text" id="ind-note" placeholder="ex: vacances, challenge..." style="width:100%;padding:8px 10px;border:1px solid rgba(0,0,0,.15);border-radius:8px;font-size:12px;font-family:inherit;box-sizing:border-box">
-      </div>
-      <button onclick="indAdd()" style="padding:9px 20px;background:#111;color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit">Enregistrer</button>
-      <span id="ind-feedback" style="font-size:12px;color:#16a34a;margin-left:10px;font-weight:600"></span>
-    </div>
-
-    <!-- LISTE -->
-    <div id="ind-list"></div>
-
-  </div>
-</div><!-- /tab-indispos -->
 
 <div class="board" id="tab-organigramme">
   <div class="org-container">
@@ -1842,25 +1756,25 @@ Des questions ? Je suis là 🙌
           </div>
         </div>
 
-        <!-- SALES : Audeline, Fred, Dorian -->
+        <!-- SALES : Fred, Didier, Matthieu -->
         <div class="org-branch">
           <div class="org-branch-line"></div>
           <div class="org-card" style="border-top:3px solid #F59E0B">
             <div style="font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#F59E0B;margin-bottom:4px">Sales</div>
             <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
               <div style="text-align:center">
-                <div class="org-avatar org-avatar-sm" style="background:linear-gradient(135deg,#F59E0B,#d97706);margin:0 auto 3px">Au</div>
-                <div class="org-name" style="font-size:11px">Audeline</div>
-                <div class="org-role" style="color:#d97706;background:rgba(245,158,11,.08);font-size:9px">Closer</div>
-              </div>
-              <div style="text-align:center">
                 <div class="org-avatar org-avatar-sm" style="background:linear-gradient(135deg,#F59E0B,#d97706);margin:0 auto 3px">Fr</div>
                 <div class="org-name" style="font-size:11px">Fred</div>
                 <div class="org-role" style="color:#d97706;background:rgba(245,158,11,.08);font-size:9px">Closer</div>
               </div>
               <div style="text-align:center">
-                <div class="org-avatar org-avatar-sm" style="background:linear-gradient(135deg,#F59E0B,#d97706);margin:0 auto 3px">Do</div>
-                <div class="org-name" style="font-size:11px">Dorian</div>
+                <div class="org-avatar org-avatar-sm" style="background:linear-gradient(135deg,#F59E0B,#d97706);margin:0 auto 3px">Di</div>
+                <div class="org-name" style="font-size:11px">Didier</div>
+                <div class="org-role" style="color:#d97706;background:rgba(245,158,11,.08);font-size:9px">Closer</div>
+              </div>
+              <div style="text-align:center">
+                <div class="org-avatar org-avatar-sm" style="background:linear-gradient(135deg,#F59E0B,#d97706);margin:0 auto 3px">Ma</div>
+                <div class="org-name" style="font-size:11px">Matthieu</div>
                 <div class="org-role" style="color:#d97706;background:rgba(245,158,11,.08);font-size:9px">Closer</div>
               </div>
             </div>
@@ -2685,173 +2599,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const edits = getEdits();
   if (Object.keys(edits).length) applyEdits(edits);
   loadCloseInfo();
-  indInit();
 });
 
-// ── INDISPOS CLOSERS ──────────────────────────────────────────────
-const IND_KEY = 'gc_indispos_v1';
-const IND_CLOSERS_CFG = [
-  { name:'Audeline', color:'#7C3AED' },
-  { name:'Fred',     color:'#2563eb' },
-  { name:'Dorian',   color:'#f97316' }
-];
-let indYear = new Date().getFullYear();
-let indMonth = new Date().getMonth();
-
-function indLoad() {
-  try { return JSON.parse(localStorage.getItem(IND_KEY) || '[]'); } catch { return []; }
-}
-function indSave(d) { localStorage.setItem(IND_KEY, JSON.stringify(d)); }
-
-function indInit() {
-  let data = indLoad();
-  if (!data.length) {
-    const y = new Date().getFullYear();
-    data = [
-      { id:'f1', closer:'Fred',   dateStart:`${y}-05-18`, dateEnd:`${y}-05-18`, note:'' },
-      { id:'f2', closer:'Fred',   dateStart:`${y}-05-30`, dateEnd:`${y}-05-30`, note:'' },
-      { id:'f3', closer:'Fred',   dateStart:`${y}-06-04`, dateEnd:`${y}-06-04`, note:'' },
-      { id:'f4', closer:'Fred',   dateStart:`${y}-06-10`, dateEnd:`${y}-06-10`, note:'' },
-      { id:'d1', closer:'Dorian', dateStart:`${y}-05-19`, dateEnd:`${y}-05-19`, note:'' },
-      { id:'d2', closer:'Dorian', dateStart:`${y}-06-02`, dateEnd:`${y}-06-12`, note:'Challenge — garde 2/3 dispos/jour pour Greg' },
-      { id:'d3', closer:'Dorian', dateStart:`${y}-06-19`, dateEnd:`${y}-06-19`, note:'' },
-      { id:'d4', closer:'Dorian', dateStart:`${y}-06-22`, dateEnd:`${y}-06-23`, note:'Vacances assistante maternelle' },
-      { id:'d5', closer:'Dorian', dateStart:`${y}-06-25`, dateEnd:`${y}-06-26`, note:'Vacances assistante maternelle' }
-    ];
-    indSave(data);
-  }
-  indRender();
-}
-
-function indPrevMonth() { if (indMonth === 0) { indMonth=11; indYear--; } else { indMonth--; } indRender(); }
-function indNextMonth() { if (indMonth === 11) { indMonth=0; indYear++; } else { indMonth++; } indRender(); }
-
-function indCloserColor(name) {
-  return IND_CLOSERS_CFG.find(c => c.name === name)?.color || '#888';
-}
-
-function indDayHasIndispo(dateStr) {
-  return indLoad().filter(e => dateStr >= e.dateStart && dateStr <= e.dateEnd);
-}
-
-function indRender() {
-  const months = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
-  const lbl = document.getElementById('ind-month-lbl');
-  if (lbl) lbl.textContent = `${months[indMonth]} ${indYear}`;
-
-  const grid = document.getElementById('ind-cal-grid');
-  if (!grid) return;
-
-  const first = new Date(indYear, indMonth, 1);
-  const daysInMonth = new Date(indYear, indMonth+1, 0).getDate();
-  let dow = first.getDay(); dow = dow===0 ? 6 : dow-1;
-
-  const now = new Date();
-  const todayStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
-
-  let html = '';
-  for (let i=0; i<dow; i++) html += '<div></div>';
-
-  for (let d=1; d<=daysInMonth; d++) {
-    const ds = `${indYear}-${String(indMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-    const entries = indDayHasIndispo(ds);
-    const isToday = ds === todayStr;
-    const isPast = ds < todayStr;
-
-    html += `<div style="min-height:46px;padding:4px 3px;border-radius:8px;cursor:pointer;border:${isToday?'1.5px solid rgba(37,99,235,.4)':'1px solid transparent'};background:${isToday?'rgba(37,99,235,.06)':'transparent'}" onmouseover="this.style.background='rgba(0,0,0,.04)'" onmouseout="this.style.background='${isToday?'rgba(37,99,235,.06)':'transparent'}'" onclick="indDayDetail('${ds}')">`;
-    html += `<div style="font-size:11px;font-weight:${isToday?800:600};color:${isPast?'#d1d5db':isToday?'#2563eb':'var(--text)'};text-align:center;margin-bottom:3px">${d}</div>`;
-
-    const seen = new Set();
-    entries.forEach(e => {
-      if (!seen.has(e.closer)) {
-        seen.add(e.closer);
-        html += `<div style="font-size:9px;font-weight:700;color:#fff;background:${indCloserColor(e.closer)};border-radius:3px;padding:1px 3px;margin-bottom:1px;text-align:center;line-height:1.5">${e.closer.slice(0,2).toUpperCase()}</div>`;
-      }
-    });
-    html += '</div>';
-  }
-  grid.innerHTML = html;
-  indRenderList();
-}
-
-function indDayDetail(ds) {
-  const entries = indDayHasIndispo(ds);
-  if (!entries.length) return;
-  const [y,m,d] = ds.split('-');
-  const label = new Date(y,m-1,d).toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});
-  let msg = `📅 ${label}\n\n`;
-  entries.forEach(e => {
-    msg += `• ${e.closer}`;
-    if (e.dateStart !== e.dateEnd) msg += ` (jusqu'au ${new Date(e.dateEnd+'T00:00:00').toLocaleDateString('fr-FR',{day:'numeric',month:'long'})})`;
-    if (e.note) msg += ` — ${e.note}`;
-    msg += '\n';
-  });
-  alert(msg);
-}
-
-function indAdd() {
-  const closer = document.getElementById('ind-closer').value;
-  const start = document.getElementById('ind-start').value;
-  const endRaw = document.getElementById('ind-end').value;
-  const note = document.getElementById('ind-note').value.trim();
-  if (!start) { alert('Sélectionne une date de début.'); return; }
-  const end = endRaw || start;
-  if (end < start) { alert('La date de fin doit être après la date de début.'); return; }
-
-  const data = indLoad();
-  data.push({ id: Date.now().toString(36), closer, dateStart:start, dateEnd:end, note });
-  indSave(data);
-
-  document.getElementById('ind-start').value = '';
-  document.getElementById('ind-end').value = '';
-  document.getElementById('ind-note').value = '';
-
-  const fb = document.getElementById('ind-feedback');
-  fb.textContent = '✓ Enregistré !';
-  setTimeout(() => { fb.textContent = ''; }, 2000);
-
-  indRender();
-}
-
-function indDelete(id) {
-  if (!confirm('Supprimer cette indisponibilité ?')) return;
-  indSave(indLoad().filter(e => e.id !== id));
-  indRender();
-}
-
-function indRenderList() {
-  const list = document.getElementById('ind-list');
-  if (!list) return;
-  const data = indLoad();
-  const now = new Date();
-  const todayStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
-  const upcoming = data.filter(e => e.dateEnd >= todayStr).sort((a,b) => a.dateStart.localeCompare(b.dateStart));
-
-  if (!upcoming.length) {
-    list.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:13px;padding:20px">Aucune indisponibilité à venir</div>';
-    return;
-  }
-
-  const fmtD = ds => new Date(ds+'T00:00:00').toLocaleDateString('fr-FR',{day:'numeric',month:'short'});
-
-  let html = '<div style="font-size:13px;font-weight:800;color:var(--text);margin-bottom:10px">Prochaines indisponibilités</div>';
-  html += '<div style="display:flex;flex-direction:column;gap:8px">';
-
-  upcoming.forEach(e => {
-    const color = indCloserColor(e.closer);
-    const range = e.dateStart === e.dateEnd ? fmtD(e.dateStart) : `${fmtD(e.dateStart)} → ${fmtD(e.dateEnd)}`;
-    html += `<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fff;border:1px solid rgba(0,0,0,.08);border-left:4px solid ${color};border-radius:8px">
-      <div style="flex:0 0 auto;width:32px;height:32px;border-radius:50%;background:${color};color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center">${e.closer.slice(0,2).toUpperCase()}</div>
-      <div style="flex:1;min-width:0">
-        <div style="font-size:12px;font-weight:700;color:var(--text)">${e.closer} — ${range}</div>
-        ${e.note ? `<div style="font-size:11px;color:var(--muted);margin-top:2px">${e.note}</div>` : ''}
-      </div>
-      <button onclick="indDelete('${e.id}')" style="flex-shrink:0;width:26px;height:26px;border-radius:50%;border:1px solid rgba(220,38,38,.25);background:rgba(220,38,38,.06);color:#dc2626;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:inherit">×</button>
-    </div>`;
-  });
-  html += '</div>';
-  list.innerHTML = html;
-}
 
 // ── CLOSE INFO WIDGET ──────────────────────────────────────────
 function fmtDate(d) {
